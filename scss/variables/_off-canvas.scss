@@ -1,0 +1,16 @@
+.offcanvas{
+    --bs-offcanvas-width: 280px !important;
+    transition: transform .15s ease-in-out !important;
+    padding-top: 10px !important;
+    div ul{
+        list-style-type: none;
+        padding: 0;
+        hr{
+            margin: 6px 0;
+        }
+        li{
+            font-size: 16px;
+            padding: 7px 0;
+        }
+    }    
+}
