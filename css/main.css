@@ -25,12 +25,16 @@ header {
       justify-content: flex-end;
       align-items: center;
       font-size: 14px;
-      font-weight: 600; }
+      font-weight: 600;
+      color: #649FD7; }
+      header #header-items ul li:focus {
+        filter: invert(100%) sepia(0%) saturate(6319%) hue-rotate(246deg) brightness(116%) contrast(103%) !important; }
       header #header-items ul li img {
-        padding-bottom: 4px;
         width: 22px;
         height: auto;
-        color: #649FD7 !important; }
+        filter: invert(70%) sepia(11%) saturate(4221%) hue-rotate(181deg) brightness(89%) contrast(87%); }
+        header #header-items ul li img:focus {
+          filter: invert(100%) sepia(0%) saturate(6319%) hue-rotate(246deg) brightness(116%) contrast(103%); }
 
 .offcanvas {
   --bs-offcanvas-width: 280px !important;
@@ -44,6 +48,51 @@ header {
     .offcanvas div ul li {
       font-size: 16px;
       padding: 7px 0; }
+
+#browser {
+  height: 300px;
+  width: 100%;
+  background-color: #2C5FA1; }
+  #browser #browser_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px; }
+    #browser #browser_top button {
+      border: none;
+      background-color: #2C5FA1;
+      color: #649FD7;
+      font-size: 14px;
+      font-weight: 600; }
+      #browser #browser_top button:focus {
+        border-radius: 15px;
+        border: 1px solid #fff;
+        color: #fff; }
+  #browser #browser_box {
+    display: flex;
+    padding: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px; }
+    #browser #browser_box div {
+      border-radius: 5px;
+      background-color: #fff;
+      width: 145px;
+      height: 80px; }
+  #browser #browser_bottom :nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  #browser #browser_bottom button {
+    background-color: #FEBB02;
+    border: 1px solid #FEBB02;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    padding: 10px 40px;
+    align-self: flex-end; }
 
 * {
   font-family: 'Roboto', sans-serif; }
