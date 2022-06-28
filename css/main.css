@@ -1,3 +1,49 @@
-.navbar {
+header {
   background-color: #1D4D8B !important;
-  color: #fff; }
+  color: #fff;
+  padding: 10px; }
+  header button {
+    background-color: #1D4D8B !important;
+    border: 0px solid !important;
+    --bs-btn-focus-shadow-rgb: none !important; }
+    header button svg {
+      width: 25px;
+      height: auto; }
+  header img {
+    width: 70%;
+    height: auto; }
+  header #header-items ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+    header #header-items ul li {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600; }
+      header #header-items ul li img {
+        padding-bottom: 4px;
+        width: 22px;
+        height: auto;
+        color: #649FD7 !important; }
+
+.offcanvas {
+  --bs-offcanvas-width: 280px !important;
+  transition: transform .15s ease-in-out !important;
+  padding-top: 10px !important; }
+  .offcanvas div ul {
+    list-style-type: none;
+    padding: 0; }
+    .offcanvas div ul hr {
+      margin: 6px 0; }
+    .offcanvas div ul li {
+      font-size: 16px;
+      padding: 7px 0; }
+
+* {
+  font-family: 'Roboto', sans-serif; }
