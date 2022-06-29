@@ -1,3 +1,92 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'brunno-font';
+  src: url("../font/brunno-font.eot?72322469");
+  src: url("../font/brunno-font.eot?72322469#iefix") format("embedded-opentype"), url("../font/brunno-font.woff2?72322469") format("woff2"), url("../font/brunno-font.woff?72322469") format("woff"), url("../font/brunno-font.ttf?72322469") format("truetype"), url("../font/brunno-font.svg?72322469#brunno-font") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+      font-family: 'brunno-font';
+      src: url('../font/brunno-font.svg?72322469#brunno-font') format('svg');
+    }
+  }
+  */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "brunno-font";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
+
+.icon-bed:before {
+  content: '\e800'; }
+
+/* '' */
+.icon-casa:before {
+  content: '\e801'; }
+
+/* '' */
+.icon-portafolio:before {
+  content: '\e802'; }
+
+/* '' */
+.icon-airplane:before {
+  content: '\e803'; }
+
+/* '' */
+.icon-entradas:before {
+  content: '\e804'; }
+
+/* '' */
+.icon-usuario:before {
+  content: '\e805'; }
+
+/* '' */
+.icon-megafono:before {
+  content: '\e806'; }
+
+/* '' */
+.icon-autobus:before {
+  content: '\e807'; }
+
+/* '' */
+.icon-coche-deportivo:before {
+  content: '\e808'; }
+
+/* '' */
+.icon-campana:before {
+  content: '\e809'; }
+
+/* '' */
+.icon-asistencia-medica:before {
+  content: '\e80a'; }
+
+/* '' */
 header {
   background-color: #1D4D8B !important;
   color: #fff;
@@ -27,14 +116,10 @@ header {
       font-size: 14px;
       font-weight: 600;
       color: #649FD7; }
-      header #header-items ul li:focus {
-        filter: invert(100%) sepia(0%) saturate(6319%) hue-rotate(246deg) brightness(116%) contrast(103%) !important; }
-      header #header-items ul li img {
-        width: 22px;
-        height: auto;
-        filter: invert(70%) sepia(11%) saturate(4221%) hue-rotate(181deg) brightness(89%) contrast(87%); }
-        header #header-items ul li img:focus {
-          filter: invert(100%) sepia(0%) saturate(6319%) hue-rotate(246deg) brightness(116%) contrast(103%); }
+      header #header-items ul li:active {
+        color: #fff; }
+      header #header-items ul li i {
+        font-size: 20px; }
 
 .offcanvas {
   --bs-offcanvas-width: 280px !important;
@@ -48,6 +133,10 @@ header {
     .offcanvas div ul li {
       font-size: 16px;
       padding: 7px 0; }
+      .offcanvas div ul li:hover {
+        color: #649FD7; }
+      .offcanvas div ul li i {
+        margin-right: 5px; }
 
 #browser {
   height: 300px;

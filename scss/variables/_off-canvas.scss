@@ -11,6 +11,12 @@
         li{
             font-size: 16px;
             padding: 7px 0;
+            &:hover{
+                color: $celeste;
+            }
+            i{
+                margin-right: 5px;
+            }
         }
     }    
 }
