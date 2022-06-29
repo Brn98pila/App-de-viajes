@@ -1,4 +1,4 @@
-.offcanvas{
+#offcanvasExample{
     --bs-offcanvas-width: 280px !important;
     transition: transform .15s ease-in-out !important;
     padding-top: 10px !important;
@@ -19,4 +19,8 @@
             }
         }
     }    
+}
+
+.offcanvas-salida{
+    --bs-offcanvas-height: 100% !important;
 }
