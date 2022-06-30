@@ -143,6 +143,81 @@ header {
 
 .offcanvas-salida {
   --bs-offcanvas-height: 100% !important; }
+  .offcanvas-salida .offcanvas-header {
+    display: flex !important;
+    flex-direction: column !important;
+    padding-bottom: 0px !important;
+    box-shadow: 0 -1px 4px 1px; }
+    .offcanvas-salida .offcanvas-header button {
+      align-self: flex-end; }
+    .offcanvas-salida .offcanvas-header div {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: row;
+      width: 100%; }
+      .offcanvas-salida .offcanvas-header div button {
+        width: 50%;
+        border: none;
+        background-color: #fff;
+        color: #8290a6;
+        font-weight: 600;
+        padding-bottom: 20px; }
+        .offcanvas-salida .offcanvas-header div button:active {
+          border-bottom: 3px solid #5383ec;
+          color: #5383ec; }
+  .offcanvas-salida .offcanvas-body {
+    overflow-x: hidden; }
+  .offcanvas-salida .offcanvas-footer {
+    box-shadow: 0 1px 4px 1px;
+    display: flex;
+    align-items: center;
+    flex-direction: column; }
+    .offcanvas-salida .offcanvas-footer .container-footer {
+      width: 100%;
+      display: flex;
+      flex-direction: row; }
+      .offcanvas-salida .offcanvas-footer .container-footer div {
+        padding-top: 10px;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; }
+        .offcanvas-salida .offcanvas-footer .container-footer div p {
+          font-size: 11px;
+          color: #8290a6;
+          font-weight: 600; }
+    .offcanvas-salida .offcanvas-footer button {
+      background-color: #2C5FA1;
+      color: #fff;
+      width: 90%;
+      border-radius: 20px;
+      margin: auto auto;
+      border: 1px solid #649FD7;
+      padding: 12px;
+      margin-bottom: 12px;
+      font-weight: 600; }
+
+.offcanvas-pasajeros {
+  --bs-offcanvas-height: 100% !important;
+  display: flex;
+  flex-direction: column; }
+  .offcanvas-pasajeros .offcanvas-header {
+    display: flex;
+    flex-direction: column; }
+    .offcanvas-pasajeros .offcanvas-header button {
+      align-self: flex-end; }
+    .offcanvas-pasajeros .offcanvas-header h3 {
+      text-align: left; }
+  .offcanvas-pasajeros .offcanvas-body {
+    display: flex;
+    flex-direction: column; }
+    .offcanvas-pasajeros .offcanvas-body .contador {
+      width: 40%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center; }
 
 #browser {
   height: 300px;
@@ -183,7 +258,8 @@ header {
       border-radius: 100px;
       border: 4px solid #2C5FA1;
       background-color: #fff;
-      z-index: 1; }
+      z-index: 1;
+      padding: 6px; }
       #browser #browser_box #changer-button i {
         font-size: 20px;
         color: #2C5FA1; }
@@ -216,6 +292,39 @@ header {
         grid-area: ejemplo;
         font-size: 11px;
         font-weight: 300; }
+    #browser #browser_box #fechas {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around; }
+      #browser #browser_box #fechas span {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 10px; }
+        #browser #browser_box #fechas span p {
+          color: #8290a6;
+          font-size: 12px;
+          font-weight: 500; }
+      #browser #browser_box #fechas hr {
+        height: 50px;
+        width: .1vw;
+        border-width: 0;
+        color: #000;
+        background-color: #000; }
+    #browser #browser_box #pasajeros {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 10px; }
+      #browser #browser_box #pasajeros h4 {
+        color: #000;
+        font-size: 20px; }
+      #browser #browser_box #pasajeros p {
+        font-size: 12px;
+        color: #8290a6;
+        font-weight: 600; }
   #browser #browser_bottom :nth-child(2) {
     display: flex;
     flex-direction: column;
@@ -870,6 +979,12 @@ form {
     width: 100%;
     overflow: hidden;
     background-color: white; }
+
+.offcanvas-pasajeros .offcanvas-body #adultos, .offcanvas-pasajeros .offcanvas-body #bebes, .offcanvas-pasajeros .offcanvas-body #menores {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 10px; }
 
 * {
   font-family: 'Roboto', sans-serif; }

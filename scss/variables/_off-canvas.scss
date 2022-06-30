@@ -23,4 +23,113 @@
 
 .offcanvas-salida{
     --bs-offcanvas-height: 100% !important;
+    .offcanvas-header{
+        display: flex !important;
+        flex-direction: column !important;
+        padding-bottom: 0px !important;
+        box-shadow: 0 -1px 4px 1px;
+        button{
+            align-self: flex-end;
+        }
+        div{
+            margin-top: 15px;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            button{
+                width: 50%;
+                border: none;
+                background-color: #fff;
+                color: $gris;
+                font-weight: 600;
+                padding-bottom: 20px;
+                &:active{
+                    border-bottom: 3px solid $azul-fuerte;
+                    color: $azul-fuerte;
+
+                }
+            }
+        }
+    }
+    .offcanvas-body{
+        overflow-x: hidden;
+    }
+    .offcanvas-footer{
+        box-shadow: 0 1px 4px 1px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .container-footer{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            div{
+                padding-top: 10px;
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                p{
+                    font-size: 11px;
+                    color: $gris;
+                    font-weight: 600;
+                }
+                h4{
+
+                }
+            }
+        }
+        button{
+            background-color: $azul-claro;
+            color: #fff;
+            width: 90%;
+            border-radius: 20px;
+            margin: auto auto;
+            border: 1px solid $celeste;
+            padding: 12px;
+            margin-bottom: 12px;
+
+            font-weight: 600;
+        }
+        
+    }
+}
+
+.offcanvas-pasajeros{
+    --bs-offcanvas-height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    .offcanvas-header{
+        display: flex;
+        flex-direction: column;
+        button{
+            align-self: flex-end;
+        }
+        h3{
+            text-align: left;
+        }
+    }
+    .offcanvas-body{
+        display: flex;
+        flex-direction: column;
+        #adultos{
+            @extend %extend-offcanva;
+        }
+        #bebes{
+            @extend %extend-offcanva;
+        }
+        #menores{
+            @extend %extend-offcanva;
+        }
+
+        .contador{
+            width: 40%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+    }
+   
 }

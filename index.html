@@ -82,12 +82,26 @@
           <i>Proba "Argentina"</i>
           <!-- Destino -->
         </div>
-        <div id="fechas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas>
+        <div id="fechas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+          <span>
+            <h4 id="fecha-de-salida">-</h4>
+          <p id="fecha-dia-a">Sabado</p>
+          </span>
+          <hr>
+          <span>
+            <h4 id="fecha-de vuelta">-</h4>
+            <p class="fecha-dia-b">Sabado</p>
+          </span>
+        </div>
           <!-- Salida y Llegada -->
+        <div type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasPasajeros" aria-controls="offcanvasBottom">
+            <span id="pasajeros">
+              <h4 id="cantidad-pasajeros">1 Pasajero</h4>
+              <p id="clase-box">Ejecutiva</p>
+              <!-- Cantidad de pasajeros -->
+            </span>
         </div>
-        <div id="pasajeros">
-          <!-- Cantidad de pasajeros -->
-        </div>
+       
       </div>
       <div id="browser_bottom">
         <div>
@@ -110,7 +124,6 @@
         </div>
       </div>
       <div class="offcanvas-body">
-        <div class="device">
           <header>
             <div class="header-bar"></div>
             <div class="header-title">
@@ -217,9 +230,70 @@
               </div>
           </section>
         </div>
+        <div class="offcanvas-footer">
+          <div class="container-footer">
+            <div>
+              <p>IDA</p>
+              <h4>-</h4>
+            </div>
+            <div>
+              <p>VUELTA</p>
+              <h4>-</h4>
+            </div>
+          </div>
+          <button>Aplicar</button>
+        </div>
       </div>
-      <div class="offcanvas-footer"></div>
-    </div>
+
+
+      <!-- OFFCANVAS PASAJEROS -->
+
+      <div class="offcanvas offcanvas-bottom offcanvas-pasajeros" tabindex="-1" id="offcanvasPasajeros" aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <h3>Pasajeros</h3>
+        </div>
+        <div class="offcanvas-body">
+          <div id="adultos">
+            <div>
+              <h4>Adultos</h4>
+              <p>Desde 12 años</p>
+            </div>
+            <div class="contador">
+              <i class="bi bi-dash-circle-fill"></i>
+              <h3>1</h3>
+              <i class="bi bi-plus-circle-fill"></i>
+            </div>
+          </div>
+          <div id="menores">
+            <div>
+              <h4>Niños</h4>
+              <p>2 a 11 años</p>
+            </div>
+            <div class="contador">
+              <i class="bi bi-dash-circle-fill"></i>
+              <h3>1</h3>
+              <i class="bi bi-plus-circle-fill"></i>
+            </div>
+          </div>
+          <div id="bebes">
+            <div>
+              <h4>Bebés</h4>
+              <p>De 0 a 23 meses en brazos</p>
+            </div>
+            <div class="contador">
+              <i class="bi bi-dash-circle-fill"></i>
+              <h3>1</h3>
+              <i class="bi bi-plus-circle-fill"></i>
+            </div>
+          </div>
+          <div id="clase-select">
+            <button>Economica</button>
+            <button>Ejecutiva</button>
+          </div>
+          
+        </div>
+      </div>
 
 
 
