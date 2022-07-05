@@ -260,9 +260,9 @@
               <p>Desde 12 años</p>
             </div>
             <div class="contador">
-              <i class="bi bi-dash-circle-fill"></i>
-              <h3>1</h3>
-              <i class="bi bi-plus-circle-fill"></i>
+              <i class="bi bi-dash-circle-fill" onclick="menosPerson()" id="down"></i>
+              <h3 id="number-person">1</h3>
+              <i class="bi bi-plus-circle-fill" onclick="morePerson()" id="up"></i>
             </div>
           </div>
           <div id="menores">
@@ -271,9 +271,9 @@
               <p>2 a 11 años</p>
             </div>
             <div class="contador">
-              <i class="bi bi-dash-circle-fill"></i>
-              <h3>1</h3>
-              <i class="bi bi-plus-circle-fill"></i>
+              <i class="bi bi-dash-circle-fill" onclick="menosMenores()" id="downb"></i>
+              <h3 id="number-menores">0</h3>
+              <i class="bi bi-plus-circle-fill" onclick="moreMenores()" id="upb"></i>
             </div>
           </div>
           <div id="bebes">
@@ -282,22 +282,22 @@
               <p>De 0 a 23 meses en brazos</p>
             </div>
             <div class="contador">
-              <i class="bi bi-dash-circle-fill"></i>
-              <h3>1</h3>
-              <i class="bi bi-plus-circle-fill"></i>
+              <i class="bi bi-dash-circle-fill" onclick="menosBabes()" id="downc"></i>
+              <h3 id="number-bebes">0</h3>
+              <i class="bi bi-plus-circle-fill" onclick="moreBabes()" id="upc"></i>
             </div>
           </div>
           <div id="clase-select">
-            <button>Economica</button>
-            <button>Ejecutiva</button>
+            <h4>Clase</h4>
+            <span>
+              <button>Economica</button>
+              <button>Ejecutiva</button>
+            </span>
           </div>
-          
-        </div>
       </div>
-
-
-
-    <!-- JS Boostrap -->
+      <!-- JS -->
+      <script src="js/main.js"></script>
+      <!-- JS Boostrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>

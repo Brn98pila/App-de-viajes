@@ -212,12 +212,39 @@ header {
   .offcanvas-pasajeros .offcanvas-body {
     display: flex;
     flex-direction: column; }
+    .offcanvas-pasajeros .offcanvas-body #clase-select h4 {
+      text-align: center;
+      padding-top: 20px; }
+    .offcanvas-pasajeros .offcanvas-body #clase-select span {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0px 20px; }
+      .offcanvas-pasajeros .offcanvas-body #clase-select span button {
+        background-color: #fff;
+        border: 1px solid #E6EAEF;
+        color: #2d384c;
+        border-radius: 20px;
+        padding: 10px 25px; }
+        .offcanvas-pasajeros .offcanvas-body #clase-select span button:active {
+          background-color: #5383ec;
+          color: #fff;
+          border: 1px solid #5383ec; }
     .offcanvas-pasajeros .offcanvas-body .contador {
       width: 40%;
       display: flex;
       flex-direction: row;
-      justify-content: space-evenly;
       align-items: center; }
+      .offcanvas-pasajeros .offcanvas-body .contador h3 {
+        font-size: 26px;
+        padding: 0 20px;
+        margin: 0%;
+        font-weight: 400; }
+      .offcanvas-pasajeros .offcanvas-body .contador .bi {
+        color: #E6EAEF;
+        font-size: 25px; }
+      .offcanvas-pasajeros .offcanvas-body .contador .bi-plus-circle-fill {
+        color: #5383ec; }
 
 #browser {
   height: 300px;
@@ -325,6 +352,29 @@ header {
         font-size: 12px;
         color: #8290a6;
         font-weight: 600; }
+  #browser #browser_bottom div {
+    padding: 5px 10px; }
+    #browser #browser_bottom div input[type=checkbox] {
+      display: none; }
+    #browser #browser_bottom div input[type=checkbox] {
+      cursor: pointer; }
+    #browser #browser_bottom div label::before {
+      border: 1px solid #E6EAEF;
+      border-radius: 5px;
+      width: 20px; }
+    #browser #browser_bottom div label:before {
+      content: "";
+      border: 1px solid #E6EAEF;
+      background-color: #E6EAEF;
+      border-radius: 5px;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      text-align: center; }
+    #browser #browser_bottom div input[type=checkbox]:checked + label:before {
+      content: '✓';
+      font-size: 20px;
+      color: #5383ec; }
   #browser #browser_bottom :nth-child(2) {
     display: flex;
     flex-direction: column;
@@ -984,7 +1034,15 @@ form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0 10px; }
+  padding: 15px 10px;
+  border-bottom: .5px solid;
+  border-color: #E6EAEF; }
+  .offcanvas-pasajeros .offcanvas-body #adultos h4, .offcanvas-pasajeros .offcanvas-body #bebes h4, .offcanvas-pasajeros .offcanvas-body #menores h4 {
+    font-size: 16px;
+    line-height: 10px; }
+  .offcanvas-pasajeros .offcanvas-body #adultos p, .offcanvas-pasajeros .offcanvas-body #bebes p, .offcanvas-pasajeros .offcanvas-body #menores p {
+    font-size: 12px;
+    color: #8290a6; }
 
 * {
   font-family: 'Roboto', sans-serif; }
