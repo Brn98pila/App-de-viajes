@@ -118,9 +118,6 @@ header {
       font-size: 14px;
       font-weight: 600;
       color: #649FD7; }
-      header #header-items ul li:active {
-        color: #fff;
-        border-bottom: 3px solid #fff; }
       header #header-items ul li i {
         font-size: 20px; }
 
@@ -246,12 +243,36 @@ header {
       .offcanvas-pasajeros .offcanvas-body .contador .bi-plus-circle-fill {
         color: #5383ec; }
 
+.offcanvas-destino {
+  --bs-offcanvas-height: 100% !important; }
+  .offcanvas-destino .offcanvas-header {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px;
+    border-bottom: 1px solid #BAC6D3;
+    position: relative; }
+    .offcanvas-destino .offcanvas-header input {
+      font-size: 20px;
+      width: 90%;
+      height: 25px;
+      border: none; }
+      .offcanvas-destino .offcanvas-header input::placeholder {
+        color: #BAC6D3; }
+  .offcanvas-destino .offcanvas-body .destino {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #BAC6D3;
+    padding-top: 10px; }
+
 #browser {
   height: 300px;
   width: 100%;
-  background-color: #2C5FA1; }
+  background-color: #2C5FA1;
+  display: none; }
   #browser #browser_top {
-    display: flex;
+    display: inherit;
     flex-direction: row;
     justify-content: space-between;
     padding: 15px; }
@@ -1043,6 +1064,129 @@ form {
   .offcanvas-pasajeros .offcanvas-body #adultos p, .offcanvas-pasajeros .offcanvas-body #bebes p, .offcanvas-pasajeros .offcanvas-body #menores p {
     font-size: 12px;
     color: #8290a6; }
+
+#buscador-hoteles {
+  background-image: url(../images/fondo-home-hoteles-mobile.png);
+  height: 80%;
+  background-position: center top;
+  padding-top: 30%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  #buscador-hoteles h2 {
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 30px;
+    padding: 0 10px; }
+  #buscador-hoteles #container-api-hoteles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 0 10px;
+    margin-top: 20px; }
+    #buscador-hoteles #container-api-hoteles div {
+      border-radius: 5px;
+      background-color: #fff;
+      display: flex;
+      padding: 5px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 49%; }
+    #buscador-hoteles #container-api-hoteles #div-mayor {
+      width: 100%;
+      display: flex;
+      padding: 20px 0; }
+      #buscador-hoteles #container-api-hoteles #div-mayor h4 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2d384c; }
+      #buscador-hoteles #container-api-hoteles #div-mayor p {
+        font-size: 12px;
+        color: #8290a6;
+        margin: 0;
+        font-weight: 600; }
+    #buscador-hoteles #container-api-hoteles #fechas-hoteleria {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around; }
+  #buscador-hoteles button {
+    width: 90%;
+    background-color: #FEBB02;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 10px;
+    padding: 17px 0px;
+    border-radius: 30px;
+    border: none; }
+
+.active {
+  color: #fff !important;
+  border-bottom: 3px solid #fff; }
+
+.buscadores-active {
+  display: inherit !important; }
+
+#buscador-alquileres {
+  background-image: url(../images/fondo-home-alquileres-mobile.png);
+  height: 80%;
+  background-position: center top;
+  padding-top: 30%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  #buscador-alquileres h2 {
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 30px;
+    padding: 0 10px; }
+  #buscador-alquileres #container-api-alquileres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 0 10px;
+    margin-top: 20px; }
+    #buscador-alquileres #container-api-alquileres div {
+      border-radius: 5px;
+      background-color: #fff;
+      display: flex;
+      padding: 5px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 49%; }
+    #buscador-alquileres #container-api-alquileres #div-mayor-alquileres {
+      width: 100%;
+      display: flex;
+      padding: 20px 0; }
+      #buscador-alquileres #container-api-alquileres #div-mayor-alquileres h4 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2d384c; }
+      #buscador-alquileres #container-api-alquileres #div-mayor-alquileres p {
+        font-size: 12px;
+        color: #8290a6;
+        margin: 0;
+        font-weight: 600; }
+    #buscador-alquileres #container-api-alquileres #fechas-alquileres {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around; }
+  #buscador-alquileres button {
+    width: 90%;
+    background-color: #FEBB02;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 10px;
+    padding: 17px 0px;
+    border-radius: 30px;
+    border: none; }
 
 * {
   font-family: 'Roboto', sans-serif; }

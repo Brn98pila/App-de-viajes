@@ -2,8 +2,9 @@
     height: 300px;
     width: 100%;
     background-color: $azul-claro;
+    display: none;
     #browser_top{
-        display: flex;
+        display: inherit;
         flex-direction: row;
         justify-content: space-between;
         padding: 15px;

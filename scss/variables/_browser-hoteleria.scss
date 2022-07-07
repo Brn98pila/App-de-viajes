@@ -1,0 +1,77 @@
+#buscador-hoteles{
+    background-image: url(../images/fondo-home-hoteles-mobile.png);
+    height: 80%;
+    background-position: center top;
+    padding-top: 30%;
+
+
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h2{
+        text-align: center;
+        color: #fff;
+        font-weight: 600;
+        font-size:30px;
+        padding: 0 10px;
+    }
+    #container-api-hoteles{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+
+
+        margin: 0 10px;
+        margin-top: 20px;
+        div{
+            border-radius: 5px;
+            background-color: #fff;
+            display: flex;
+            padding: 5px;
+          
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            width: 49%;
+          
+            
+        }
+        #div-mayor{
+            width: 100%;
+            display: flex;
+            padding: 20px 0;
+            h4{
+                font-size: 20px;
+                font-weight: 600;
+                color: $gris-oscuro;
+            }
+            p{
+                font-size: 12px;
+                color: $gris;
+                margin: 0;
+                font-weight: 600;
+                
+            }
+            
+        }
+        #fechas-hoteleria{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+    }
+    button{
+        width: 90%;
+        background-color: $amarillo;
+        color: #fff;
+        font-weight: 600;
+        font-size: 20px;
+        margin-top: 10px;
+
+        padding: 17px 0px;
+        border-radius: 30px;
+        border: none;
+    }
+}

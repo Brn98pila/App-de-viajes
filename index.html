@@ -29,10 +29,10 @@
       <hr>
       <div id="header-items">
         <ul>
-          <li id=fly><i class="icon-airplane"></i> VUELOS</li>
-          <li id="hotel"><i class="icon-bed"></i> HOTELES</li>
-          <li id="house"><i class="icon-casa"></i> ALQUILERES</li>
-          <li id="package"><i class="icon-portafolio"></i>PAQUETES</li>
+          <li id=fly onclick="vuelosIconActive()" class="active"><i class="icon-airplane"></i> VUELOS</li>
+          <li id="hotel" onclick="hotelesIconActive()"><i class="icon-bed"></i> HOTELES</li>
+          <li id="house" onclick="AlquileresIconActive()"><i class="icon-casa"></i> ALQUILERES</li>
+          <li id="package" onclick="PaquetesIconActive()"><i class="icon-portafolio"></i>PAQUETES</li>
         </ul>
       </div>
     </header>
@@ -60,8 +60,8 @@
     </div>
 
     
-    <!-- BUSCADOR js -->
-    <section id="browser">
+    <!-- BUSCADOR js PARA VUELOS -->
+    <section id="browser" class="buscadores-active">
       <div id="browser_top">
        <button>Ida y vuelta</button>
        <button>Solo ida</button>
@@ -75,7 +75,7 @@
           <button id="changer-button">
             <i class="bi bi-arrow-left-right"></i>
           </button>
-        <div id="destino">
+        <div id="destino" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDestino" aria-controls="offcanvas">
           <i class="icon-airplane"></i>
           <hr>
           <h6>Destino</h6>
@@ -96,7 +96,7 @@
           <!-- Salida y Llegada -->
         <div type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasPasajeros" aria-controls="offcanvasBottom">
             <span id="pasajeros">
-              <h4 id="cantidad-pasajeros">1 Pasajero</h4>
+              <h4 id="cantidad-pasajeros"></h4>
               <p id="clase-box">Ejecutiva</p>
               <!-- Cantidad de pasajeros -->
             </span>
@@ -110,9 +110,84 @@
         </div>
       </div>
     </section>
+
+<!-- BUSCADOR JS PARA HOTELES -->
+
+<section id="buscador-hoteles">
+<h2>Encontra tu hotel ideal</h2>
+<div id="container-api-hoteles">
+  <div id="div-mayor">
+    <h4>¿A donde queres ir?</h4>
+    <p>Ingresa un destino o nombre de hotel</p>
+  </div>
+  <div id="fechas-hoteleria">
+    <span>-</span>
+    <hr>
+    <span>-</span>
+  </div>
+  <div>
+    <h4 id="cantidad-huespedes">1 Huesped</h4>
+    <p id="cantidad-habitaciones">1 habitacion</p>
+  </div>
+</div>
+<button id="boton-buscador-hoteles">Buscar</button>
+</section>
+
+
+<!-- Buscador de Alquileres JS -->
+
+<section id="buscador-alquileres">
+  <h2>Encontra tu hotel ideal</h2>
+  <div id="container-api-alquileres">
+    <div id="div-mayor-alquileres">
+      <h4>¿A donde queres ir?</h4>
+      <p>Ingresa un destino o nombre de hotel</p>
+    </div>
+    <div id="fechas-alquileres">
+      <span>-</span>
+      <hr>
+      <span>-</span>
+    </div>
+    <div>
+      <h4 id="cantidad-huespedes-alquileres">1 Huesped</h4>
+      <p id="cantidad-habitaciones-alquileres">1 habitacion</p>
+    </div>
+  </div>
+  <button id="boton-buscador-alquileres">Buscar</button>
+  </section>
+
+  <!-- Buscador de Paquetes JS -->
+
+  <section id="buscador-paquetes">
+    <div id="container-api-paquetes">
+      <div>
+        <i></i>
+        <h5></h5>
+      </div>
+      <div>
+        <i></i>
+        <h5></h5>
+      </div>
+    </div>
+    <button id="boton-buscador-alquileres">Buscar</button>
+    </section>
+
     <!-- MAIN -->
     <!-- FOOTER -->
+
+
+
+
     
+     <!-- OFFCANVAS DESTINO -->
+
+    <div class="offcanvas offcanvas-bottom offcanvas-destino" tabindex="-1" id="offcanvasDestino" aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+          <input type="text" maxlength="15" placeholder="Proba 'Brasil'">
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body destinos-container"></div>
+      </div>
 
     <!-- OFF CANVAS SALIDA -->
     <div class="offcanvas offcanvas-bottom offcanvas-salida" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
@@ -295,6 +370,9 @@
             </span>
           </div>
       </div>
+
+      
+
       <!-- JS -->
       <script src="js/main.js"></script>
       <!-- JS Boostrap -->
