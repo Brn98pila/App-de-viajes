@@ -6,3 +6,10 @@
 .buscadores-active{
     display: inherit !important;
 }
+
+.boton-active{
+    background-color: $azul-fuerte !important;
+    color: #fff !important;
+    border: 1px solid $azul-fuerte !important;
+   
+}

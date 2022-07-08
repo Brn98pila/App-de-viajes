@@ -174,15 +174,53 @@
         }
         button{
             background-color: $amarillo;
-            border: 1px solid $amarillo;
-            border-radius: 30px;
-            font-size: 20px;
-            font-weight: 600;
             color: #fff;
+            font-weight: 600;
+            font-size: 20px;
+            margin-top: 25px;
+            margin-left: 50%;
+            transform: translateX(-50%);
+    
+            padding: 15px 45px;
+            border-radius: 30px;
+            border: none;
+        }
+    }
+    article{
+        background-color: #fff;
+        #vuelos-opciones{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            span{
+                border-radius: 5px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 1.5rem 1rem;
+                max-width: 150px;
+                max-height: 130px;
+                border: 1px solid black;
+                h3{
+                    font-size: 1.3em;
+                    margin: 0px;
+                    text-align: center;
+                }
+                h5{
+                    font-size: 0.8rem;
+                }
+                p{
+                    font-size: 20px;
+                    font-weight: 600;
+                }
 
-            padding: 10px 40px;
-            align-self: flex-end;
 
+                filter: brightness(14%);
+            }
         }
     }
 }

@@ -2,21 +2,21 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 @font-face {
   font-family: 'brunno-font';
-  src: url("../font/brunno-font.eot?72322469");
-  src: url("../font/brunno-font.eot?72322469#iefix") format("embedded-opentype"), url("../font/brunno-font.woff2?72322469") format("woff2"), url("../font/brunno-font.woff?72322469") format("woff"), url("../font/brunno-font.ttf?72322469") format("truetype"), url("../font/brunno-font.svg?72322469#brunno-font") format("svg");
+  src: url("../font/brunno-font.eot?44532184");
+  src: url("../font/brunno-font.eot?44532184#iefix") format("embedded-opentype"), url("../font/brunno-font.woff2?44532184") format("woff2"), url("../font/brunno-font.woff?44532184") format("woff"), url("../font/brunno-font.ttf?44532184") format("truetype"), url("../font/brunno-font.svg?44532184#brunno-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 /*
-  @media screen and (-webkit-min-device-pixel-ratio:0) {
-    @font-face {
-      font-family: 'brunno-font';
-      src: url('../font/brunno-font.svg?72322469#brunno-font') format('svg');
-    }
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'brunno-font';
+    src: url('../font/brunno-font.svg?44532184#brunno-font') format('svg');
   }
-  */
+}
+*/
 [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "brunno-font";
   font-style: normal;
@@ -88,6 +88,38 @@
   content: '\e80a'; }
 
 /* '' */
+.icon-despegue:before {
+  content: '\e80b'; }
+
+/* '' */
+.icon-calendario:before {
+  content: '\e80c'; }
+
+/* '' */
+.icon-gps:before {
+  content: '\e80d'; }
+
+/* '' */
+.icon-ciudad:before {
+  content: '\e80e'; }
+
+/* '' */
+.icon-gps2:before {
+  content: '\e80f'; }
+
+/* '' */
+.icon-avion:before {
+  content: '\e810'; }
+
+/* '' */
+.icon-planeta:before {
+  content: '\e811'; }
+
+/* '' */
+.icon-despegue-del-avion:before {
+  content: '\e812'; }
+
+/* '' */
 header {
   background-color: #1D4D8B !important;
   color: #fff;
@@ -139,7 +171,10 @@ header {
         margin-right: 5px; }
 
 .offcanvas-salida {
-  --bs-offcanvas-height: 100% !important; }
+  --bs-offcanvas-height: 100% !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
   .offcanvas-salida .offcanvas-header {
     display: flex !important;
     flex-direction: column !important;
@@ -223,10 +258,19 @@ header {
         color: #2d384c;
         border-radius: 20px;
         padding: 10px 25px; }
-        .offcanvas-pasajeros .offcanvas-body #clase-select span button:active {
-          background-color: #5383ec;
-          color: #fff;
-          border: 1px solid #5383ec; }
+    .offcanvas-pasajeros .offcanvas-body #offcanvas-footer {
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end; }
+      .offcanvas-pasajeros .offcanvas-body #offcanvas-footer button {
+        width: 100%;
+        padding: 15px 0px;
+        border-radius: 30px;
+        border: none;
+        background-color: #5383ec;
+        color: #fff;
+        font-weight: 600; }
     .offcanvas-pasajeros .offcanvas-body .contador {
       width: 40%;
       display: flex;
@@ -403,13 +447,44 @@ header {
     align-items: center; }
   #browser #browser_bottom button {
     background-color: #FEBB02;
-    border: 1px solid #FEBB02;
-    border-radius: 30px;
-    font-size: 20px;
-    font-weight: 600;
     color: #fff;
-    padding: 10px 40px;
-    align-self: flex-end; }
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 25px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 45px;
+    border-radius: 30px;
+    border: none; }
+  #browser article {
+    background-color: #fff; }
+    #browser article #vuelos-opciones {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px; }
+      #browser article #vuelos-opciones span {
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1.5rem 1rem;
+        max-width: 150px;
+        max-height: 130px;
+        border: 1px solid black;
+        filter: brightness(14%); }
+        #browser article #vuelos-opciones span h3 {
+          font-size: 1.3em;
+          margin: 0px;
+          text-align: center; }
+        #browser article #vuelos-opciones span h5 {
+          font-size: 0.8rem; }
+        #browser article #vuelos-opciones span p {
+          font-size: 20px;
+          font-weight: 600; }
 
 * {
   box-sizing: border-box;
@@ -1130,6 +1205,11 @@ form {
 .buscadores-active {
   display: inherit !important; }
 
+.boton-active {
+  background-color: #5383ec !important;
+  color: #fff !important;
+  border: 1px solid #5383ec !important; }
+
 #buscador-alquileres {
   background-image: url(../images/fondo-home-alquileres-mobile.png);
   height: 80%;
@@ -1185,6 +1265,50 @@ form {
     font-size: 20px;
     margin-top: 10px;
     padding: 17px 0px;
+    border-radius: 30px;
+    border: none; }
+
+#buscador-paquetes {
+  height: 250px;
+  background-color: #2C5FA1;
+  display: none;
+  justify-content: center !important;
+  align-items: center; }
+  #buscador-paquetes #container-api-paquetes {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; }
+    #buscador-paquetes #container-api-paquetes div {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      width: 90%;
+      border-radius: 5px;
+      border: none;
+      height: 80px;
+      color: #8290a6; }
+      #buscador-paquetes #container-api-paquetes div p {
+        padding-top: 5px;
+        font-weight: 500;
+        font-size: 14px;
+        margin: 0px; }
+      #buscador-paquetes #container-api-paquetes div i {
+        font-size: 20px; }
+  #buscador-paquetes button {
+    background-color: #FEBB02;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 35px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 45px;
     border-radius: 30px;
     border: none; }
 

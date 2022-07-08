@@ -59,6 +59,8 @@
       </div>
     </div>
 
+     <!-- MAIN -->
+
     
     <!-- BUSCADOR js PARA VUELOS -->
     <section id="browser" class="buscadores-active">
@@ -96,7 +98,7 @@
           <!-- Salida y Llegada -->
         <div type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasPasajeros" aria-controls="offcanvasBottom">
             <span id="pasajeros">
-              <h4 id="cantidad-pasajeros"></h4>
+              <h4 id="cantidad-pasajeros">1 Pasajero</h4>
               <p id="clase-box">Ejecutiva</p>
               <!-- Cantidad de pasajeros -->
             </span>
@@ -109,6 +111,61 @@
         <button>Buscar</button>
         </div>
       </div>
+      <article>
+        <h5>Los mejores precios Argentina</h5>
+        <div id="vuelos-opciones">
+          <span id="opcion-1" class="opciones-viajes">
+            <h3>Miami</h3>
+            <h5>desde Buenos Aires</h5>
+            <p>$124.712</p>
+          </span>
+          <span id="opcion-2" class="opciones-viajes">
+            <h3>Madrid</h3>
+            <h5>desde Buenos Aires</h5>
+            <p>177.744</p>
+          </span>
+          <span id="opcion-3" class="opciones-viajes">
+            <h3>San Carlos de Bariloche</h3>
+            <h5>desde Buenos Aires</h5>
+            <p>$ 9.654</p>
+          </span>
+          <span id="opcion-4" class="opciones-viajes">
+            <h3>Barcelona</h3>
+            <h5>desde Buenos Aires</h5>
+            <p>$ 167.429</p>
+          </span>
+          <span id="opcion-5" class="opciones-viajes">
+            <h3>Rio de Janeiro</h3>
+            <h5>desde Buenos Aires</h5>
+            <p>$ 47.875</p>
+          </span>
+          <span id="opcion-6" class="opciones-viajes">
+            <h3>Cancun</h3>
+            <h5>desde Buenos Aires</h5>
+            <p>$ 130.266</p>
+          </span>
+          <span id="opcion-7" class="opciones-viajes">
+            <h3>Salta</h3>
+            <h5>desde Buenos Aires</h5>
+            <p>$ 9.654</p>
+          </span>
+          <span id="opcion-8" class="opciones-viajes">
+            <h3>Cataratas</h3>
+            <h5>desde Buenos Aires</h5>
+            <p>$ 10.183</p>
+          </span>
+          <span id="opcion-9" class="opciones-viajes">
+            <h3>Roma</h3>
+            <h5>desde Buenos Aires</h5>
+            <p>$ 183.828</p>
+          </span>
+          <span id="opcion-10" class="opciones-viajes">
+            <h3>Nueva York</h3>
+            <h5>desde Buenos Aires</h5>
+            <p>$ 181.447</p>
+          </span>
+        </div>
+      </article>
     </section>
 
 <!-- BUSCADOR JS PARA HOTELES -->
@@ -161,18 +218,18 @@
   <section id="buscador-paquetes">
     <div id="container-api-paquetes">
       <div>
-        <i></i>
-        <h5></h5>
+        <i class="icon-gps2"></i>
+        <p>Destino</p>
       </div>
       <div>
-        <i></i>
-        <h5></h5>
+        <i class="icon-calendario"></i>
+        <p>Mes de salida</p>
       </div>
     </div>
     <button id="boton-buscador-alquileres">Buscar</button>
     </section>
 
-    <!-- MAIN -->
+   
     <!-- FOOTER -->
 
 
@@ -335,9 +392,9 @@
               <p>Desde 12 años</p>
             </div>
             <div class="contador">
-              <i class="bi bi-dash-circle-fill" onclick="menosPerson()" id="down"></i>
+              <i class="bi bi-dash-circle-fill" onclick="menosPersonas()" id="down"></i>
               <h3 id="number-person">1</h3>
-              <i class="bi bi-plus-circle-fill" onclick="morePerson()" id="up"></i>
+              <i class="bi bi-plus-circle-fill" onclick="masPersonas()" id="up"></i>
             </div>
           </div>
           <div id="menores">
@@ -348,7 +405,7 @@
             <div class="contador">
               <i class="bi bi-dash-circle-fill" onclick="menosMenores()" id="downb"></i>
               <h3 id="number-menores">0</h3>
-              <i class="bi bi-plus-circle-fill" onclick="moreMenores()" id="upb"></i>
+              <i class="bi bi-plus-circle-fill" onclick="masMenores()" id="upb"></i>
             </div>
           </div>
           <div id="bebes">
@@ -357,17 +414,20 @@
               <p>De 0 a 23 meses en brazos</p>
             </div>
             <div class="contador">
-              <i class="bi bi-dash-circle-fill" onclick="menosBabes()" id="downc"></i>
+              <i class="bi bi-dash-circle-fill" onclick="menosBebes()" id="downc"></i>
               <h3 id="number-bebes">0</h3>
-              <i class="bi bi-plus-circle-fill" onclick="moreBabes()" id="upc"></i>
+              <i class="bi bi-plus-circle-fill" onclick="masBebes()" id="upc"></i>
             </div>
           </div>
           <div id="clase-select">
             <h4>Clase</h4>
             <span>
-              <button>Economica</button>
-              <button>Ejecutiva</button>
+              <button class="boton-active" onclick="SeleccionBotonClaseEconomica()" id="boton-clase-economica">Economica</button>
+              <button id="boton-clase-ejecutiva" onclick="SeleccionBotonClaseEjecutiva()">Ejecutiva</button>
             </span>
+          </div>
+          <div id="offcanvas-footer">
+            <button onclick="botonSumaDePasajeros()">Listo</button>
           </div>
       </div>
 

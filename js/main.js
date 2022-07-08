@@ -1,80 +1,134 @@
 // TODO ESTO ES PARA HACER TECLAS DE SUBIR Y BAJAR CANTIDADES
-let number = 1;
-let numberB = 0;
-let numberC = 0;
+let numeroPersonas = 1;
+let numeroMenores = 0;
+let numeroBebes = 0;
 
 
-function morePerson(){
-        number = number + 1;
-        document.getElementById("number-person").textContent = number;
-        if (number > 0){
-            let down = document.getElementById("down");
-            down.style.color = '#5383ec';
-            console.log(number);
-         }
-        else if (number == 9){
 
-            let up = document.getElementById("up");
-            up.style.pointerEvents = "none";
-            up.style.color = '#E6EAEF';
-        }
-        return number;
+
+
+function masPersonas(){
+    numeroPersonas = numeroPersonas + 1;
+    document.getElementById("number-person").textContent = numeroPersonas;
+    if ((numeroPersonas > 0)&&(numeroPersonas < 8)){
+        let down = document.getElementById("down");
+        down.style.color = '#5383ec';
+    }
+    else if (numeroPersonas == 9){
+        let up = document.getElementById("up");
+        up.style.pointerEvents = "none";
+        up.style.color = '#E6EAEF';
+    }
+    return numeroPersonas;
+    
         
 }
 
-function menosPerson(){
-    number = number - 1;
-    document.getElementById("number-person").textContent = number;
-    if(number == 0){
-        let down = document.getElementById("down");
+function menosPersonas(){
+    numeroPersonas = numeroPersonas - 1;
+    document.getElementById("number-person").textContent = numeroPersonas;
+    let down = document.getElementById("down");
+    if(numeroPersonas == 0){
         down.style.color = '#E6EAEF';
+        down.style.pointerEvents = 'none'
+    }
+    else if ((numeroPersonas < 10)||(numeroPersonas >= 0)){
+        down.style.pointerEvents = 'auto';
+        let up = document.getElementById("up");
+        up.style.pointerEvents = "auto";
+        up.style.color = '#5383ec';
     }
 }
 
-function moreMenores(){
-    numberB = numberB + 1;
-    document.getElementById("number-menores").textContent = numberB;
-    if (numberB > 0){
+function masMenores(){
+    numeroMenores = numeroMenores + 1;
+    document.getElementById("number-menores").textContent = numeroMenores;
+    if ((numeroMenores > 0)&&(numeroMenores < 8)){
         let downB = document.getElementById("downb");
         downB.style.color = '#5383ec';
-     }
+    }
+    else if (numeroMenores == 9){
+        let upB = document.getElementById("upb");
+        upB.style.pointerEvents = "none";
+        upB.style.color = '#E6EAEF';
+    }
+    return numeroMenores;
 }
 
 function menosMenores(){
-numberB = numberB - 1;
-document.getElementById("number-menores").textContent = numberB;
-if(numberB == 0){
-    let downB = document.getElementById("downb");
-    downB.style.color = '#E6EAEF';
-}
+    numeroMenores = numeroMenores - 1;
+    document.getElementById("number-menores").textContent = numeroMenores;
+    if(numeroMenores == 0){
+        let downB = document.getElementById("downb");
+        downB.style.color = '#E6EAEF';
+        downB.style.pointerEvents = 'none';00
+    }
+    else if ((numeroMenores < 9)||(numeroMenores >= 0)){
+        let upB = document.getElementById("upb");
+        upB.style.pointerEvents = "auto";
+        upB.style.color = '#5383ec';
+    }
 }
 
-function moreBabes(){
-    numberC = numberC + 1;
-    document.getElementById("number-bebes").textContent = numberC;
-    if (numberC > 0){
+function masBebes(){
+    numeroBebes = numeroBebes + 1;
+    document.getElementById("number-bebes").textContent = numeroBebes;
+    if ((numeroBebes > 0)&&(numeroBebes < 8)){
         let downC = document.getElementById("downc");
         downC.style.color = '#5383ec';
-     }
+    }
+    else if (numeroBebes == 9){
+        let upC = document.getElementById("upc");
+        upC.style.pointerEvents = "none";
+        upC.style.color = '#E6EAEF';
+    }
+    return numeroBebes;
 }
 
-function menosBabes(){
-numberC = numberC - 1;
-document.getElementById("number-bebes").textContent = numberC;
-if(numberC === 0){
-    let downC = document.getElementById("downc");
-    downC.style.color = '#E6EAEF';
-
-   
+function menosBebes(){
+numeroBebes = numeroBebes - 1;
+document.getElementById("number-bebes").textContent = numeroBebes;
+   if(numeroBebes === 0){
+        let downC = document.getElementById("downc");
+        downC.style.pointerEvents = 'none';
+        downC.style.color = '#E6EAEF';
+    }
+   else if ((numeroBebes <= 9)||(numeroBebes >= 0)){
+        let upC = document.getElementById("upc");
+        upC.style.pointerEvents = "auto";
+        upC.style.color = '#5383ec';
 }
 }
 
-// Anexar numeros al principal
+//FUNCION BOTON SUMA DE LA CANTIDAD DE PERSONAS
 
-    let cantidadDePasajerosAdultos = document.getElementById("number-person").textContent;
-    document.getElementById('cantidad-pasajeros').innerHTML = number +' Pasajeros';
+function botonSumaDePasajeros(){
+    let totalAdultos = document.getElementById("number-person").textContent;
+    let totalMenores = document.getElementById("number-menores").textContent;
+    let totalBebes = document.getElementById("number-bebes").textContent;
     
-    console.log(cantidadDePasajerosAdultos);
+    let numeroTotalPasajeros = parseInt(totalAdultos) + parseInt(totalMenores) + parseInt (totalBebes);
+
+    
+    document.getElementById('cantidad-pasajeros').innerHTML = numeroTotalPasajeros +' Pasajeros';
+
+
+    
+        console.log(numeroTotalPasajeros);
+}
+
+// BOTONES DE CLASE
+    let botonEconomica = document.getElementById('boton-clase-economica') ;
+    let botonEjecutiva = document.getElementById('boton-clase-ejecutiva') ;
+
+    function SeleccionBotonClaseEconomica(){
+        botonEjecutiva.classList.remove('boton-active');
+        botonEconomica.className = 'boton-active'
+    } 
+    function SeleccionBotonClaseEjecutiva(){
+        botonEconomica.classList.remove('boton-active');
+        botonEjecutiva.className = 'boton-active'
+    } 
 
 
 // Array para offcanvas destino
@@ -126,8 +180,9 @@ const quitarPropiedadesBotones = [iconFly,iconHotel,iconHouse,iconPackage];
 const changeBrowser = document.getElementById('browser');
 const browserHoteles = document.getElementById('buscador-hoteles');
 const browserAlquileres = document.getElementById('buscador-alquileres');
+const browserPaquetes = document.getElementById('buscador-paquetes')
 
-const quitarBuscadores = [changeBrowser,browserHoteles,browserAlquileres];
+const quitarBuscadores = [changeBrowser,browserHoteles,browserAlquileres,browserPaquetes];
 
 
 function vuelosIconActive(){
@@ -139,8 +194,6 @@ function vuelosIconActive(){
         Boton.classList.remove('active')
     })
     
-   
-
     iconFly.className = 'active'
     changeBrowser.className = 'buscadores-active'
 }
@@ -179,5 +232,5 @@ function PaquetesIconActive(){
     })
 
     iconPackage.className = 'active'
-    browserAlquileres.className = 'buscadores-active';
+    browserPaquetes.className = 'buscadores-active';
 }

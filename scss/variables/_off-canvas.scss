@@ -23,6 +23,9 @@
 
 .offcanvas-salida{
     --bs-offcanvas-height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .offcanvas-header{
         display: flex !important;
         flex-direction: column !important;
@@ -139,13 +142,22 @@
                     color: $gris-oscuro;
                     border-radius: 20px;
                     padding: 10px 25px;
-                    &:active{
-                        background-color: $azul-fuerte;
-                        color: #fff;
-                        border: 1px solid $azul-fuerte;
-                       
-                    }
                 }
+            }
+        }
+        #offcanvas-footer{
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            button{
+                width: 100%;
+                padding: 15px 0px;
+                border-radius: 30px;
+                border: none;
+                background-color: $azul-fuerte;
+                color: #fff;
+                font-weight: 600;
             }
         }
 
