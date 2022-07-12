@@ -1,0 +1,25 @@
+footer{
+    margin-top: 20px;
+    background-color: $azul;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 150px;
+        height: auto;
+    }
+    ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 300px;
+    }
+    span{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}

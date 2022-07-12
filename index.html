@@ -74,11 +74,11 @@
           <p>BUE</p>
           <!-- Lugar de salida -->
         </div>
-          <button id="changer-button">
+          <button id="changer-button" onclick="cambiarDeLadoBotonesBox()">
             <i class="bi bi-arrow-left-right"></i>
           </button>
         <div id="destino" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDestino" aria-controls="offcanvas">
-          <i class="icon-airplane"></i>
+          <i class="icon-despegue"></i>
           <hr>
           <h6>Destino</h6>
           <i>Proba "Argentina"</i>
@@ -99,11 +99,10 @@
         <div type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasPasajeros" aria-controls="offcanvasBottom">
             <span id="pasajeros">
               <h4 id="cantidad-pasajeros">1 Pasajero</h4>
-              <p id="clase-box">Ejecutiva</p>
+              <p id="clase-box">Economica</p>
               <!-- Cantidad de pasajeros -->
             </span>
         </div>
-       
       </div>
       <div id="browser_bottom">
         <div>
@@ -112,7 +111,7 @@
         </div>
       </div>
       <article>
-        <h5>Los mejores precios Argentina</h5>
+        <h5 id="vuelos-titulo">Los mejores precios Argentina</h5>
         <div id="vuelos-opciones">
           <span id="opcion-1" class="opciones-viajes">
             <h3>Miami</h3>
@@ -165,8 +164,40 @@
             <p>$ 181.447</p>
           </span>
         </div>
+        <span id="vuelos-newsletter">
+          <h4>No encontraste el destino que buscas?</h4>
+          <div>
+            <form action="">
+              <input type="text" placeholder="Quiero vuelos baratos a...">
+              <button id="button-newsletter">Buscar</button>
+            </form>
+            </div>
+        </span>
+        <div id="vuelos-preguntas">
+          <h3>Preguntas frecuentes</h3>
+          <span>
+            <h6>Como conseguir vuelos baratos en Turismo City?</h6>
+            <p></p>
+          </span>
+          <span>
+            <h6>Donde comprar vuelos baratos en Turismo City?</h6>
+            <p></p>
+          </span>
+          <span>
+            <h6>Cuando hay promociones aereas en Turismo City?</h6>
+            <p></p>
+          </span>
+          <span>
+            <h6>Como enterarse de las promociones aereas de Turismo City?</h6>
+            <p></p>
+          </span>
+        </div>
       </article>
     </section>
+
+
+
+    
 
 <!-- BUSCADOR JS PARA HOTELES -->
 
@@ -194,11 +225,11 @@
 <!-- Buscador de Alquileres JS -->
 
 <section id="buscador-alquileres">
-  <h2>Encontra tu hotel ideal</h2>
+  <h2>Encontra tu lugar perfecto para alquilar</h2>
   <div id="container-api-alquileres">
     <div id="div-mayor-alquileres">
       <h4>¿A donde queres ir?</h4>
-      <p>Ingresa un destino o nombre de hotel</p>
+      <p>Ingresa un destino</p>
     </div>
     <div id="fechas-alquileres">
       <span>-</span>
@@ -229,11 +260,9 @@
     <button id="boton-buscador-alquileres">Buscar</button>
     </section>
 
-   
-    <!-- FOOTER -->
 
 
-
+    
 
     
      <!-- OFFCANVAS DESTINO -->
@@ -382,7 +411,7 @@
 
       <div class="offcanvas offcanvas-bottom offcanvas-pasajeros" tabindex="-1" id="offcanvasPasajeros" aria-labelledby="offcanvasBottomLabel">
         <div class="offcanvas-header">
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" id="cerrar-offcanvas-pasajeros"></button>
           <h3>Pasajeros</h3>
         </div>
         <div class="offcanvas-body">
@@ -430,8 +459,31 @@
             <button onclick="botonSumaDePasajeros()">Listo</button>
           </div>
       </div>
+      </div>
 
-      
+
+<!-- FOOTER -->
+    
+<footer>
+  <img src="images/turismocity-logo-flat.53c8247.png" alt="logo-footer">
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <span>
+    <a href="">Quienes Somos</a>
+    <a href="">Feriados Nacionales</a>
+    <a href="">Preguntas Frecuentes</a>
+    <a href="">Terminos y condiciones</a>
+    <a href="">Politica de privacidad</a>
+    <a href="">Contacto</a>
+  </span>
+</footer>
+
 
       <!-- JS -->
       <script src="js/main.js"></script>

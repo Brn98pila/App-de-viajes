@@ -134,6 +134,9 @@ header {
   header img {
     width: 70%;
     height: auto; }
+  header hr {
+    margin: 5px 0px 20px 0px;
+    border-color: #5383ec; }
   header #header-items ul {
     margin: 0;
     padding: 0;
@@ -311,7 +314,6 @@ header {
     padding-top: 10px; }
 
 #browser {
-  height: 300px;
   width: 100%;
   background-color: #2C5FA1;
   display: none; }
@@ -372,9 +374,10 @@ header {
       grid-template-areas: "icon destino" "hr ejemplo";
       padding: 20px 10px 30px 20px;
       color: #8290a6; }
-      #browser #browser_box #destino .icon-airplane {
+      #browser #browser_box #destino .icon-despegue {
         grid-area: icon;
-        font-size: 24px; }
+        font-size: 24px;
+        top: 5px; }
       #browser #browser_box #destino hr {
         grid-area: hr; }
       #browser #browser_box #destino h6 {
@@ -417,47 +420,55 @@ header {
         font-size: 12px;
         color: #8290a6;
         font-weight: 600; }
-  #browser #browser_bottom div {
-    padding: 5px 10px; }
-    #browser #browser_bottom div input[type=checkbox] {
-      display: none; }
-    #browser #browser_bottom div input[type=checkbox] {
-      cursor: pointer; }
-    #browser #browser_bottom div label::before {
-      border: 1px solid #E6EAEF;
-      border-radius: 5px;
-      width: 20px; }
-    #browser #browser_bottom div label:before {
-      content: "";
-      border: 1px solid #E6EAEF;
-      background-color: #E6EAEF;
-      border-radius: 5px;
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      text-align: center; }
-    #browser #browser_bottom div input[type=checkbox]:checked + label:before {
-      content: '✓';
+  #browser #browser_bottom {
+    height: 75px; }
+    #browser #browser_bottom div {
+      padding: 5px 10px; }
+      #browser #browser_bottom div input[type=checkbox] {
+        display: none; }
+      #browser #browser_bottom div input[type=checkbox] {
+        cursor: pointer; }
+      #browser #browser_bottom div label::before {
+        border: 1px solid #E6EAEF;
+        border-radius: 5px;
+        width: 20px; }
+      #browser #browser_bottom div label:before {
+        content: "";
+        border: 1px solid #E6EAEF;
+        background-color: #E6EAEF;
+        border-radius: 5px;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        text-align: center; }
+      #browser #browser_bottom div input[type=checkbox]:checked + label:before {
+        content: '✓';
+        font-size: 20px;
+        color: #5383ec; }
+    #browser #browser_bottom :nth-child(2) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+    #browser #browser_bottom button {
+      background-color: #FEBB02;
+      color: #fff;
+      font-weight: 600;
       font-size: 20px;
-      color: #5383ec; }
-  #browser #browser_bottom :nth-child(2) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; }
-  #browser #browser_bottom button {
-    background-color: #FEBB02;
-    color: #fff;
-    font-weight: 600;
-    font-size: 20px;
-    margin-top: 25px;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    padding: 15px 45px;
-    border-radius: 30px;
-    border: none; }
+      margin-top: 25px;
+      margin-left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 45px;
+      border-radius: 30px;
+      border: none;
+      z-index: 1; }
   #browser article {
-    background-color: #fff; }
+    background-color: #fff;
+    padding-top: 50px; }
+    #browser article #vuelos-titulo {
+      text-align: center;
+      padding-bottom: 30px;
+      font-size: 20px; }
     #browser article #vuelos-opciones {
       display: flex;
       flex-wrap: wrap;
@@ -466,16 +477,15 @@ header {
       align-items: center;
       gap: 10px; }
       #browser article #vuelos-opciones span {
-        border-radius: 5px;
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 1.5rem 1rem;
-        max-width: 150px;
-        max-height: 130px;
-        border: 1px solid black;
-        filter: brightness(14%); }
+        width: 150px;
+        height: 130px;
+        color: #fff; }
         #browser article #vuelos-opciones span h3 {
           font-size: 1.3em;
           margin: 0px;
@@ -485,6 +495,108 @@ header {
         #browser article #vuelos-opciones span p {
           font-size: 20px;
           font-weight: 600; }
+        #browser article #vuelos-opciones span::before {
+          border-radius: 5px;
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          filter: brightness(50%);
+          z-index: 0; }
+        #browser article #vuelos-opciones span:active {
+          filter: brightness(70%); }
+  #browser article {
+    position: relative; }
+    #browser article #vuelos-opciones #opcion-1::before {
+      background-image: url(../images/MIA.jpg); }
+    #browser article #vuelos-opciones #opcion-2::before {
+      background-image: url(../images/MAD.jpg); }
+    #browser article #vuelos-opciones #opcion-3::before {
+      background-image: url(../images/BRC.jpg); }
+    #browser article #vuelos-opciones #opcion-4::before {
+      background-image: url(../images/BCN.jpg); }
+    #browser article #vuelos-opciones #opcion-5::before {
+      background-image: url(../images/RIO.jpg); }
+    #browser article #vuelos-opciones #opcion-6::before {
+      background-image: url(../images/CUN.jpg); }
+    #browser article #vuelos-opciones #opcion-7::before {
+      background-image: url(../images/SLA.jpg); }
+    #browser article #vuelos-opciones #opcion-8::before {
+      background-image: url(../images/IGR.jpg); }
+    #browser article #vuelos-opciones #opcion-9::before {
+      background-image: url(../images/ROM.jpg); }
+    #browser article #vuelos-opciones #opcion-10::before {
+      background-image: url(../images/NYC.jpg); }
+    #browser article #vuelos-newsletter {
+      display: inherit;
+      width: 100%;
+      background-color: #5383ec;
+      color: #fff;
+      padding: 30px 10px;
+      margin: 30px 0 0 0; }
+      #browser article #vuelos-newsletter h4 {
+        text-align: center;
+        font-size: 18px;
+        padding-bottom: 10px; }
+      #browser article #vuelos-newsletter div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        margin: 0; }
+        #browser article #vuelos-newsletter div form {
+          display: grid;
+          grid-template-columns: 60% 40%;
+          grid-template-areas: "input boton";
+          background-color: #5383ec; }
+          #browser article #vuelos-newsletter div form button {
+            grid-area: boton;
+            border: none;
+            padding: 13px 15px;
+            border-radius: 5px;
+            border-start-start-radius: 0px;
+            border-end-start-radius: 0px;
+            background-color: #1D4D8B;
+            color: #fff;
+            font-weight: 600; }
+          #browser article #vuelos-newsletter div form input {
+            grid-area: input;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            border-end-end-radius: 0px;
+            border-start-end-radius: 0px; }
+            #browser article #vuelos-newsletter div form input::placeholder {
+              font-style: italic;
+              font-size: 12px; }
+    #browser article #vuelos-preguntas {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #E6EAEF;
+      padding-top: 20px; }
+      #browser article #vuelos-preguntas h3 {
+        text-align: center;
+        font-size: 20px;
+        padding-bottom: 10px; }
+      #browser article #vuelos-preguntas span {
+        width: 90%;
+        border: none;
+        border-radius: 10px;
+        padding: 5px;
+        background-color: #fff;
+        margin: 5px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px; }
+        #browser article #vuelos-preguntas span h6 {
+          font-size: 14px;
+          margin: 0px; }
 
 * {
   box-sizing: border-box;
@@ -1210,6 +1322,12 @@ form {
   color: #fff !important;
   border: 1px solid #5383ec !important; }
 
+.browser-caja-hijos div:nth-of-type(1) {
+  order: 2; }
+
+.browser-caja-hijos div:nth-of-type(2) {
+  order: 1; }
+
 #buscador-alquileres {
   background-image: url(../images/fondo-home-alquileres-mobile.png);
   height: 80%;
@@ -1311,6 +1429,28 @@ form {
     padding: 15px 45px;
     border-radius: 30px;
     border: none; }
+
+footer {
+  margin-top: 20px;
+  background-color: #1D4D8B;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  footer img {
+    width: 150px;
+    height: auto; }
+  footer ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px; }
+  footer span {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap; }
 
 * {
   font-family: 'Roboto', sans-serif; }

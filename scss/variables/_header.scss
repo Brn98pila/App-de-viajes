@@ -15,6 +15,10 @@ header{
         width: 70%;
         height: auto;
     }
+    hr{
+        margin: 5px 0px 20px 0px;
+        border-color: $azul-fuerte;
+    }
     #header-items{
         ul{
             margin: 0;
