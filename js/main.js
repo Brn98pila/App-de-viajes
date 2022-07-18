@@ -184,11 +184,11 @@ const paises = [grecia,inglaterra,estadosUnidos,colombia,paisesBajos,italia,mexi
 
 
 function destinos(){
-   for (let ciudades of paises){
-    function multiplesCiudades(){
-        if(ciudades.ciudad == undefined){
-            for(ciudades of brasil){
-                console.log(ciudades.ciudad);
+   for (let ciudades of paises){                      // La idea es agrupar varias ciudades dentro de un array con su respectivo pais
+    function multiplesCiudades(){                     // y ademas crear un array mayor con los nombres de los paises
+        if(ciudades.ciudad == undefined){             // De momento funciona, pero para que este perfecto, tengo que lograr que
+            for(ciudades of brasil){                  // la funcion mayor destinos, entienda que existen mas ciudades que 1 dentro de brasil
+                console.log(ciudades.ciudad);         // por ende, cree 4 divs y no solo 1 con el ultimo nombre leido.
             } return ciudades.ciudad;
         }
         else return ciudades.ciudad;
