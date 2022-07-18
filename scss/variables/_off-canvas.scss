@@ -204,13 +204,11 @@
         }
     }
     .offcanvas-body{
+        padding: 0 !important;
         .destino{
             width: 100%;
             height: 60px;
-            display: flex;
-            flex-direction: row;
             border-bottom: 1px solid $gris-claro;
-            padding-top: 10px;
             
         }
     }

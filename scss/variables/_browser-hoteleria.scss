@@ -1,14 +1,14 @@
 #buscador-hoteles{
-    background-image: url(../images/fondo-home-hoteles-mobile.png);
-    height: 80%;
-    background-position: center top;
-    padding-top: 30%;
-
-
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
+  #hoteles-container{
+    height: 500px;
+    background-image: url(../images/fondo-home-hoteles-mobile.png);
+    background-position: center top;
+    padding-top: 35%;
     h2{
         text-align: center;
         color: #fff;
@@ -74,4 +74,66 @@
         border-radius: 30px;
         border: none;
     }
+  }
+  #hoteles-content{
+    padding-top: 50px;
+    h3{
+        text-align: center;
+        font-size: 24px;
+        color: $gris-oscuro;
+    }
+    p{
+        text-align: center;
+        color: $gris-oscuro;
+    }
+    #carrusel-popular{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow: scroll;
+        gap: 20px;
+        padding: 50px 0px 50px 20px;
+        div{
+            min-width: 220px;
+            height: 250px;
+            border-radius: 15px;
+            border: 1px solid #000;
+        }
+      
+    }
+    #carrusel-mejores-hoteles{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow: scroll;
+        gap: 20px;
+        padding: 50px 0px 50px 20px;
+        div{
+            min-width: 220px;
+            height: 170px;
+            border-radius: 15px;
+            border: 1px solid #000;
+        }
+    }
+    h4{
+        text-align: center;
+        font-size: 18px;
+    }
+    div{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 50px 15px;
+        background-color: $blanco;
+        span{
+            border-radius: 15px;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+    }
+  }
 }
+
+
+  
+   

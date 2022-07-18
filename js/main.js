@@ -158,41 +158,54 @@ function botonSumaDePasajeros(){
 
 
 // Array para offcanvas destino / viaje en avion
-function constructorPaises(){
-   this.ciudad = constructorPaises.ciudad;
-   this.acronimo = constructorPaises.acronimo;
-   this.icono = constructorPaises.icono;
-   this.pais = constructorPaises.pais;
+function constructorCiudades(ciudad, acronimo, icono, pais){
+   this.ciudad = ciudad;
+   this.acronimo = acronimo;
+   this.icono = icono;
+   this.pais = pais;
+
 }
-const grecia = new constructorPaises("Atenas","GRE","icon-avion","Grecia");
-const inglaterra = new constructorPaises("Londres","ING","icon-avion","Inglaterra");
-const estadosUnidos = new constructorPaises("NewYork","US","icon-avion","Estados Unidos");
-const colombia = new constructorPaises("NewYork","US","icon-avion","Colombia");
-const paisesBajos = new constructorPaises("Amsterdam","HOL","icon-avion","Paises Bajos");
-const italia = new constructorPaises("Roma","ITA","icon-avion","Italia");
-const mexico = new constructorPaises("Playa del Carmen","MEX","icon-avion","Mexico");
-const argentina = new constructorPaises("Bariloche","ARG","icon-avion","Argentina");
-const japon = new constructorPaises("Tokio","JPN","icon-avion","Japon");
-const brasil = new constructorPaises("Rio de Janeiro","BRS","icon-avion","Brasil");
+const grecia = new constructorCiudades("Atenas","GRE","icon-avion","Grecia");
+const inglaterra = new constructorCiudades("Londres","ING","icon-avion","Inglaterra");
+const estadosUnidos = new constructorCiudades("NewYork","US","icon-avion","Estados Unidos");
+const colombia = new constructorCiudades("Cali","US","icon-avion","Colombia");
+const paisesBajos = new constructorCiudades("Amsterdam","HOL","icon-avion","Paises Bajos");
+const italia = new constructorCiudades("Roma","ITA","icon-avion","Italia");
+const mexico = new constructorCiudades("Playa del Carmen","MEX","icon-avion","Mexico");
+const argentina = new constructorCiudades ("Bariloche","ARG","icon-avion","Argentina");
+const japon = new constructorCiudades("Tokio","JPN","icon-avion","Japon");
+const manaos = new constructorCiudades("Manaos","BRS","icon-avion","Brasil");
+const rioDeJaneiro = new constructorCiudades("Rio de Janeiro","BRS","icon-avion","Brasil");
+const salvadorDeBahia = new constructorCiudades("Salvador de Bahia","BRS","icon-avion","Brasil");
+const fernandoDeNoronha = new constructorCiudades("Fernando de Noronha","BRS","icon-avion","Brasil");
 
-const paises = [grecia,inglaterra,estadosUnidos,colombia,paisesBajos,italia,mexico,argentina,japon,brasil]
+const brasil = [manaos,rioDeJaneiro,salvadorDeBahia,fernandoDeNoronha];
+const paises = [grecia,inglaterra,estadosUnidos,colombia,paisesBajos,italia,mexico,argentina,japon,brasil];
 
-let cantidadDestinos = ""
 
-
-function Destinos(){
-    for (i=0; i<10;i++){
+function destinos(){
+   for (let ciudades of paises){
+    function multiplesCiudades(){
+        if(ciudades.ciudad == undefined){
+            for(ciudades of brasil){
+                console.log(ciudades.ciudad);
+            } return ciudades.ciudad;
+        }
+        else return ciudades.ciudad;
+       
+    } 
         const container = document.getElementsByClassName('destinos-container');
         const hijo = document.createElement('div');
         hijo.className = 'destino'
-        hijo.innerHTML = "<i class='" + paises.icono + "'></i><div><span>" + paises.ciudad, paises.pais + "</span><span><p>Todos los aeropuertos</p></span></div><span class='acronimo'>" + paises.acronimo + "</span>"
+        hijo.innerHTML = "<i class='" + ciudades.icono + "'></i><div><span>" + multiplesCiudades() + ", " + ciudades.pais + "</span><span><p>Todos los aeropuertos</p></span></div><span class='acronimo'>" + ciudades.acronimo + "</span>"
 
         container[0].appendChild(hijo);
-        cantidadDestinos = paises[i] 
+        console.log(ciudades.icono);
     }
+
 }
 
-Destinos()
+destinos()
 
 
 // Cambio de atributos en los botones del header y cambio de buscadores ONCLICK

@@ -14,7 +14,48 @@
    
 }
 
+// Utilizar boton para cambiar de lugar, la salida y la llegada.
+
 .browser-caja-hijos{
     div:nth-of-type(1){ order: 2;};
     div:nth-of-type(2) { order: 1; };
+}
+
+// Estilos en el offcanvas Destino agg via js.
+
+.destino{
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    grid-template-areas: 
+    "icono destino acronimo";
+    div{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        color: #000;
+        grid-area: destino;
+        font-size: 16px;
+        font-weight: 400;
+        p{
+            color: $gris;
+            font-size: 13px;
+            font-weight: 400;
+        }
+    }
+    i{
+        grid-area: icono;
+        font-size: 25px;
+        color: $azul-claro;
+        text-align: center;
+    }
+    .acronimo{
+        grid-area: acronimo;
+        font-size: 18px;
+        font-weight: 400;
+        text-align: end;
+        padding-right: 20px;
+    }
 }
