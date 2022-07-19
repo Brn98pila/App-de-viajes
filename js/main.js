@@ -158,54 +158,135 @@ function botonSumaDePasajeros(){
 
 
 // Array para offcanvas destino / viaje en avion
-function constructorCiudades(ciudad, acronimo, icono, pais){
+function constructorCiudades(ciudad, acronimo, icono, pais, aeropuerto){
    this.ciudad = ciudad;
    this.acronimo = acronimo;
    this.icono = icono;
    this.pais = pais;
+   this.aeropuerto = aeropuerto;
 
 }
-const grecia = new constructorCiudades("Atenas","GRE","icon-avion","Grecia");
-const inglaterra = new constructorCiudades("Londres","ING","icon-avion","Inglaterra");
-const estadosUnidos = new constructorCiudades("NewYork","US","icon-avion","Estados Unidos");
-const colombia = new constructorCiudades("Cali","US","icon-avion","Colombia");
-const paisesBajos = new constructorCiudades("Amsterdam","HOL","icon-avion","Paises Bajos");
-const italia = new constructorCiudades("Roma","ITA","icon-avion","Italia");
-const mexico = new constructorCiudades("Playa del Carmen","MEX","icon-avion","Mexico");
-const argentina = new constructorCiudades ("Bariloche","ARG","icon-avion","Argentina");
-const japon = new constructorCiudades("Tokio","JPN","icon-avion","Japon");
-const manaos = new constructorCiudades("Manaos","BRS","icon-avion","Brasil");
-const rioDeJaneiro = new constructorCiudades("Rio de Janeiro","BRS","icon-avion","Brasil");
-const salvadorDeBahia = new constructorCiudades("Salvador de Bahia","BRS","icon-avion","Brasil");
-const fernandoDeNoronha = new constructorCiudades("Fernando de Noronha","BRS","icon-avion","Brasil");
+//inglaterra 
+const londres = new constructorCiudades("Londres","ING","icon-avion","Inglaterra", "Todos los aeropuertos");
+const manchester = new constructorCiudades("Manchester","ING","icon-avion","Inglaterra","Todos los aeropuertos");
+const birmingham = new constructorCiudades("Birmingham","ING","icon-avion","Inglaterra","Birmingham-West Midlands");
+const liverpool = new constructorCiudades("Liverpool","ING","icon-avion","Inglaterra","Todos los aeropuertos");
+const inglaterra = new constructorCiudades("Inglaterra","ING","icon-avion","","Pais");
+// estados unidos 
+const newYork = new constructorCiudades("NewYork","US","icon-avion","Estados Unidos", "Todos los aeropuertos");
+const chicago = new constructorCiudades("Chicago","US","icon-avion","Estados Unidos","Todos los aeropuertos");
+const dallas = new constructorCiudades("Dallas","US","icon-avion","Estados Unidos","Todos los aeropuertos");
+const filadelfia = new constructorCiudades("Filadelfia","US","icon-avion","Estados Unidos","Todos los aeropuertos");
+const miami = new constructorCiudades("Miami","US","icon-avion","Estados Unidos","Todos los aeropuertos");
+const losAngeles = new constructorCiudades("Los Angeles","US","icon-avion","Estados Unidos","Todos los aeropuertos");
+const estadosUnidos = new constructorCiudades("Estados Unidos","US","icon-avion","","Pais");
+//colombia
+const bogota = new constructorCiudades("Bogota","US","icon-avion","Colombia","Todos los aeropuertos");
+const cali = new constructorCiudades("Cali","US","icon-avion","Colombia","Todos los aeropuertos");
+const medellin = new constructorCiudades("Medellin","US","icon-avion","Colombia","Todos los aeropuertos");
+const barranquilla = new constructorCiudades("Barranquilla","US","icon-avion","Colombia","Ernesto Cortissoz");
+const colombia = new constructorCiudades("Colombia","US","icon-avion","","Pais");
+//holanda
+const amsterdam = new constructorCiudades("Amsterdam","AMS","icon-avion","Paises Bajos","Todos los aeropuertos");
+const roterdam = new constructorCiudades("Roterdam","ROT","icon-avion","Paises Bajos","Aer. Roterdam-La Haya");
+const paisesBajos = new constructorCiudades("Paises Bajos","HOL","icon-avion","","Pais");
+//italia
+const milan = new constructorCiudades("Milan","MIL","icon-avion","Italia","Todos los aeropuertos");
+const roma = new constructorCiudades("Roma","ROM","icon-avion","Italia","Todos los aeropuertos");
+const turin = new constructorCiudades("Turin","TUR","icon-avion","Italia","Aeropuerto Turin-Caselle");
+const genova = new constructorCiudades("Genova","GNV","icon-avion","Italia","Aeropuerto Nac Genova");
+const venecia = new constructorCiudades("Venecia","VEN","icon-avion","Italia","Marco Polo Intl");
+const italia = new constructorCiudades("Italia","ITA","icon-avion","","Pais");
+//mexico
+const ciudadDeMexico = new constructorCiudades("Ciudad de Mexico","CMX","icon-avion","Mexico", "Todos los aeropuertos");
+const monterrey = new constructorCiudades("Monterry","MON","icon-avion","Mexico","Aeropuerto Intl Monterrey");
+const culiacan = new constructorCiudades("Culiacan","CUL","icon-avion","Mexico","Aeropuerto Intl Culiacan");
+const veracruz = new constructorCiudades("Veracruz","VER","icon-avion","Mexico","Gral Heriberto Jara");
+const playaDelCarmen = new constructorCiudades("Playa del Carmen","PDC","icon-avion","Mexico","Playa del Carmen Nac.");
+const mexico = new constructorCiudades("Mexico","MEX","icon-avion","","Pais");
+//japon
+const hiroshima = new constructorCiudades("Hiroshima","HRS","icon-avion","Japon","Aeropuerto Intl Hiroshima");
+const osaka = new constructorCiudades("Osaka","OSK","icon-avion","Japon","Todos los aeropuertos");
+const nagoya = new constructorCiudades("Nagoya","NAG","icon-avion","Japon","Chūbu Centrair Intl");
+const tokio = new constructorCiudades("Tokio","TOK","icon-avion","Japon", "Todos los aeropuertos");
+const japon = new constructorCiudades("Japon","JPN","icon-avion","","Pais");
+//grecia
+const atenas = new constructorCiudades("Atenas","ATE","icon-avion","Grecia", "Todos los aeropuertos");
+const santorini = new constructorCiudades("Santorini","SAN","icon-avion","Grecia","Thira Intl");
+const delfos = new constructorCiudades("Delfos","DEL","icon-avion","Grecia","Nea Anchialos National");
+const creta = new constructorCiudades("Creta","CRE","icon-avion","Grecia","Heraclion Intl");
+const grecia = new constructorCiudades("Grecia","GRE","icon-avion","","Pais");
+// brasil
+const manaos = new constructorCiudades("Manaos","MAN","icon-avion","Brasil", "Eduardo Gomes Intl");
+const rioDeJaneiro = new constructorCiudades("Rio de Janeiro","RIO","icon-avion","Brasil", "Todos los aeropuertos");
+const salvadorDeBahia = new constructorCiudades("Salvador de Bahia","SAB","icon-avion","Brasil", "Luís Eduardo Magalhães Intl");
+const fernandoDeNoronha = new constructorCiudades("Fernando de Noronha","FER","icon-avion","Brasil","Fernando de Noronha");
+const brasil = new constructorCiudades("Brasil","BRS","icon-avion","","Pais");
+//argentina
+const bariloche = new constructorCiudades ("Bariloche","BRC","icon-avion","Argentina","Teniente L. Candelaria");
+const salta = new constructorCiudades ("Salta","SAL","icon-avion","Argentina","Gral. Guemes");
+const tucuman = new constructorCiudades ("Tucuman","TUC","icon-avion","Argentina","Teniente B. Matienzo");
+const misiones = new constructorCiudades ("Cataratas del Iguazu","CAT","icon-avion","Argentina","Carlos E. Krause");
+const tierraDelFuego = new constructorCiudades ("Tierra Del Fuego","TDF","icon-avion","Argentina","Gob. Ramon Trejo");
+const tandil = new constructorCiudades ("Tandil","TAN","icon-avion","Argentina","Aeropuerto de Tandil Nac.");
+const marDelPlata = new constructorCiudades ("Mar Del Plata","MDP","icon-avion","Argentina","Astor Piazzolla intl");
 
-const brasil = [manaos,rioDeJaneiro,salvadorDeBahia,fernandoDeNoronha];
-const paises = [grecia,inglaterra,estadosUnidos,colombia,paisesBajos,italia,mexico,argentina,japon,brasil];
-
+const paises = [grecia,inglaterra,estadosUnidos,colombia,paisesBajos,italia,mexico,japon,bariloche,salta,tucuman,
+misiones,tierraDelFuego,tandil,marDelPlata,manaos,rioDeJaneiro,salvadorDeBahia,fernandoDeNoronha,
+milan,roma,turin,genova,venecia,ciudadDeMexico,monterrey,culiacan,veracruz,playaDelCarmen,hiroshima,osaka,
+nagoya,tokio,atenas,santorini,delfos,creta,londres,manchester,birmingham,liverpool,newYork,chicago,dallas,
+filadelfia,miami,losAngeles, bogota, cali,medellin,barranquilla,amsterdam,roterdam,milan,roma,turin,genova,venecia];
 
 function destinos(){
-   for (let ciudades of paises){                      // La idea es agrupar varias ciudades dentro de un array con su respectivo pais
-    function multiplesCiudades(){                     // y ademas crear un array mayor con los nombres de los paises
-        if(ciudades.ciudad == undefined){             // De momento funciona, pero para que este perfecto, tengo que lograr que
-            for(ciudades of brasil){                  // la funcion mayor destinos, entienda que existen mas ciudades que 1 dentro de brasil
-                console.log(ciudades.ciudad);         // por ende, cree 4 divs y no solo 1 con el ultimo nombre leido.
-            } return ciudades.ciudad;
-        }
-        else return ciudades.ciudad;
-       
-    } 
+   for (let ciudades of paises){      
         const container = document.getElementsByClassName('destinos-container');
         const hijo = document.createElement('div');
         hijo.className = 'destino'
-        hijo.innerHTML = "<i class='" + ciudades.icono + "'></i><div><span>" + multiplesCiudades() + ", " + ciudades.pais + "</span><span><p>Todos los aeropuertos</p></span></div><span class='acronimo'>" + ciudades.acronimo + "</span>"
+        if(ciudades.aeropuerto == "Pais"){
+            hijo.innerHTML = "<i class='" + ciudades.icono + "'></i><div><span>" + ciudades.ciudad + ciudades.pais + "</span><span><p>"+ ciudades.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudades.acronimo + "</span>"
+        }
+        else{
+            hijo.innerHTML = "<i class='" + ciudades.icono + "'></i><div><span>" + ciudades.ciudad + ", " + ciudades.pais + "</span><span><p>"+ ciudades.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudades.acronimo + "</span>"
+        }
+        
 
         container[0].appendChild(hijo);
         console.log(ciudades.icono);
     }
 
 }
-
 destinos()
+
+// Funcion find aplicada al buscador de Offcanvas Destino
+
+
+
+function busqCiudades(){
+    let buscador = document.getElementById("input-destino").value;
+    console.log(buscador)
+    const busqueda = paises.some((ciudad) => ciudad.pais == buscador)
+    const busquedaPorCiudad = paises.filter((ciudad) => ciudad.pais == buscador)
+    console.log(busquedaPorCiudad)
+    if(busqueda == true){ // -------------> CASI LO TENGO, me gustaria que al dar enter se remuevan los elementos anteiores.
+        function RemoverElementos(){
+            let elementoPadre = document.getElementsByClassName('destinos-container')
+            elementoPadre.innerHTML = "";
+         }
+         RemoverElementos()
+        for(let ciudad of busquedaPorCiudad){
+            const container = document.getElementsByClassName('destinos-container');
+            const hijo = document.createElement('div');
+            hijo.className = 'destino'
+            hijo.innerHTML = "<i class='" +  "'></i><div><span>" + ciudad.ciudad + ", " + ciudad.pais + "</span><span><p>"+ ciudad.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudad.acronimo + "</span>"
+
+            container[0].appendChild(hijo);
+            console.log(ciudad.icono);
+        }
+        
+    }
+    else return console.log("no funciona"); 
+}
+
 
 
 // Cambio de atributos en los botones del header y cambio de buscadores ONCLICK
