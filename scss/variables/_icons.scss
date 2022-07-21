@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'brunno-font';
-  src: url('../font/brunno-font.eot?44532184');
-  src: url('../font/brunno-font.eot?44532184#iefix') format('embedded-opentype'),
-       url('../font/brunno-font.woff2?44532184') format('woff2'),
-       url('../font/brunno-font.woff?44532184') format('woff'),
-       url('../font/brunno-font.ttf?44532184') format('truetype'),
-       url('../font/brunno-font.svg?44532184#brunno-font') format('svg');
+  src: url('../font/brunno-font.eot?6643482');
+  src: url('../font/brunno-font.eot?6643482#iefix') format('embedded-opentype'),
+       url('../font/brunno-font.woff2?6643482') format('woff2'),
+       url('../font/brunno-font.woff?6643482') format('woff'),
+       url('../font/brunno-font.ttf?6643482') format('truetype'),
+       url('../font/brunno-font.svg?6643482#brunno-font') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'brunno-font';
-    src: url('../font/brunno-font.svg?44532184#brunno-font') format('svg');
+    src: url('../font/brunno-font.svg?6643482#brunno-font') format('svg');
   }
 }
 */
@@ -73,3 +73,4 @@
 .icon-avion:before { content: '\e810'; } /* '' */
 .icon-planeta:before { content: '\e811'; } /* '' */
 .icon-despegue-del-avion:before { content: '\e812'; } /* '' */
+.icon-banderas:before { content: '\e813'; } /* '' */

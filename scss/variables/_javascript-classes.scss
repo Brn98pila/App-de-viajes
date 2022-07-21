@@ -14,6 +14,11 @@
    
 }
 
+.boton-inactive{
+    color: $blanco !important;
+    pointer-events: none !important;
+}
+
 // Utilizar boton para cambiar de lugar, la salida y la llegada.
 
 .browser-caja-hijos{
@@ -50,6 +55,13 @@
         font-size: 25px;
         color: $azul-claro;
         text-align: center;
+    }
+    .icon-banderas{
+        font-size: 40px;
+        bottom: 10px;
+    }
+    .icon-ciudad{
+        bottom: 5px;
     }
     .acronimo{
         grid-area: acronimo;
