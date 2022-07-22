@@ -276,22 +276,7 @@ const container = document.getElementsByClassName('destinos-container');
 function destinos(){
    for (let ciudades of paises){      
         const hijo = document.createElement('div');
-        hijo.className = 'destino'
-        hijo.onclick = function() {     
-         boxSalida = document.getElementById('destino');
-         boxSalida.style.display = "flex";
-         boxSalida.style.flexDirection = "column";
-         boxSalida.style.justifyContent = "center";
-         boxSalida.style.alignItems = "center";
-         boxSalida.style.gap = "0";
-         boxSalida.style.padding = "10px";
-         boxSalida.innerHTML = "<h2 id= viaje-seleccionado>" + ciudades.acronimo + "</h2><p>" + ciudades.ciudad + ", " + ciudades.pais + "</p>";
-            h2Salida = document.getElementById('viaje-seleccionado');
-            h2Salida.style.fontSize = "32px"
-            h2Salida.style.color = "#2d384c"
-            h2Salida.style.margin = "0"
-            document.getElementById('cerrar-offcanvas-destino').click();
-          }   
+        hijo.className = 'destino' 
         if(ciudades.aeropuerto == "Pais"){                    
 
             hijo.innerHTML = "<i class='" + ciudades.icono + "'></i><div><span>" + ciudades.ciudad + ciudades.pais + "</span><span><p>"+ ciudades.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudades.acronimo + "</span>"
@@ -299,7 +284,24 @@ function destinos(){
         else{
             hijo.innerHTML = "<i class='" + ciudades.icono + "'></i><div><span>" + ciudades.ciudad + ", " + ciudades.pais + "</span><span><p>"+ ciudades.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudades.acronimo + "</span>"
         }
+
+        hijo.onclick = function() {     
+            boxSalida = document.getElementById('destino');
+            boxSalida.style.display = "flex";
+            boxSalida.style.flexDirection = "column";
+            boxSalida.style.justifyContent = "center";
+            boxSalida.style.alignItems = "center";
+            boxSalida.style.gap = "0";
+            boxSalida.style.padding = "10px";
+            boxSalida.innerHTML = "<h2 id= viaje-seleccionado>" + ciudades.acronimo + "</h2><p>" + ciudades.ciudad + ", " + ciudades.pais + "</p>";
+               h2Salida = document.getElementById('viaje-seleccionado');
+               h2Salida.style.fontSize = "32px"
+               h2Salida.style.color = "#2d384c"
+               h2Salida.style.margin = "0"
+               document.getElementById('cerrar-offcanvas-destino').click();
+             }  
         
+             // MODIFICAR ESTO
 
         container[0].appendChild(hijo);
     }
@@ -321,7 +323,22 @@ function busqCiudades(){
             const hijo = document.createElement('div');
             hijo.className = 'destino'
             hijo.innerHTML = "<i class='" + ciudad.icono +  "'></i><div><span>" + ciudad.ciudad + ", " + ciudad.pais + "</span><span><p>"+ 
-            ciudad.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudad.acronimo + "</span>"
+            ciudad.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudad.acronimo + "</span>";
+            hijo.onclick = function() {     
+                boxSalida = document.getElementById('destino');
+                boxSalida.style.display = "flex";
+                boxSalida.style.flexDirection = "column";
+                boxSalida.style.justifyContent = "center";
+                boxSalida.style.alignItems = "center";
+                boxSalida.style.gap = "0";
+                boxSalida.style.padding = "10px";
+                boxSalida.innerHTML = "<h2 id= viaje-seleccionado>" + ciudad.acronimo + "</h2><p>" + ciudad.ciudad + ", " + ciudad.pais + "</p>";
+                h2Salida = document.getElementById('viaje-seleccionado');
+                h2Salida.style.fontSize = "32px"
+                h2Salida.style.color = "#2d384c"
+                h2Salida.style.margin = "0"
+                document.getElementById('cerrar-offcanvas-destino').click();
+                }  
 
             container[0].appendChild(hijo);
         }
