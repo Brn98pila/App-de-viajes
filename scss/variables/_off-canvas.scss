@@ -175,9 +175,14 @@
             .bi{
                 color: $blanco;
                 font-size: 25px;
+               
             }
             .bi-plus-circle-fill{
                 color: $azul-fuerte;
+                
+            }
+            .bi-dash-circle-fill{
+                pointer-events: none;
             }
         }
     }
@@ -212,4 +217,25 @@
             
         }
     }
+}
+.offcanvas-fechas{
+    --bs-offcanvas-height: 100% !important;
+    .offcanvas-header{
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid $gris-claro;
+        padding: 10px 10px;
+        #input-salida{
+            font-size: 20px;
+            width: 90%;
+            height: 25px;
+            border: none;
+            &::placeholder{
+                color: $gris-claro;
+             }
+            }
+        }
+        .offcanvas-body{
+            padding: 0 !important;
+        }
 }

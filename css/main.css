@@ -2,8 +2,8 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 @font-face {
   font-family: 'brunno-font';
-  src: url("../font/brunno-font.eot?6643482");
-  src: url("../font/brunno-font.eot?6643482#iefix") format("embedded-opentype"), url("../font/brunno-font.woff2?6643482") format("woff2"), url("../font/brunno-font.woff?6643482") format("woff"), url("../font/brunno-font.ttf?6643482") format("truetype"), url("../font/brunno-font.svg?6643482#brunno-font") format("svg");
+  src: url("../font/brunno-font.eot?25817455");
+  src: url("../font/brunno-font.eot?25817455#iefix") format("embedded-opentype"), url("../font/brunno-font.woff2?25817455") format("woff2"), url("../font/brunno-font.woff?25817455") format("woff"), url("../font/brunno-font.ttf?25817455") format("truetype"), url("../font/brunno-font.svg?25817455#brunno-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -13,7 +13,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'brunno-font';
-    src: url('../font/brunno-font.svg?6643482#brunno-font') format('svg');
+    src: url('../font/brunno-font.svg?25817455#brunno-font') format('svg');
   }
 }
 */
@@ -88,10 +88,6 @@
   content: '\e80a'; }
 
 /* '' */
-.icon-despegue:before {
-  content: '\e80b'; }
-
-/* '' */
 .icon-calendario:before {
   content: '\e80c'; }
 
@@ -116,14 +112,18 @@
   content: '\e811'; }
 
 /* '' */
-.icon-despegue-del-avion:before {
-  content: '\e812'; }
-
-/* '' */
 .icon-banderas:before {
   content: '\e813'; }
 
 /* '' */
+.icon-despegue:before {
+  content: '\e814'; }
+
+/* '' */
+.icon-aterrizaje:before {
+  content: '\e815'; }
+
+/* '' */
 header {
   background-color: #1D4D8B !important;
   color: #fff;
@@ -293,6 +293,8 @@ header {
         font-size: 25px; }
       .offcanvas-pasajeros .offcanvas-body .contador .bi-plus-circle-fill {
         color: #5383ec; }
+      .offcanvas-pasajeros .offcanvas-body .contador .bi-dash-circle-fill {
+        pointer-events: none; }
 
 .offcanvas-destino {
   --bs-offcanvas-height: 100% !important; }
@@ -315,6 +317,23 @@ header {
       width: 100%;
       height: 65px;
       border-bottom: 1px solid #BAC6D3; }
+
+.offcanvas-fechas {
+  --bs-offcanvas-height: 100% !important; }
+  .offcanvas-fechas .offcanvas-header {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #BAC6D3;
+    padding: 10px 10px; }
+    .offcanvas-fechas .offcanvas-header #input-salida {
+      font-size: 20px;
+      width: 90%;
+      height: 25px;
+      border: none; }
+      .offcanvas-fechas .offcanvas-header #input-salida::placeholder {
+        color: #BAC6D3; }
+  .offcanvas-fechas .offcanvas-body {
+    padding: 0 !important; }
 
 #browser {
   width: 100%;
@@ -365,37 +384,46 @@ header {
       justify-content: center;
       align-items: center; }
       #browser #browser_box #salida p {
-        font-size: 40px;
+        text-align: center;
+        color: #8290a6;
+        font-size: 12px;
+        margin: 0;
+        font-weight: 500; }
+      #browser #browser_box #salida h6 {
+        font-size: 32px;
+        color: #2d384c;
+        font-weight: 600; }
+      #browser #browser_box #salida h2 {
+        font-size: 32px;
         color: #2d384c;
         font-weight: 600;
         margin: 0; }
+      #browser #browser_box #salida i {
+        font-size: 32px;
+        color: #8290a6; }
     #browser #browser_box #destino {
-      display: grid;
-      grid-template-columns: 25% 75%;
-      grid-template-rows: 50% 50%;
-      gap: 5px;
-      grid-template-areas: "icon destino" "hr ejemplo";
-      padding: 20px 10px 30px 20px;
-      color: #8290a6; }
-      #browser #browser_box #destino .icon-despegue {
-        grid-area: icon;
-        font-size: 24px;
-        top: 5px; }
-      #browser #browser_box #destino hr {
-        grid-area: hr; }
-      #browser #browser_box #destino h6 {
-        grid-area: destino;
-        font-weight: 500; }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 5px; }
       #browser #browser_box #destino i {
-        grid-area: ejemplo;
-        font-size: 11px;
-        font-weight: 300; }
-      #browser #browser_box #destino p {
-        margin: 0px;
+        font-size: 35px;
+        color: #8290a6; }
+      #browser #browser_box #destino h2 {
+        font-size: 32px;
+        color: #2d384c;
         font-weight: 600;
+        margin: 0; }
+      #browser #browser_box #destino h6 {
+        font-size: 12px;
+        color: #8290a6; }
+      #browser #browser_box #destino p {
+        text-align: center;
         color: #8290a6;
         font-size: 12px;
-        text-align: center; }
+        margin: 0;
+        font-weight: 500; }
     #browser #browser_box #fechas {
       display: flex;
       flex-direction: row;

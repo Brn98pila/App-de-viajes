@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'brunno-font';
-  src: url('../font/brunno-font.eot?6643482');
-  src: url('../font/brunno-font.eot?6643482#iefix') format('embedded-opentype'),
-       url('../font/brunno-font.woff2?6643482') format('woff2'),
-       url('../font/brunno-font.woff?6643482') format('woff'),
-       url('../font/brunno-font.ttf?6643482') format('truetype'),
-       url('../font/brunno-font.svg?6643482#brunno-font') format('svg');
+  src: url('../font/brunno-font.eot?25817455');
+  src: url('../font/brunno-font.eot?25817455#iefix') format('embedded-opentype'),
+       url('../font/brunno-font.woff2?25817455') format('woff2'),
+       url('../font/brunno-font.woff?25817455') format('woff'),
+       url('../font/brunno-font.ttf?25817455') format('truetype'),
+       url('../font/brunno-font.svg?25817455#brunno-font') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'brunno-font';
-    src: url('../font/brunno-font.svg?6643482#brunno-font') format('svg');
+    src: url('../font/brunno-font.svg?25817455#brunno-font') format('svg');
   }
 }
 */
@@ -65,12 +65,12 @@
 .icon-coche-deportivo:before { content: '\e808'; } /* '' */
 .icon-campana:before { content: '\e809'; } /* '' */
 .icon-asistencia-medica:before { content: '\e80a'; } /* '' */
-.icon-despegue:before { content: '\e80b'; } /* '' */
 .icon-calendario:before { content: '\e80c'; } /* '' */
 .icon-gps:before { content: '\e80d'; } /* '' */
 .icon-ciudad:before { content: '\e80e'; } /* '' */
 .icon-gps2:before { content: '\e80f'; } /* '' */
 .icon-avion:before { content: '\e810'; } /* '' */
 .icon-planeta:before { content: '\e811'; } /* '' */
-.icon-despegue-del-avion:before { content: '\e812'; } /* '' */
 .icon-banderas:before { content: '\e813'; } /* '' */
+.icon-despegue:before { content: '\e814'; } /* '' */
+.icon-aterrizaje:before { content: '\e815'; } /* '' */

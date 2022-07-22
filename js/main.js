@@ -1,8 +1,13 @@
 //BOTON PARA CAMBIAR DE LADO LA SALIDA Y LA LLEGADA
 function cambiarDeLadoBotonesBox(){
-    let browserCaja = document.getElementById('browser-box');
-    browserCaja.className = "browser-caja-hijos";
-}
+    let Salida = document.getElementById('salida');
+    Salida.innerHTML = "<i class='icon-despegue'></i><p>Origen</p>" 
+    Salida.style.flexDirection = "column";
+
+    let llegada = document.getElementById('destino');
+    llegada.innerHTML = "<h2 id='viaje-seleccionado'>BUE</h2><h6>Buenos Aires</h6>"  //----> Esta funcionando, ahora quiero que si le vuelvo a dar click, 
+}                                                                                    //----> el boton vuelva a la fase anterior, supongo que tengo que poner un if
+                                                                                     //----> boton == true, sino no se
 
 
 
@@ -38,7 +43,7 @@ function menosPersonas(){
     numeroPersonas = numeroPersonas - 1;
     document.getElementById("number-person").textContent = numeroPersonas;
     let down = document.getElementById("down");
-    if(numeroPersonas == 0){
+    if(numeroPersonas == 1){
         down.style.color = '#E6EAEF';
         down.style.pointerEvents = 'none'
     }
@@ -94,8 +99,8 @@ function masBebes(){
         downC.style.pointerEvents = 'auto'
 
     }
-    else if (numeroBebes == 9){
-        let upC = document.getElementById("upc");
+    else if ((numeroBebes == 9)||(numeroBebes == numeroPersonas)){  //-----> Tengo que agregar un condicional que diga "si la cantidad de bebes es igual al numero de pasajeros adultos, se desactive".
+        let upC = document.getElementById("upc");                   //-----> Es para evitar que viaje 1 persona con 8 bebes
         upC.style.pointerEvents = "none";
         upC.style.color = '#E6EAEF';
     }
@@ -147,7 +152,9 @@ function botonSumaDePasajeros(){
     document.getElementById('cantidad-pasajeros').innerHTML = numeroTotalPasajeros +' Pasajeros';
 
     document.getElementById('cerrar-offcanvas-pasajeros').click();
-}
+
+    return numeroTotalPasajeros
+} 
   //---> Resolvi el problema con el corte cuando llega a 9, el unico problema es que tuve que reciclar codigo
   //---> Quise aplicar globalThis pero no se bien como funciona, y no quise meterme con var para no generar problemas.
 function bloquearSuma(){
@@ -247,6 +254,10 @@ const misiones = new constructorCiudades ("Cataratas del Iguazu","CAT","icon-avi
 const tierraDelFuego = new constructorCiudades ("Tierra Del Fuego","TDF","icon-avion","Argentina","Gob. Ramon Trejo");
 const tandil = new constructorCiudades ("Tandil","TAN","icon-avion","Argentina","Aeropuerto de Tandil Nac.");
 const marDelPlata = new constructorCiudades ("Mar Del Plata","MDP","icon-avion","Argentina","Astor Piazzolla intl");
+const buenosAires = new constructorCiudades ("Buenos Aires","BUE","icon-avion","Argentina","Eseiza");
+const buenosAiresA = new constructorCiudades ("Buenos Aires","BUE","icon-avion","Argentina","Aeroparque");
+
+const argentina = [bariloche, salta,tucuman, misiones, tierraDelFuego,tandil,marDelPlata, buenosAires, buenosAiresA]
 
 const paises = [grecia,inglaterra,estadosUnidos,colombia,paisesBajos,italia,mexico,japon,bariloche,salta,tucuman,
 misiones,tierraDelFuego,tandil,marDelPlata,manaos,rioDeJaneiro,salvadorDeBahia,fernandoDeNoronha,
@@ -267,18 +278,18 @@ function destinos(){
         const hijo = document.createElement('div');
         hijo.className = 'destino'
         hijo.onclick = function() {     
-            boxDestino = document.getElementById('destino');
-            boxDestino.style.display = "flex";
-            boxDestino.style.flexDirection = "column";
-            boxDestino.style.justifyContent = "center";
-            boxDestino.style.alignItems = "center";
-            boxDestino.style.gap = "0";
-            boxDestino.style.padding = "10px";
-            boxDestino.innerHTML = "<h2 id= viaje-seleccionado>" + ciudades.acronimo + "</h2><p>" + ciudades.ciudad + ", " + ciudades.pais + "</p>";
-            h2Destino = document.getElementById('viaje-seleccionado');
-            h2Destino.style.fontSize = "32px"
-            h2Destino.style.color = "#2d384c"
-            h2Destino.style.margin = "0"
+         boxSalida = document.getElementById('destino');
+         boxSalida.style.display = "flex";
+         boxSalida.style.flexDirection = "column";
+         boxSalida.style.justifyContent = "center";
+         boxSalida.style.alignItems = "center";
+         boxSalida.style.gap = "0";
+         boxSalida.style.padding = "10px";
+         boxSalida.innerHTML = "<h2 id= viaje-seleccionado>" + ciudades.acronimo + "</h2><p>" + ciudades.ciudad + ", " + ciudades.pais + "</p>";
+            h2Salida = document.getElementById('viaje-seleccionado');
+            h2Salida.style.fontSize = "32px"
+            h2Salida.style.color = "#2d384c"
+            h2Salida.style.margin = "0"
             document.getElementById('cerrar-offcanvas-destino').click();
           }   
         if(ciudades.aeropuerto == "Pais"){                    
@@ -297,15 +308,13 @@ function destinos(){
 
 destinos()
 
-// Funcion find aplicada al buscador de Offcanvas Destino
-
-
-
+// Funcion find aplicada al buscadorDestino de Offcanvas Destino
 
 function busqCiudades(){
-    let buscador = document.getElementById("input-destino").value;
-    const busqueda = paises.some((ciudad) => ciudad.pais == buscador)
-    const busquedaPorCiudad = paises.filter((ciudad) => ciudad.pais == buscador)
+    let buscadorDestino = document.getElementById("input-destino").value;
+    let buscadorSalida = document.getElementById("input-salida").value; //---> Tendria que lograr que la misma funcion realice ambas busquedas, en salida y en llegada
+    const busqueda = paises.some((ciudad) => ciudad.pais == buscadorDestino)
+    const busquedaPorCiudad = paises.filter((ciudad) => ciudad.pais == buscadorDestino)
     if(busqueda == true){ // -------------> CASI LO TENGO, me gustaria que al dar enter se remuevan los elementos anteiores.
         container[0].innerHTML = " ";
         for(let ciudad of busquedaPorCiudad){
@@ -321,7 +330,68 @@ function busqCiudades(){
     else return console.log("no funciona"); 
 }
 
-//  Seleccion de destino
+// Funcion para el lugar de salida == destino 
+
+function salida(){ //----> Busca solo en el array de Argentina
+    const container = document.getElementsByClassName('salida-container');
+    for (let ciudades of argentina){      
+         const hijo = document.createElement('div');
+         hijo.className = 'destino'
+         hijo.onclick = function() {     
+             boxSalida = document.getElementById('salida');
+             boxSalida.style.display = "flex";
+             boxSalida.style.flexDirection = "column";
+             boxSalida.style.justifyContent = "center";
+             boxSalida.style.alignItems = "center";
+             boxSalida.style.gap = "0";
+             boxSalida.style.padding = "10px";
+             boxSalida.innerHTML = "<h2 id= salida-seleccionado>" + ciudades.acronimo + "</h2><p>" + ciudades.ciudad + ", " + ciudades.pais + "</p>";
+             document.getElementById('cerrar-offcanvas-fechas').click();
+           }   
+         if(ciudades.aeropuerto == "Pais"){                    
+ 
+             hijo.innerHTML = "<i class='" + ciudades.icono + "'></i><div><span>" + ciudades.ciudad + ciudades.pais + "</span><span><p>"+ ciudades.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudades.acronimo + "</span>"
+         }
+         else{
+             hijo.innerHTML = "<i class='" + ciudades.icono + "'></i><div><span>" + ciudades.ciudad + ", " + ciudades.pais + "</span><span><p>"+ ciudades.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudades.acronimo + "</span>"
+         }
+         
+ 
+         container[0].appendChild(hijo);
+     }
+ }
+ 
+ salida()
+
+
+
+// Funcion para buscar vuelos
+
+function buscarVuelos(){
+    let viajeSeleccion = document.getElementById("viaje-seleccionado")// trabajar sobre esto
+    let salidaSeleccion = document.getElementById("salida-seleccionado")// trabajar sobre esto
+    let claseSeleccion = document.getElementById("clase-box")// trabajar sobre esto
+    let pasajerosSeleccion = document.getElementById("cantidad-pasajeros")// trabajar sobre esto
+    if ((salidaSeleccion == null)||(viajeSeleccion == null)){
+        if(salidaSeleccion == null){
+            const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+            const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+
+        }
+        else if(viajeSeleccion == null){
+            const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+            const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+            console.log("debe rellenar los campos para buscar vuelos")
+
+        }
+        
+    }
+    else if ((salidaSeleccion != null)&&(viajeSeleccion != null)){
+        alert("Usted quiere un viaje a " + viajeSeleccion.textContent + " partiendo desde " + salidaSeleccion.textContent + " en la clase " + claseSeleccion.textContent + " por un total de " + pasajerosSeleccion.textContent + ".")
+    }
+
+}
+
 
 
 // Cambio de atributos en los botones del header y cambio de buscadores ONCLICK

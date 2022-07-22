@@ -70,18 +70,16 @@
        <button>Multidestino</button>
       </div>
      <div id="browser_box">
-        <div id="salida">
-          <p>BUE</p>
+        <div id="salida" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFechas" aria-controls="offcanvasFechas">
+          <h6 id="salida-seleccionado">BUE</h6>
           <!-- Lugar de salida -->
         </div>
           <button id="changer-button" onclick="cambiarDeLadoBotonesBox()">
             <i class="bi bi-arrow-left-right"></i>
           </button>
         <div id="destino" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDestino" aria-controls="offcanvas">
-          <i class="icon-despegue"></i>
-          <hr>
+          <i class="icon-aterrizaje" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="Por favor elija destino"></i>
           <h6>Destino</h6>
-          <i>Proba "Argentina"</i>
           <!-- Destino -->
         </div>
         <div id="fechas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
@@ -107,7 +105,7 @@
       <div id="browser_bottom">
         <div>
         <label><input type="checkbox">Aun no decidi la fecha</label>
-        <button>Buscar</button>
+        <button id="buscar-vuelos" onclick="buscarVuelos()">Buscar</button>
         </div>
       </div>
       <article>
@@ -337,8 +335,16 @@
         </div>
         <div class="offcanvas-body destinos-container"></div>
       </div>
+    <!-- OFFCANVAS SALIDA -->
+    <div class="offcanvas offcanvas-bottom offcanvas-fechas" tabindex="-1" id="offcanvasFechas" aria-labelledby="offcanvasBottomLabel">
+      <div class="offcanvas-header">
+      <input  id="input-salida" type="text" onchange="busqCiudades()" maxlength="15" placeholder="Ciudad, pais o region">
+    <button type="button" id="cerrar-offcanvas-fechas" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body salida-container"></div>
+</div>
 
-    <!-- OFF CANVAS SALIDA -->
+    <!-- OFF CANVAS FECHAS -->
     <div class="offcanvas offcanvas-bottom offcanvas-salida" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
       <div class="offcanvas-header">
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
