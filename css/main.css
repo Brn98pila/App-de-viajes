@@ -325,15 +325,82 @@ header {
     flex-direction: row;
     border-bottom: 1px solid #BAC6D3;
     padding: 10px 10px; }
-    .offcanvas-fechas .offcanvas-header #input-salida {
+    .offcanvas-fechas .offcanvas-header input {
       font-size: 20px;
       width: 90%;
       height: 25px;
       border: none; }
-      .offcanvas-fechas .offcanvas-header #input-salida::placeholder {
+      .offcanvas-fechas .offcanvas-header input::placeholder {
         color: #BAC6D3; }
   .offcanvas-fechas .offcanvas-body {
     padding: 0 !important; }
+
+.offcanvas-alojamiento-hotel {
+  --bs-offcanvas-height: 100% !important; }
+
+.offcanvas-huespedes-hotel {
+  --bs-offcanvas-height: 100% !important; }
+  .offcanvas-huespedes-hotel .offcanvas-header {
+    justify-content: flex-end !important; }
+  .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch; }
+    .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles h5 {
+      font-size: 18px;
+      font-weight: 600; }
+    .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between; }
+      .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles div span {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        padding: 20px 0;
+        border-bottom: 1px solid #BAC6D3; }
+        .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles div span h4 {
+          font-size: 16px;
+          margin-bottom: 5px; }
+        .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles div span p {
+          font-size: 13px;
+          margin: 0;
+          color: #8290a6; }
+      .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles div .contador {
+        width: 40%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center; }
+        .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles div .contador i {
+          color: #5383ec;
+          font-size: 25px; }
+        .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles div .contador h3 {
+          margin: 0; }
+  .offcanvas-huespedes-hotel .offcanvas-footer {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px; }
+    .offcanvas-huespedes-hotel .offcanvas-footer button {
+      width: 45%;
+      border-radius: 25px;
+      padding: 15px 0px;
+      font-weight: 600;
+      line-height: 15px; }
+    .offcanvas-huespedes-hotel .offcanvas-footer #agregar-habitacion {
+      border: 1px solid #8290a6;
+      background-color: #fff;
+      color: #8290a6;
+      padding: 8px 5px; }
+    .offcanvas-huespedes-hotel .offcanvas-footer #listo-habitacion {
+      border: 1px solid #5383ec;
+      background-color: #5383ec;
+      color: #fff; }
 
 #browser {
   width: 100%;
@@ -1288,6 +1355,28 @@ form {
   .offcanvas-pasajeros .offcanvas-body #adultos p, .offcanvas-pasajeros .offcanvas-body #bebes p, .offcanvas-pasajeros .offcanvas-body #menores p {
     font-size: 12px;
     color: #8290a6; }
+
+.offcanvas-alojamiento-hotel .offcanvas-header {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #BAC6D3;
+  padding: 10px 10px; }
+  .offcanvas-alojamiento-hotel .offcanvas-header input {
+    font-size: 20px;
+    width: 90%;
+    height: 25px;
+    border: none; }
+    .offcanvas-alojamiento-hotel .offcanvas-header input::placeholder {
+      color: #BAC6D3; }
+
+.offcanvas-alojamiento-hotel .offcanvas-body {
+  padding: 0 !important; }
+
+.popover {
+  z-index: 1 !important; }
+  .popover .popover-body {
+    color: #FF0000 !important;
+    font-size: 12px !important; }
 
 #buscador-hoteles {
   display: none;

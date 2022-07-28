@@ -78,7 +78,8 @@
             <i class="bi bi-arrow-left-right"></i>
           </button>
         <div id="destino" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDestino" aria-controls="offcanvas">
-          <i class="icon-aterrizaje" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="Por favor elija destino"></i>
+          <span class="d-inline-block" data-bs-toggle="popover"  data-bs-content="Por favor elija un destino"></span>
+          <i class="icon-aterrizaje" id="icono-salida" type="button" class="btn btn-secondary" data-bs-trigger="focus hover" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Por favor, elija destino"></i>
           <h6>Destino</h6>
           <!-- Destino -->
         </div>
@@ -203,16 +204,16 @@
 <article id="hoteles-container">
   <h2>Encontra tu hotel ideal</h2>
 <div id="container-api-hoteles">
-  <div id="div-mayor">
+  <div id="div-mayor" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAlojamiento" aria-controls="offcanvasBottom">
     <h4>¿A donde queres ir?</h4>
     <p>Ingresa un destino o nombre de hotel</p>
   </div>
-  <div id="fechas-hoteleria">
+  <div id="fechas-hoteleria" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDiasAlojamiento" aria-controls="offcanvasBottom">
     <span>-</span>
     <hr>
     <span>-</span>
   </div>
-  <div>
+  <div type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasHuespedesHoteles" aria-controls="offcanvasBottom">
     <h4 id="cantidad-huespedes">1 Huesped</h4>
     <p id="cantidad-habitaciones">1 habitacion</p>
   </div>
@@ -255,16 +256,16 @@
 <section id="buscador-alquileres">
   <h2>Encontra tu lugar perfecto para alquilar</h2>
   <div id="container-api-alquileres">
-    <div id="div-mayor-alquileres">
+    <div id="div-mayor-alquileres" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAlojamientoAlquiler" aria-controls="offcanvasBottom">
       <h4>¿A donde queres ir?</h4>
       <p>Ingresa un destino</p>
     </div>
-    <div id="fechas-alquileres">
+    <div id="fechas-alquileres" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDiasAlojamientoAlquiler" aria-controls="offcanvasBottom">
       <span>-</span>
       <hr>
       <span>-</span>
     </div>
-    <div>
+    <div type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasHuespedesAlquiler" aria-controls="offcanvasBottom">
       <h4 id="cantidad-huespedes-alquileres">1 Huesped</h4>
       <p id="cantidad-habitaciones-alquileres">1 habitacion</p>
     </div>
@@ -530,6 +531,102 @@
       </div>
       </div>
 
+<!-- OFFCANVAS PARA HOTELES A PARTIR DE ACA -->
+
+<!-- OFFCANVAS PARA LUGAR DE ALOJAMIENTO -->
+<div class="offcanvas offcanvas-bottom offcanvas-alojamiento-hotel" tabindex="-1" id="offcanvasAlojamiento" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header">
+    <input id="input-alojamiento-hotel" onchange="" type="text" maxlength="15" placeholder="Destino o nombre de hotel">
+    <button id="cerrar-offcanvas-alojamiento-hotel" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+  </div>
+</div>
+
+<!-- OFFCANVAS PARA CANTIDAD DE DIAS DE ALOJAMIENTO -->
+<div class="offcanvas offcanvas-bottom offcanvas-alojamiento-hotel" tabindex="-1" id="offcanvasDiasAlojamiento" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body small">
+    ...
+  </div>
+</div>
+
+<!-- OFFCANVAS PARA CANTIDAD HUESPEDES EN HOTELES-->
+<div class="offcanvas offcanvas-bottom offcanvas-huespedes-hotel" tabindex="-1" id="offcanvasHuespedesHoteles" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div id="adultos-hoteles">
+      <h5>Habitacion 1</h5>
+      <div>
+        <span>
+          <h4>Adultos</h4>
+          <p>Desde 18 años</p>
+        </span>
+        <span class="contador">
+          <i class="bi bi-dash-circle-fill"></i>
+          <h3 id="cantidad-adultos-hoteles">1</h3>
+          <i class="bi bi-plus-circle-fill"></i>
+        </span>
+      </div>
+    <div id="niños-hoteles">
+        <span>
+          <h4>Niños</h4>
+          <p>Hasta 17 años</p>
+        </span>
+        <span class="contador">
+          <i class="bi bi-dash-circle-fill"></i>
+          <h3 id="cantidad-niños-hoteles">1</h3>
+          <i class="bi bi-plus-circle-fill"></i>
+        </span>
+      </div>
+  </div>
+</div>
+<div class="offcanvas-footer">
+  <button id="agregar-habitacion">Agregar Habitacion</button>
+  <button id="listo-habitacion">Listo</button>
+</div>
+</div>
+
+<!-- OFFCANVAS PARA CASAS A PARTIR DE ACA -->
+
+<!-- OFFCANVAS PARA LUGAR DE ALOJAMIENTO -->
+<div class="offcanvas offcanvas-bottom offcanvas-alojamiento-alquiler" tabindex="-1" id="offcanvasAlojamientoAlquiler" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body small">
+    ...
+  </div>
+</div>
+
+<!-- OFFCANVAS PARA CANTIDAD DE DIAS DE ALOJAMIENTO -->
+<div class="offcanvas offcanvas-bottom offcanvas-alojamiento-hotel" tabindex="-1" id="offcanvasDiasAlojamientoAlquiler" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body small">
+    ...
+  </div>
+</div>
+
+<!-- OFFCANVAS PARA CANTIDAD HUESPEDES EN CASAS-->
+<div class="offcanvas offcanvas-bottom offcanvas-huespedes-hotel" tabindex="-1" id="offcanvasHuespedesAlquiler" aria-labelledby="offcanvasBottomLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body small">
+    ...
+  </div>
+</div>
+
 
 <!-- FOOTER -->
     
@@ -552,11 +649,11 @@
     <a href="">Contacto</a>
   </span>
 </footer>
-
-
-      <!-- JS -->
-      <script src="js/main.js"></script>
+      <!-- Popover js -->
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
       <!-- JS Boostrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+     <!-- JS -->
+     <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 //BOTON PARA CAMBIAR DE LADO LA SALIDA Y LA LLEGADA
 function cambiarDeLadoBotonesBox(){
     let Salida = document.getElementById('salida');
-    Salida.innerHTML = "<i class='icon-despegue'></i><p>Origen</p>" 
+    Salida.innerHTML = "<i class='icon-despegue' id='popover-salida' type='button' data-bs-trigger='focus hover' tabindex='0' data-bs-container='body' data-bs-toggle='popover' data-bs-placement='top' data-bs-content='Por favor, elija origen'></i><p>Origen</p>" 
     Salida.style.flexDirection = "column";
 
     let llegada = document.getElementById('destino');
@@ -155,8 +155,6 @@ function botonSumaDePasajeros(){
 
     return numeroTotalPasajeros
 } 
-  //---> Resolvi el problema con el corte cuando llega a 9, el unico problema es que tuve que reciclar codigo
-  //---> Quise aplicar globalThis pero no se bien como funciona, y no quise meterme con var para no generar problemas.
 function bloquearSuma(){
     let totalAdultos = document.getElementById("number-person").textContent;
     let totalMenores = document.getElementById("number-menores").textContent;
@@ -300,8 +298,6 @@ function destinos(){
                h2Salida.style.margin = "0"
                document.getElementById('cerrar-offcanvas-destino').click();
              }  
-        
-             // MODIFICAR ESTO
 
         container[0].appendChild(hijo);
     }
@@ -317,7 +313,7 @@ function busqCiudades(){
     let buscadorSalida = document.getElementById("input-salida").value; //---> Tendria que lograr que la misma funcion realice ambas busquedas, en salida y en llegada
     const busqueda = paises.some((ciudad) => ciudad.pais == buscadorDestino)
     const busquedaPorCiudad = paises.filter((ciudad) => ciudad.pais == buscadorDestino)
-    if(busqueda == true){ // -------------> CASI LO TENGO, me gustaria que al dar enter se remuevan los elementos anteiores.
+    if(busqueda == true){
         container[0].innerHTML = " ";
         for(let ciudad of busquedaPorCiudad){
             const hijo = document.createElement('div');
@@ -382,7 +378,9 @@ function salida(){ //----> Busca solo en el array de Argentina
 
 
 
-// Funcion para buscar vuelos
+// Funcion para buscar vuelos, y error popover
+
+
 
 function buscarVuelos(){
     let viajeSeleccion = document.getElementById("viaje-seleccionado")// trabajar sobre esto
@@ -391,13 +389,16 @@ function buscarVuelos(){
     let pasajerosSeleccion = document.getElementById("cantidad-pasajeros")// trabajar sobre esto
     if ((salidaSeleccion == null)||(viajeSeleccion == null)){
         if(salidaSeleccion == null){
+            console.log("debe rellenar los campos para buscar vuelos");
             const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
             const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+            document.getElementById('popover-salida').focus()
 
         }
         else if(viajeSeleccion == null){
             const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-            const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+            const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+            document.getElementById('icono-salida').focus()
             console.log("debe rellenar los campos para buscar vuelos")
 
         }
@@ -479,3 +480,9 @@ function PaquetesIconActive(){
     iconPackage.className = 'active'
     browserPaquetes.className = 'buscadores-active';
 }
+
+
+//----> A PARTIR DE ACA ES EL BUSCADOR DE HOTELES
+
+
+

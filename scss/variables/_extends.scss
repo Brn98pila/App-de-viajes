@@ -14,3 +14,35 @@
         color: $gris;
     }
 }
+
+%extend-offcanvas-header{
+    .offcanvas-header{
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid $gris-claro;
+        padding: 10px 10px;
+        input{
+            font-size: 20px;
+            width: 90%;
+            height: 25px;
+            border: none;
+            &::placeholder{
+                color: $gris-claro;
+             }
+            }
+        }
+        .offcanvas-body{
+            padding: 0 !important;
+        }
+}
+
+//-----> Popover 
+
+
+.popover{
+    z-index: 1 !important;
+    .popover-body{
+        color: $rojo !important;
+        font-size: 12px !important;
+    }
+}
