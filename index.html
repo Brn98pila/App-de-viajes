@@ -536,10 +536,10 @@
 <!-- OFFCANVAS PARA LUGAR DE ALOJAMIENTO -->
 <div class="offcanvas offcanvas-bottom offcanvas-alojamiento-hotel" tabindex="-1" id="offcanvasAlojamiento" aria-labelledby="offcanvasBottomLabel">
   <div class="offcanvas-header">
-    <input id="input-alojamiento-hotel" onchange="" type="text" maxlength="15" placeholder="Destino o nombre de hotel">
+    <input id="input-alojamiento-hotel" onchange="busqHotel()" type="text" maxlength="15" placeholder="Destino o nombre de hotel">
     <button id="cerrar-offcanvas-alojamiento-hotel" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
+  <div class="offcanvas-body container-hotel" id="container-hotel">
   </div>
 </div>
 
@@ -559,8 +559,8 @@
   <div class="offcanvas-header">
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
-    <div id="adultos-hoteles">
+  <div class="offcanvas-body" id="huespedes-hotel-container">
+    <div id="adultos-hoteles" class="habitaciones-hotel">
       <h5>Habitacion 1</h5>
       <div>
         <span>
@@ -568,9 +568,9 @@
           <p>Desde 18 años</p>
         </span>
         <span class="contador">
-          <i class="bi bi-dash-circle-fill"></i>
+          <i class="bi bi-dash-circle-fill" onclick="menosMayoresHotel()" id="menos-adultos-hotel"></i>
           <h3 id="cantidad-adultos-hoteles">1</h3>
-          <i class="bi bi-plus-circle-fill"></i>
+          <i class="bi bi-plus-circle-fill" onclick="masMayoresHotel()" id="mas-adultos-hotel"></i>
         </span>
       </div>
     <div id="niños-hoteles">
@@ -579,15 +579,15 @@
           <p>Hasta 17 años</p>
         </span>
         <span class="contador">
-          <i class="bi bi-dash-circle-fill"></i>
-          <h3 id="cantidad-niños-hoteles">1</h3>
-          <i class="bi bi-plus-circle-fill"></i>
+          <i class="bi bi-dash-circle-fill" onclick="menosMenoresHotel()" id="menos-niños-hotel"></i>
+          <h3 id="cantidad-niños-hoteles">0</h3>
+          <i class="bi bi-plus-circle-fill"  onclick="masMenoresHotel()" id="mas-niños-hotel"></i>
         </span>
       </div>
   </div>
 </div>
 <div class="offcanvas-footer">
-  <button id="agregar-habitacion">Agregar Habitacion</button>
+  <button id="agregar-habitacion" onclick="crearHabitacionesHotel()">Agregar Habitacion</button>
   <button id="listo-habitacion">Listo</button>
 </div>
 </div>

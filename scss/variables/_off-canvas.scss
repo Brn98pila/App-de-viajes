@@ -253,7 +253,7 @@
         justify-content: flex-end !important;
     }
     .offcanvas-body{
-        #adultos-hoteles{
+        .habitaciones-hotel{
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -261,6 +261,11 @@
             h5{
                 font-size: 18px;
                 font-weight: 600;
+            }
+            button{
+                color: $azul-claro;
+                border: none;
+                background-color: #fff;
             }
             div{
                 display: flex;

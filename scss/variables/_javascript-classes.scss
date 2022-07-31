@@ -71,3 +71,26 @@
         padding-right: 20px;
     }
 }
+
+.hotel{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin-left: 15px;
+
+    border-bottom: 1px solid $gris-claro;
+    i{
+        color: $azul-claro;
+        font-size: 30px;
+    }
+    p{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0;
+        padding-left: 5px;
+
+        font-weight: 400;
+    }
+}

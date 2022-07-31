@@ -1,15 +1,3 @@
-//BOTON PARA CAMBIAR DE LADO LA SALIDA Y LA LLEGADA
-function cambiarDeLadoBotonesBox(){
-    let Salida = document.getElementById('salida');
-    Salida.innerHTML = "<i class='icon-despegue' id='popover-salida' type='button' data-bs-trigger='focus hover' tabindex='0' data-bs-container='body' data-bs-toggle='popover' data-bs-placement='top' data-bs-content='Por favor, elija origen'></i><p>Origen</p>" 
-    Salida.style.flexDirection = "column";
-
-    let llegada = document.getElementById('destino');
-    llegada.innerHTML = "<h2 id='viaje-seleccionado'>BUE</h2><h6>Buenos Aires</h6>"  //----> Esta funcionando, ahora quiero que si le vuelvo a dar click, 
-}                                                                                    //----> el boton vuelva a la fase anterior, supongo que tengo que poner un if
-                                                                                     //----> boton == true, sino no se
-
-
 
 // TODO ESTO ES PARA HACER TECLAS DE SUBIR Y BAJAR CANTIDADES
 let numeroPersonas = 1;
@@ -378,12 +366,36 @@ function salida(){ //----> Busca solo en el array de Argentina
 
 
 
+ //BOTON PARA CAMBIAR DE LADO LA SALIDA Y LA LLEGADA
+estadoBoton = 0;
+
+
+function cambiarDeLadoBotonesBox(){
+    let llegada = document.getElementById('destino');
+    let Salida = document.getElementById('salida');
+    if (estadoBoton == 0){
+        estadoBoton = estadoBoton + 1;
+        Salida.innerHTML = "<i class='icon-despegue' id='popover-salida' type='button' data-bs-trigger='focus hover' tabindex='0' data-bs-container='body' data-bs-toggle='popover' data-bs-placement='top' data-bs-content='Por favor, elija origen'></i><p>Origen</p>" 
+        Salida.style.flexDirection = "column";
+        llegada.innerHTML = "<h2 id='viaje-seleccionado'>BUE</h2><h6>Buenos Aires</h6>" 
+        console.log(estadoBoton + ' 1er click');
+    }
+    else{
+        Salida.innerHTML = "<h2 id='salida-seleccionado'>BUE</h2><p>Buenos Aires</p>";
+        llegada.innerHTML = '<span class="d-inline-block" data-bs-toggle="popover"  data-bs-content="Por favor elija un destino"></span><i class="icon-aterrizaje" id="icono-salida" type="button" class="btn btn-secondary" data-bs-trigger="focus hover" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Por favor, elija destino"></i><h6>Destino</h6>';
+        estadoBoton--;
+        console.log(estadoBoton + (' 2do click'))
+    }
+
+}
+
+
 // Funcion para buscar vuelos, y error popover
 
 
 
 function buscarVuelos(){
-    let viajeSeleccion = document.getElementById("viaje-seleccionado")// trabajar sobre esto
+    let viajeSeleccion = document.getElementById("#~"); 
     let salidaSeleccion = document.getElementById("salida-seleccionado")// trabajar sobre esto
     let claseSeleccion = document.getElementById("clase-box")// trabajar sobre esto
     let pasajerosSeleccion = document.getElementById("cantidad-pasajeros")// trabajar sobre esto
@@ -485,4 +497,154 @@ function PaquetesIconActive(){
 //----> A PARTIR DE ACA ES EL BUSCADOR DE HOTELES
 
 
+// Funcion find aplicada al busqHotel para offcanvas alojamiento
+
+function busqHotel(){
+    let buscadorHotel = document.getElementById("input-alojamiento-hotel").value;
+    const busqueda = paises.some((ciudad) => ciudad.pais == buscadorHotel);
+    const busquedaPorCiudad = paises.filter((ciudad) => ciudad.pais == buscadorHotel)
+    if(busqueda == true){
+        const hotelContainer = document.getElementsByClassName("container-hotel");
+        hotelContainer[0].innerHTML = "";
+        for(let ciudad of busquedaPorCiudad){
+            const hijo = document.createElement('div');
+            hijo.className = 'hotel'
+            hijo.innerHTML = "<i class='icon-gps'></i><p>" + ciudad.ciudad + ", " + ciudad.pais + "</p>";
+            hijo.onclick = function() {
+
+                document.getElementById('cerrar-offcanvas-alojamiento-hotel').click();
+                }  
+
+            hotelContainer[0].appendChild(hijo);
+        }
+        
+    }
+    else return console.log("no funciona"); 
+}
+
+
+
+
+// SUMA Y RESTA OFFCANVAS HUESPEDES
+
+cantidadAdultosHotel = 1;
+cantidadMenoresHotel = 0;
+
+
+
+function masMayoresHotel(){
+    cantidadAdultosHotel = cantidadAdultosHotel + 1;
+    document.getElementById("cantidad-adultos-hoteles").textContent = cantidadAdultosHotel;
+    if ((cantidadAdultosHotel > 0)&&(cantidadAdultosHotel < 6)){
+        let down = document.getElementById("menos-adultos-hotel");
+        down.style.color = '#5383ec';
+        down.style.pointerEvents = 'auto'
+        
+    }
+    else if (cantidadAdultosHotel == 6){
+        let up = document.getElementById("mas-adultos-hotel");
+        up.style.pointerEvents = "none";
+        up.style.color = '#E6EAEF';
+    }
+
+    bloquearSuma()
+    
+    return cantidadAdultosHotel;
+}
+
+function menosMayoresHotel(){
+    cantidadAdultosHotel = cantidadAdultosHotel - 1;
+    document.getElementById("cantidad-adultos-hoteles").textContent = cantidadAdultosHotel;
+    let down = document.getElementById("menos-adultos-hotel");
+    if(cantidadAdultosHotel == 1){
+        down.style.color = '#E6EAEF';
+        down.style.pointerEvents = 'none';
+        
+
+    }
+    else if ((cantidadAdultosHotel < 6)||(cantidadAdultosHotel > 0)){
+        down.style.pointerEvents = 'auto';
+        let up = document.getElementById("mas-adultos-hotel");
+        up.style.pointerEvents = "auto";
+        up.style.color = '#5383ec';
+    }
+    bloquearSuma()
+}
+
+
+
+
+function masMenoresHotel(){
+    const edadMenores = document.createElement('div');
+    const containerEdad = document.getElementById('adultos-hoteles'); // Si declaro estas variables en el scope global, la funcion no se ejecuta como quiero
+    cantidadMenoresHotel = cantidadMenoresHotel + 1;
+    document.getElementById("cantidad-niños-hoteles").textContent = cantidadMenoresHotel;
+    if ((cantidadMenoresHotel > 0)&&(cantidadMenoresHotel < 6)){
+        let down = document.getElementById("menos-niños-hotel");
+        down.style.color = '#5383ec';
+        down.style.pointerEvents = 'auto';
+        // Agregar edad de los menores
+        
+        edadMenores.className = 'Edad-menores';
+        edadMenores.innerHTML = "<p>Edad Menor</p><button class='seleccionar-menores-edad'>15</button>";
+
+        containerEdad.appendChild(edadMenores);
+        
+    }
+    else if (cantidadMenoresHotel == 6){
+        let up = document.getElementById("mas-niños-hotel");
+        up.style.pointerEvents = "none";
+        up.style.color = '#E6EAEF';
+    }
+
+    return cantidadMenoresHotel;
+}
+
+function menosMenoresHotel(){
+    const edadMenores = document.createElement('div');
+    const containerEdad = document.getElementById('adultos-hoteles'); 
+    cantidadMenoresHotel = cantidadMenoresHotel - 1;
+    document.getElementById("cantidad-niños-hoteles").textContent = cantidadMenoresHotel;
+    let down = document.getElementById("menos-niños-hotel");
+    if(cantidadMenoresHotel == 0){
+        down.style.color = '#E6EAEF';
+        down.style.pointerEvents = 'none'
+    }
+    else if ((cantidadMenoresHotel < 6)||(cantidadMenoresHotel > 0)){
+        down.style.pointerEvents = 'auto';
+        let up = document.getElementById("mas-niños-hotel");
+        up.style.pointerEvents = "auto";
+        up.style.color = '#5383ec';
+
+
+        // Quitar edad de los menores
+
+        containerEdad.removeChild(edadMenores);
+
+
+
+    }
+    bloquearSuma()
+}
+
+// Crear mas habitaciones hotel
+
+cantidadDeHabitaciones = 1
+// HabitacionesHotel = []; 
+
+function crearHabitacionesHotel(){
+    cantidadDeHabitaciones = cantidadDeHabitaciones + 1;
+    HuespedesHotelContainer = document.getElementById("huespedes-hotel-container");
+
+    const hijo = document.createElement('div');
+    hijo.className = ('habitaciones-hotel')
+    hijo.innerHTML = "<div><h5>Habitacion " + cantidadDeHabitaciones + "</h5><button>Eliminar habitacion</button></div><div><span><h4>Adultos</h4><p>Desde 18 años</p></span><span class='contador'><i class='bi bi-dash-circle-fill' onclick='menosMayoresHotel()' id='menos-adultos-hotel'></i><h3 id='cantidad-adultos-hoteles'>1</h3><i class='bi bi-plus-circle-fill' onclick='masMayoresHotel()' id='mas-adultos-hotel'></i></span></div><div id='niños-hoteles'><span><h4>Niños</h4><p>Hasta 17 años</p></span><span class='contador'><i class='bi bi-dash-circle-fill' onclick='menosMenoresHotel()' id='menos-niños-hotel'></i><h3 id='cantidad-niños-hoteles'>1</h3><i class='bi bi-plus-circle-fill'  onclick='masMenoresHotel()' id='mas-niños-hotel'></i></span></div>"
+    // La linea de codigo de arriba crea una caja identica a la anterior cada vez que doy click
+    // Cada vez que creo una habitacion, los botones de la misma se ejecutan sobre la primera y no sobre la ultima
+    // entiendo que es porque yo en la funcion onclick lo determine asi,
+    // la pregunta es como hago para que la funcion asigne a cada boton, un DOM diferente y no el primero, si estos estan creados con js
+
+
+    HuespedesHotelContainer.appendChild(hijo);
+}
 

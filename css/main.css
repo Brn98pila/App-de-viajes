@@ -342,41 +342,45 @@ header {
   --bs-offcanvas-height: 100% !important; }
   .offcanvas-huespedes-hotel .offcanvas-header {
     justify-content: flex-end !important; }
-  .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles {
+  .offcanvas-huespedes-hotel .offcanvas-body .habitaciones-hotel {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: stretch; }
-    .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles h5 {
+    .offcanvas-huespedes-hotel .offcanvas-body .habitaciones-hotel h5 {
       font-size: 18px;
       font-weight: 600; }
-    .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles div {
+    .offcanvas-huespedes-hotel .offcanvas-body .habitaciones-hotel button {
+      color: #2C5FA1;
+      border: none;
+      background-color: #fff; }
+    .offcanvas-huespedes-hotel .offcanvas-body .habitaciones-hotel div {
       display: flex;
       flex-direction: row;
       justify-content: space-between; }
-      .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles div span {
+      .offcanvas-huespedes-hotel .offcanvas-body .habitaciones-hotel div span {
         display: flex;
         flex-direction: column;
         width: 60%;
         padding: 20px 0;
         border-bottom: 1px solid #BAC6D3; }
-        .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles div span h4 {
+        .offcanvas-huespedes-hotel .offcanvas-body .habitaciones-hotel div span h4 {
           font-size: 16px;
           margin-bottom: 5px; }
-        .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles div span p {
+        .offcanvas-huespedes-hotel .offcanvas-body .habitaciones-hotel div span p {
           font-size: 13px;
           margin: 0;
           color: #8290a6; }
-      .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles div .contador {
+      .offcanvas-huespedes-hotel .offcanvas-body .habitaciones-hotel div .contador {
         width: 40%;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         align-items: center; }
-        .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles div .contador i {
+        .offcanvas-huespedes-hotel .offcanvas-body .habitaciones-hotel div .contador i {
           color: #5383ec;
           font-size: 25px; }
-        .offcanvas-huespedes-hotel .offcanvas-body #adultos-hoteles div .contador h3 {
+        .offcanvas-huespedes-hotel .offcanvas-body .habitaciones-hotel div .contador h3 {
           margin: 0; }
   .offcanvas-huespedes-hotel .offcanvas-footer {
     display: flex;
@@ -1541,6 +1545,24 @@ form {
     font-weight: 400;
     text-align: end;
     padding-right: 20px; }
+
+.hotel {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  margin-left: 15px;
+  border-bottom: 1px solid #BAC6D3; }
+  .hotel i {
+    color: #2C5FA1;
+    font-size: 30px; }
+  .hotel p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding-left: 5px;
+    font-weight: 400; }
 
 #buscador-alquileres {
   background-image: url(../images/fondo-home-alquileres-mobile.png);
