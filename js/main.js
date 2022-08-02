@@ -1,4 +1,11 @@
 
+function onLoad(){
+    loader = document.getElementById("loader");
+    loader.classList.add('opacidad');
+}
+
+
+
 // TODO ESTO ES PARA HACER TECLAS DE SUBIR Y BAJAR CANTIDADES
 let numeroPersonas = 1;
 let numeroMenores = 0;
@@ -395,7 +402,7 @@ function cambiarDeLadoBotonesBox(){
 
 
 function buscarVuelos(){
-    let viajeSeleccion = document.getElementById("#~"); 
+    let viajeSeleccion = document.getElementById("viaje-seleccionado"); 
     let salidaSeleccion = document.getElementById("salida-seleccionado")// trabajar sobre esto
     let claseSeleccion = document.getElementById("clase-box")// trabajar sobre esto
     let pasajerosSeleccion = document.getElementById("cantidad-pasajeros")// trabajar sobre esto
@@ -527,30 +534,7 @@ function busqHotel(){
 
 // SUMA Y RESTA OFFCANVAS HUESPEDES
 
-cantidadAdultosHotel = 1;
-cantidadMenoresHotel = 0;
 
-
-
-function masMayoresHotel(){
-    cantidadAdultosHotel = cantidadAdultosHotel + 1;
-    document.getElementById("cantidad-adultos-hoteles").textContent = cantidadAdultosHotel;
-    if ((cantidadAdultosHotel > 0)&&(cantidadAdultosHotel < 6)){
-        let down = document.getElementById("menos-adultos-hotel");
-        down.style.color = '#5383ec';
-        down.style.pointerEvents = 'auto'
-        
-    }
-    else if (cantidadAdultosHotel == 6){
-        let up = document.getElementById("mas-adultos-hotel");
-        up.style.pointerEvents = "none";
-        up.style.color = '#E6EAEF';
-    }
-
-    bloquearSuma()
-    
-    return cantidadAdultosHotel;
-}
 
 function menosMayoresHotel(){
     cantidadAdultosHotel = cantidadAdultosHotel - 1;
@@ -627,23 +611,63 @@ function menosMenoresHotel(){
     bloquearSuma()
 }
 
+cantidadAdultosHotel = 1;
+cantidadMenoresHotel = 0;
+
+
+
+function masMayoresHotel(element){
+    cantidadAdultosHotel = cantidadAdultosHotel + 1;
+    document.getElementById(`habitacion-adultos-${element}`).textContent = cantidadAdultosHotel;
+    if ((cantidadAdultosHotel > 0)&&(cantidadAdultosHotel < 6)){
+        let down = document.getElementById("menos-adultos-hotel");
+        down.style.color = '#5383ec';
+        down.style.pointerEvents = 'auto';
+        
+    }
+    else if (cantidadAdultosHotel == 6){
+        let up = document.getElementById("mas-adultos-hotel");
+        up.style.pointerEvents = "none";
+        up.style.color = '#E6EAEF';
+    }
+
+    bloquearSuma()
+    
+    return cantidadAdultosHotel;
+}
+
+
 // Crear mas habitaciones hotel
 
 cantidadDeHabitaciones = 1
-// HabitacionesHotel = []; 
+
+
+class habitacion {
+    constructor(numero, adultos, menores) {
+        this.numero  = numero;
+        this.adultos  = adultos;
+        this.menores = menores;
+    }
+}
+
+adultosPorHabitacion = [];
 
 function crearHabitacionesHotel(){
+    
     cantidadDeHabitaciones = cantidadDeHabitaciones + 1;
-    HuespedesHotelContainer = document.getElementById("huespedes-hotel-container");
+    adultosPorHabitacion.push( new habitacion(cantidadDeHabitaciones, 0, 0))
 
     const hijo = document.createElement('div');
     hijo.className = ('habitaciones-hotel')
-    hijo.innerHTML = "<div><h5>Habitacion " + cantidadDeHabitaciones + "</h5><button>Eliminar habitacion</button></div><div><span><h4>Adultos</h4><p>Desde 18 años</p></span><span class='contador'><i class='bi bi-dash-circle-fill' onclick='menosMayoresHotel()' id='menos-adultos-hotel'></i><h3 id='cantidad-adultos-hoteles'>1</h3><i class='bi bi-plus-circle-fill' onclick='masMayoresHotel()' id='mas-adultos-hotel'></i></span></div><div id='niños-hoteles'><span><h4>Niños</h4><p>Hasta 17 años</p></span><span class='contador'><i class='bi bi-dash-circle-fill' onclick='menosMenoresHotel()' id='menos-niños-hotel'></i><h3 id='cantidad-niños-hoteles'>1</h3><i class='bi bi-plus-circle-fill'  onclick='masMenoresHotel()' id='mas-niños-hotel'></i></span></div>"
-    // La linea de codigo de arriba crea una caja identica a la anterior cada vez que doy click
-    // Cada vez que creo una habitacion, los botones de la misma se ejecutan sobre la primera y no sobre la ultima
-    // entiendo que es porque yo en la funcion onclick lo determine asi,
-    // la pregunta es como hago para que la funcion asigne a cada boton, un DOM diferente y no el primero, si estos estan creados con js
 
+
+    for(objeto of adultosPorHabitacion){
+        idButton = "habitacion-adultos-" + objeto.numero;
+        hijo.innerHTML = `<div><h5>Habitacion ${cantidadDeHabitaciones}</h5><button>Eliminar habitacion</button></div><div><span><h4>Adultos</h4><p>Desde 18 años</p></span><span class='contador'><i class='bi bi-dash-circle-fill' onclick='menosMayoresHotel()' id='menos-adultos-hotel'></i><h3 id='${element}'>${objeto.adultos}</h3><i class='bi bi-plus-circle-fill' onclick='masMayoresHotel(${idButton})' id='mas-adultos-hotel-${cantidadDeHabitaciones}'></i></span></div><div id='niños-hoteles'><span><h4>Niños</h4><p>Hasta 17 años</p></span><span class='contador'><i class='bi bi-dash-circle-fill' onclick='menosMenoresHotel()' id='menos-niños-hotel'></i><h3 id='cantidad-niños-hoteles'> ${objeto.menores}</h3><i class='bi bi-plus-circle-fill'  onclick='masMenoresHotel()' id='mas-niños-hotel'></i></span></div>`
+    }
+    
+    HuespedesHotelContainer = document.getElementById("huespedes-hotel-container");
+    console.log(adultosPorHabitacion);
 
     HuespedesHotelContainer.appendChild(hijo);
 }

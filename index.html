@@ -17,7 +17,13 @@
 <link rel="stylesheet" href="css/main.css">
 
 </head>
-<body>
+<body onload="onLoad()">
+  <!-- LOADER -->
+  <div id="loader">
+    <div></div>
+    <i class="icon-airplane"></i>
+    <p>Designed by Bruno Silestri</p>
+  </div>
     <!-- HEADER -->
     <header>
       <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
@@ -569,7 +575,7 @@
         </span>
         <span class="contador">
           <i class="bi bi-dash-circle-fill" onclick="menosMayoresHotel()" id="menos-adultos-hotel"></i>
-          <h3 id="cantidad-adultos-hoteles">1</h3>
+          <h3 id="habitacion-adultos-1">1</h3>
           <i class="bi bi-plus-circle-fill" onclick="masMayoresHotel()" id="mas-adultos-hotel"></i>
         </span>
       </div>

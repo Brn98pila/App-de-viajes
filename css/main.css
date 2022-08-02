@@ -1696,5 +1696,44 @@ footer {
       margin: 15px;
       font-size: 12px; }
 
+#loader {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  color: #649FD7;
+  position: absolute;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  #loader div {
+    border-top: 4px dashed #649FD7;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; }
+  #loader i {
+    z-index: 1;
+    position: absolute;
+    font-size: 25px;
+    left: 95px;
+    margin: 0;
+    color: #1D4D8B;
+    transform: rotate(-40deg); }
+    #loader i::before {
+      margin: 0; }
+
+.opacidad {
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards; }
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    z-index: 0; } }
+
 * {
   font-family: 'Roboto', sans-serif; }
