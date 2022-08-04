@@ -17,11 +17,12 @@
 <link rel="stylesheet" href="css/main.css">
 
 </head>
-<body onload="onLoad()">
+<body id="body" onload="onLoad()">
   <!-- LOADER -->
   <div id="loader">
     <div></div>
     <i class="icon-airplane"></i>
+    <h2>TURISMO CITY</h2>
     <p>Designed by Bruno Silestri</p>
   </div>
     <!-- HEADER -->
@@ -356,11 +357,11 @@
       <div class="offcanvas-header">
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         <div>
-          <button>Fecha especifica</button>
-          <button>Por mes</button>
+          <button id="boton-fechasespecifica-avion" class="fecha-activo" onclick="fechasEspecificas()">Fecha especifica</button>
+          <button id="boton-mes-avion" onclick="fechaPorMes()">Por mes</button>
         </div>
       </div>
-      <div class="offcanvas-body">
+      <div class="offcanvas-body fechas-calendario">
           <header>
             <div class="header-bar"></div>
             <div class="header-title">
@@ -467,6 +468,13 @@
               </div>
           </section>
         </div>
+        <div class="offcanvas-body fechas-por-mes">
+          <button></button>
+          <button></button>
+          <button></button>
+          <button></button>
+          <button></button>
+        </div>
         <div class="offcanvas-footer">
           <div class="container-footer">
             <div>
@@ -479,7 +487,7 @@
             </div>
           </div>
           <button>Aplicar</button>
-        </div>
+        </div>  
       </div>
 
 

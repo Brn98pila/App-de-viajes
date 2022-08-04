@@ -308,7 +308,8 @@ header {
       font-size: 20px;
       width: 90%;
       height: 25px;
-      border: none; }
+      border: none;
+      text-transform: capitalize; }
       .offcanvas-destino .offcanvas-header input::placeholder {
         color: #BAC6D3; }
   .offcanvas-destino .offcanvas-body {
@@ -329,7 +330,8 @@ header {
       font-size: 20px;
       width: 90%;
       height: 25px;
-      border: none; }
+      border: none;
+      text-transform: capitalize; }
       .offcanvas-fechas .offcanvas-header input::placeholder {
         color: #BAC6D3; }
   .offcanvas-fechas .offcanvas-body {
@@ -1504,6 +1506,10 @@ form {
   color: #E6EAEF !important;
   pointer-events: none !important; }
 
+.fecha-activo {
+  color: #5383ec !important;
+  border-bottom: 3px solid #5383ec !important; }
+
 .browser-caja-hijos div:nth-of-type(1) {
   order: 2; }
 
@@ -1707,6 +1713,11 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center; }
+  #loader h2 {
+    font-size: 30px;
+    font-weight: 500;
+    position: absolute;
+    z-index: 10; }
   #loader div {
     border-top: 4px dashed #649FD7;
     width: 100px;
@@ -1719,12 +1730,14 @@ footer {
     left: 95px;
     margin: 0;
     color: #1D4D8B;
-    transform: rotate(-40deg); }
+    animation: loaderAnimation ease 5s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards; }
     #loader i::before {
       margin: 0; }
 
 .opacidad {
-  animation: fadeInAnimation ease 1s;
+  animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards; }
 
@@ -1735,5 +1748,26 @@ footer {
     opacity: 0;
     z-index: 0; } }
 
+@keyframes loaderAnimation {
+  0% {
+    opacity: 0;
+    transform: rotate(-40deg); }
+  20% {
+    opacity: 1; }
+  40% {
+    opacity: 1;
+    transform: rotate(-5deg) translate(25px, -55px); }
+  60% {
+    opacity: 1;
+    transform: rotate(40deg) translate(-5px, -85px); }
+  80% {
+    opacity: 0;
+    transform: rotate(85deg) translate(-15px, -100px); }
+  100% {
+    opacity: 0; } }
+
 * {
   font-family: 'Roboto', sans-serif; }
+
+body {
+  overflow: hidden; }

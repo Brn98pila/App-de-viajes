@@ -19,6 +19,11 @@
     pointer-events: none !important;
 }
 
+.fecha-activo{
+    color: $azul-fuerte !important;
+    border-bottom: 3px solid $azul-fuerte!important;
+}
+
 // Utilizar boton para cambiar de lugar, la salida y la llegada.
 
 .browser-caja-hijos{

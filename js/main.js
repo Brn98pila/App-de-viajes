@@ -2,6 +2,30 @@
 function onLoad(){
     loader = document.getElementById("loader");
     loader.classList.add('opacidad');
+
+    document.getElementById("body").style.overflow = "auto";
+}
+
+// BOTONES SELECCION FECHAS DE VIAJE
+
+porMes = document.getElementById("boton-mes-avion");
+porFecha = document.getElementById("boton-fechasespecifica-avion");
+fechasCalendario = document.getElementsByClassName("fechas-calendario");
+fechasMes = document.getElementsByClassName("fechas-por-mes")
+
+function fechasEspecificas(){
+    porFecha.classList.add("fecha-activo");
+    porMes.classList.remove("fecha-activo");
+
+    fechasCalendario[0].style.display = "inherit"
+    fechasMes[0].style.display = "none"
+}
+function fechaPorMes(){
+    porMes.classList.add("fecha-activo")
+    porFecha.classList.remove("fecha-activo")
+
+    fechasCalendario[0].style.display = "none"
+    fechasMes[0].style.display = "inherit"
 }
 
 
@@ -411,13 +435,17 @@ function buscarVuelos(){
             console.log("debe rellenar los campos para buscar vuelos");
             const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
             const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
-            document.getElementById('popover-salida').focus()
+            icono = document.getElementById('popover-salida');
+            icono.focus();
+            icono.style.color = ('red')
 
         }
         else if(viajeSeleccion == null){
             const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
             const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
-            document.getElementById('icono-salida').focus()
+            icono = document.getElementById('icono-salida');
+            icono.focus();
+            icono.style.color = ('red')
             console.log("debe rellenar los campos para buscar vuelos")
 
         }
