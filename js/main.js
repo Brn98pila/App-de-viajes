@@ -6,6 +6,18 @@ function onLoad(){
     document.getElementById("body").style.overflow = "auto";
 }
 
+function storageFunction(){
+    if(localStorage.getItem("acronimo") !== null){
+        boxSalida = document.getElementById('destino');
+        boxSalida.innerHTML = `<h2 id= viaje-seleccionado>${localStorage.acronimo}</h2><p id=lugar-seleccionado>${localStorage.lugar}</p>`
+
+        console.log("funciona")
+    }
+    else console.log("no hay guardados");
+}
+
+storageFunction();
+
 // BOTONES SELECCION FECHAS DE VIAJE
 
 porMes = document.getElementById("boton-mes-avion");
@@ -289,6 +301,14 @@ function mezclarArrayPaises(paises){
 mezclarArrayPaises(paises);
 
 const container = document.getElementsByClassName('destinos-container');
+h2Destino = document.getElementById('viaje-seleccionado');
+boxDestino = document.getElementById('destino');
+lugarDestino = document.getElementById("lugar-seleccionado");
+
+function guardarDatos(){
+    localStorage.setItem("acronimo", document.getElementById("viaje-seleccionado").textContent); // Guardo los elementos como datos en el storage
+    localStorage.setItem("lugar", document.getElementById("lugar-seleccionado").textContent);
+   }
 
 function destinos(){
    for (let ciudades of paises){      
@@ -302,20 +322,18 @@ function destinos(){
             hijo.innerHTML = "<i class='" + ciudades.icono + "'></i><div><span>" + ciudades.ciudad + ", " + ciudades.pais + "</span><span><p>"+ ciudades.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudades.acronimo + "</span>"
         }
 
-        hijo.onclick = function() {     
-            boxSalida = document.getElementById('destino');
-            boxSalida.style.display = "flex";
-            boxSalida.style.flexDirection = "column";
-            boxSalida.style.justifyContent = "center";
-            boxSalida.style.alignItems = "center";
-            boxSalida.style.gap = "0";
-            boxSalida.style.padding = "10px";
-            boxSalida.innerHTML = "<h2 id= viaje-seleccionado>" + ciudades.acronimo + "</h2><p>" + ciudades.ciudad + ", " + ciudades.pais + "</p>";
-               h2Salida = document.getElementById('viaje-seleccionado');
-               h2Salida.style.fontSize = "32px"
-               h2Salida.style.color = "#2d384c"
-               h2Salida.style.margin = "0"
+        hijo.onclick = function() {
+            boxDestino.style.display = "flex";
+            boxDestino.style.flexDirection = "column";
+            boxDestino.style.justifyContent = "center";
+            boxDestino.style.alignItems = "center";
+            boxDestino.style.gap = "0";
+            boxDestino.style.padding = "10px";
+            boxDestino.innerHTML = "<h2 id= viaje-seleccionado>" + ciudades.acronimo + "</h2><p id=lugar-seleccionado>" + ciudades.ciudad + ", " + ciudades.pais + "</p>";
+             
                document.getElementById('cerrar-offcanvas-destino').click();
+                
+               guardarDatos();               
              }  
 
         container[0].appendChild(hijo);
@@ -340,18 +358,22 @@ function busqCiudades(){
             hijo.innerHTML = "<i class='" + ciudad.icono +  "'></i><div><span>" + ciudad.ciudad + ", " + ciudad.pais + "</span><span><p>"+ 
             ciudad.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudad.acronimo + "</span>";
             hijo.onclick = function() {     
-                boxSalida = document.getElementById('destino');
-                boxSalida.style.display = "flex";
-                boxSalida.style.flexDirection = "column";
-                boxSalida.style.justifyContent = "center";
-                boxSalida.style.alignItems = "center";
-                boxSalida.style.gap = "0";
-                boxSalida.style.padding = "10px";
-                boxSalida.innerHTML = "<h2 id= viaje-seleccionado>" + ciudad.acronimo + "</h2><p>" + ciudad.ciudad + ", " + ciudad.pais + "</p>";
-                h2Salida = document.getElementById('viaje-seleccionado');
-                h2Salida.style.fontSize = "32px"
-                h2Salida.style.color = "#2d384c"
-                h2Salida.style.margin = "0"
+                boxDestino = document.getElementById('destino');
+                boxDestino.style.display = "flex";
+                boxDestino.style.flexDirection = "column";
+                boxDestino.style.justifyContent = "center";
+                boxDestino.style.alignItems = "center";
+                boxDestino.style.gap = "0";
+                boxDestino.style.padding = "10px";
+                boxDestino.innerHTML = "<h2 id= viaje-seleccionado>" + ciudad.acronimo + "</h2><p id=lugar-seleccionado>" + ciudad.ciudad + ", " + ciudad.pais + "</p>";
+                h2Destino = document.getElementById('viaje-seleccionado');
+                h2Destino.style.fontSize = "32px"
+                h2Destino.style.color = "#2d384c"
+                h2Destino.style.margin = "0"
+
+
+                guardarDatos();     
+
                 document.getElementById('cerrar-offcanvas-destino').click();
                 }  
 
@@ -408,14 +430,14 @@ function cambiarDeLadoBotonesBox(){
         estadoBoton = estadoBoton + 1;
         Salida.innerHTML = "<i class='icon-despegue' id='popover-salida' type='button' data-bs-trigger='focus hover' tabindex='0' data-bs-container='body' data-bs-toggle='popover' data-bs-placement='top' data-bs-content='Por favor, elija origen'></i><p>Origen</p>" 
         Salida.style.flexDirection = "column";
-        llegada.innerHTML = "<h2 id='viaje-seleccionado'>BUE</h2><h6>Buenos Aires</h6>" 
-        console.log(estadoBoton + ' 1er click');
+        llegada.innerHTML = `<h2 id='viaje-seleccionado'>${localStorage.acronimo}</h2><h6 id=lugar-seleccionado>${localStorage.lugar}</h6>`
+        guardarDatos();
+        
     }
     else{
-        Salida.innerHTML = "<h2 id='salida-seleccionado'>BUE</h2><p>Buenos Aires</p>";
+        Salida.innerHTML = "<h2 id='salida-seleccionado'>BUE</h2><p id=lugar-salida-seleccionado>Buenos Aires</p>";
         llegada.innerHTML = '<span class="d-inline-block" data-bs-toggle="popover"  data-bs-content="Por favor elija un destino"></span><i class="icon-aterrizaje" id="icono-salida" type="button" class="btn btn-secondary" data-bs-trigger="focus hover" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Por favor, elija destino"></i><h6>Destino</h6>';
         estadoBoton--;
-        console.log(estadoBoton + (' 2do click'))
     }
 
 }
