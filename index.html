@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turismo City</title>
+
 <!-- ROBOTO FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -346,7 +347,7 @@
     <!-- OFFCANVAS SALIDA -->
     <div class="offcanvas offcanvas-bottom offcanvas-fechas" tabindex="-1" id="offcanvasFechas" aria-labelledby="offcanvasBottomLabel">
       <div class="offcanvas-header">
-      <input  id="input-salida" type="text" onchange="busqCiudades()" maxlength="15" placeholder="Ciudad, pais o region">
+      <input  id="input-salida" type="text" onchange="busqCiudadesSalida()" maxlength="15" placeholder="Ciudad, pais o region">
     <button type="button" id="cerrar-offcanvas-fechas" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body salida-container"></div>
@@ -663,6 +664,8 @@
     <a href="">Contacto</a>
   </span>
 </footer>
+      <!-- LUXON -->
+      <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.1/build/global/luxon.min.js"></script> 
       <!-- Popover js -->
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
       <!-- JS Boostrap -->

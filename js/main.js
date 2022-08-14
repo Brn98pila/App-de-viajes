@@ -8,8 +8,16 @@ function onLoad(){
 
 function storageFunction(){
     if(localStorage.getItem("acronimo") !== null){
-        boxSalida = document.getElementById('destino');
-        boxSalida.innerHTML = `<h2 id= viaje-seleccionado>${localStorage.acronimo}</h2><p id=lugar-seleccionado>${localStorage.lugar}</p>`
+        boxLlegada = document.getElementById('destino');
+        boxLlegada.innerHTML = `<h2 id= viaje-seleccionado>${localStorage.acronimo}</h2><p id=lugar-seleccionado>${localStorage.lugar}</p>`
+
+        console.log("funciona")
+    }
+    else console.log("no hay guardados");
+    if(localStorage.getItem("salida") !== null){
+        boxSalida = document.getElementById('salida');
+        boxSalida.innerHTML = `<h2 id= salida-seleccionado>${localStorage.salida}</h2><p id=lugar-salida-seleccionado>${localStorage.lugarSalida}</p>`
+        boxSalida.style.flexDirection = "column"
 
         console.log("funciona")
     }
@@ -301,6 +309,7 @@ function mezclarArrayPaises(paises){
 mezclarArrayPaises(paises);
 
 const container = document.getElementsByClassName('destinos-container');
+
 h2Destino = document.getElementById('viaje-seleccionado');
 boxDestino = document.getElementById('destino');
 lugarDestino = document.getElementById("lugar-seleccionado");
@@ -308,6 +317,8 @@ lugarDestino = document.getElementById("lugar-seleccionado");
 function guardarDatos(){
     localStorage.setItem("acronimo", document.getElementById("viaje-seleccionado").textContent); // Guardo los elementos como datos en el storage
     localStorage.setItem("lugar", document.getElementById("lugar-seleccionado").textContent);
+    localStorage.setItem("salida", document.getElementById("salida-seleccionado").textContent)
+    localStorage.setItem("lugarSalida", document.getElementById("lugar-salida-seleccionado").textContent)
    }
 
 function destinos(){
@@ -329,11 +340,18 @@ function destinos(){
             boxDestino.style.alignItems = "center";
             boxDestino.style.gap = "0";
             boxDestino.style.padding = "10px";
-            boxDestino.innerHTML = "<h2 id= viaje-seleccionado>" + ciudades.acronimo + "</h2><p id=lugar-seleccionado>" + ciudades.ciudad + ", " + ciudades.pais + "</p>";
+            if(ciudades.aeropuerto == "Pais"){                    
+
+                boxDestino.innerHTML = "<h2 id= viaje-seleccionado>" + ciudades.acronimo + "</h2><p id=lugar-seleccionado>" + ciudades.ciudad + ciudades.pais + "</p>";
+            }
+            else{
+                boxDestino.innerHTML = "<h2 id= viaje-seleccionado>" + ciudades.acronimo + "</h2><p id=lugar-seleccionado>" + ciudades.ciudad + ", " + ciudades.pais + "</p>";
+            }
+            document.getElementById('cerrar-offcanvas-destino').click();
+            guardarDatos();    
+            lugarDestino.style.textAlign = "center"
              
-               document.getElementById('cerrar-offcanvas-destino').click();
-                
-               guardarDatos();               
+                      
              }  
 
         container[0].appendChild(hijo);
@@ -347,16 +365,23 @@ destinos()
 
 function busqCiudades(){
     let buscadorDestino = document.getElementById("input-destino").value;
-    let buscadorSalida = document.getElementById("input-salida").value; //---> Tendria que lograr que la misma funcion realice ambas busquedas, en salida y en llegada
     const busqueda = paises.some((ciudad) => ciudad.pais == buscadorDestino)
     const busquedaPorCiudad = paises.filter((ciudad) => ciudad.pais == buscadorDestino)
     if(busqueda == true){
         container[0].innerHTML = " ";
         for(let ciudad of busquedaPorCiudad){
             const hijo = document.createElement('div');
-            hijo.className = 'destino'
-            hijo.innerHTML = "<i class='" + ciudad.icono +  "'></i><div><span>" + ciudad.ciudad + ", " + ciudad.pais + "</span><span><p>"+ 
-            ciudad.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudad.acronimo + "</span>";
+            hijo.className = 'destino';
+
+            if(ciudad.aeropuerto == "Pais"){                    
+
+                hijo.innerHTML = "<i class='" + ciudad.icono +  "'></i><div><span>" + ciudad.ciudad + ciudad.pais + "</span><span><p>"+ 
+                ciudad.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudad.acronimo + "</span>";
+            }
+            else{
+                hijo.innerHTML = "<i class='" + ciudad.icono +  "'></i><div><span>" + ciudad.ciudad + ", " + ciudad.pais + "</span><span><p>"+ 
+                ciudad.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudad.acronimo + "</span>";
+            }
             hijo.onclick = function() {     
                 boxDestino = document.getElementById('destino');
                 boxDestino.style.display = "flex";
@@ -365,7 +390,13 @@ function busqCiudades(){
                 boxDestino.style.alignItems = "center";
                 boxDestino.style.gap = "0";
                 boxDestino.style.padding = "10px";
-                boxDestino.innerHTML = "<h2 id= viaje-seleccionado>" + ciudad.acronimo + "</h2><p id=lugar-seleccionado>" + ciudad.ciudad + ", " + ciudad.pais + "</p>";
+                if(ciudad.aeropuerto == "Pais"){                    
+
+                    boxDestino.innerHTML = "<h2 id= viaje-seleccionado>" + ciudad.acronimo + "</h2><p id=lugar-seleccionado>" + ciudad.ciudad + ciudad.pais + "</p>";
+                }
+                else{
+                    boxDestino.innerHTML = "<h2 id= viaje-seleccionado>" + ciudad.acronimo + "</h2><p id=lugar-seleccionado>" + ciudad.ciudad + ", " + ciudad.pais + "</p>";
+                }
                 h2Destino = document.getElementById('viaje-seleccionado');
                 h2Destino.style.fontSize = "32px"
                 h2Destino.style.color = "#2d384c"
@@ -378,6 +409,47 @@ function busqCiudades(){
                 }  
 
             container[0].appendChild(hijo);
+        }
+        
+    }
+    else return console.log("no funciona"); 
+}
+
+// Funcion find aplicada al buscadorSalida de Offcanvas Salida
+
+function busqCiudadesSalida(){
+    let buscadorDestino = document.getElementById("input-salida").value;
+    const busqueda = paises.some((ciudad) => ciudad.pais == buscadorDestino)
+    const busquedaPorCiudad = paises.filter((ciudad) => ciudad.pais == buscadorDestino)
+    if(busqueda == true){
+        const containerSalida = document.getElementsByClassName('salida-container')
+        containerSalida[0].innerHTML = " ";
+        for(let ciudad of busquedaPorCiudad){
+            const hijo = document.createElement('div');
+            hijo.className = 'destino'
+            hijo.innerHTML = "<i class='" + ciudad.icono +  "'></i><div><span>" + ciudad.ciudad + ", " + ciudad.pais + "</span><span><p>"+ 
+            ciudad.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudad.acronimo + "</span>";
+            hijo.onclick = function() {     
+                boxDestino = document.getElementById('salida');
+                boxDestino.style.display = "flex";
+                boxDestino.style.flexDirection = "column";
+                boxDestino.style.justifyContent = "center";
+                boxDestino.style.alignItems = "center";
+                boxDestino.style.gap = "0";
+                boxDestino.style.padding = "10px";
+                boxDestino.innerHTML = "<h2 id= salida-seleccionado>" + ciudad.acronimo + "</h2><p id=lugar-salida-seleccionado>" + ciudad.ciudad + ", " + ciudad.pais + "</p>";
+                h2Destino = document.getElementById('salida-seleccionado');
+                h2Destino.style.fontSize = "32px"
+                h2Destino.style.color = "#2d384c"
+                h2Destino.style.margin = "0"
+
+
+                guardarDatos();     
+
+                document.getElementById('cerrar-offcanvas-fechas').click();
+                }  
+
+            containerSalida[0].appendChild(hijo);
         }
         
     }
@@ -399,16 +471,15 @@ function salida(){ //----> Busca solo en el array de Argentina
              boxSalida.style.alignItems = "center";
              boxSalida.style.gap = "0";
              boxSalida.style.padding = "10px";
-             boxSalida.innerHTML = "<h2 id= salida-seleccionado>" + ciudades.acronimo + "</h2><p>" + ciudades.ciudad + ", " + ciudades.pais + "</p>";
+             boxSalida.innerHTML = "<h2 id= salida-seleccionado>" + ciudades.acronimo + "</h2><p id='lugar-salida-seleccionado'>" + ciudades.ciudad + ", " + ciudades.pais + "</p>";
              document.getElementById('cerrar-offcanvas-fechas').click();
+             guardarDatos();     
            }   
-         if(ciudades.aeropuerto == "Pais"){                    
- 
-             hijo.innerHTML = "<i class='" + ciudades.icono + "'></i><div><span>" + ciudades.ciudad + ciudades.pais + "</span><span><p>"+ ciudades.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudades.acronimo + "</span>"
-         }
-         else{
-             hijo.innerHTML = "<i class='" + ciudades.icono + "'></i><div><span>" + ciudades.ciudad + ", " + ciudades.pais + "</span><span><p>"+ ciudades.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudades.acronimo + "</span>"
-         }
+         ciudades.aeropuerto == "Pais" ?      // if         
+         hijo.innerHTML = "<i class='" + ciudades.icono + "'></i><div><span>" + ciudades.ciudad + ciudades.pais + "</span><span><p>"+ ciudades.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudades.acronimo + "</span>"
+         : //else
+         hijo.innerHTML = "<i class='" + ciudades.icono + "'></i><div><span>" + ciudades.ciudad + ", " + ciudades.pais + "</span><span><p>"+ ciudades.aeropuerto +"</p></span></div><span class='acronimo'>" + ciudades.acronimo + "</span>";
+         
          
  
          container[0].appendChild(hijo);
@@ -430,12 +501,24 @@ function cambiarDeLadoBotonesBox(){
         estadoBoton = estadoBoton + 1;
         Salida.innerHTML = "<i class='icon-despegue' id='popover-salida' type='button' data-bs-trigger='focus hover' tabindex='0' data-bs-container='body' data-bs-toggle='popover' data-bs-placement='top' data-bs-content='Por favor, elija origen'></i><p>Origen</p>" 
         Salida.style.flexDirection = "column";
-        llegada.innerHTML = `<h2 id='viaje-seleccionado'>${localStorage.acronimo}</h2><h6 id=lugar-seleccionado>${localStorage.lugar}</h6>`
+        if(localStorage.salida !== undefined){
+            llegada.innerHTML = `<h2 id='salida-seleccionado'>${localStorage.salida}</h2><p id='lugar-salida-seleccionado'>${localStorage.lugarSalida}</p>`;
+            }
+            else{
+            llegada.innerHTML = `<h2 id='salida-seleccionado'>BUE</h2><p id='lugar-salida-seleccionado'>Buenos Aires</p>`;
         guardarDatos();
+    }
         
     }
     else{
-        Salida.innerHTML = "<h2 id='salida-seleccionado'>BUE</h2><p id=lugar-salida-seleccionado>Buenos Aires</p>";
+        if(localStorage.salida !== undefined){
+        Salida.innerHTML = `<h2 id='salida-seleccionado'>${localStorage.salida}</h2><p id='lugar-salida-seleccionado'>${localStorage.lugarSalida}</p>`;
+        }
+        else{
+        Salida.innerHTML = `<h2 id='salida-seleccionado'>BUE</h2><p id='lugar-salida-seleccionado'>Buenos Aires</p>`;
+
+        }
+        Salida.style.flexDirection = "column";
         llegada.innerHTML = '<span class="d-inline-block" data-bs-toggle="popover"  data-bs-content="Por favor elija un destino"></span><i class="icon-aterrizaje" id="icono-salida" type="button" class="btn btn-secondary" data-bs-trigger="focus hover" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Por favor, elija destino"></i><h6>Destino</h6>';
         estadoBoton--;
     }
@@ -722,3 +805,60 @@ function crearHabitacionesHotel(){
     HuespedesHotelContainer.appendChild(hijo);
 }
 
+// CALENDARIO
+diasDeSemana = ["dom","lun","mar","mie",'jue','vie','sab'];
+
+const dt = luxon.DateTime.now();
+var justDay = {day: 'numeric'}; // Muestra solo el dia
+var justMonth = {month: 'long'}; // Muestra solo el mes
+var monthNumber = {month: 'numeric'}; // Convierte el mes en numero, asi es posible sumarlo en el bucle
+let dur = luxon.Duration.fromObject({month:1});
+// console.log(dt.toLocaleString(f));  // Muestra 13 de Agosto
+// console.log(dur.toLocaleString()) Suma 1 dia y me lo muestra
+let now = dt.day
+let latter = dt.month // un mes mas adelante
+function calendar(){
+    function mesAnterior(){
+        previousMonth = dt.minus({month: 1}).toLocaleString(justMonth); // Quita un mes al actual
+        console.log(previousMonth); // Tengo que cambiar esto por innerHTML;
+        for(dias of diasDeSemana) console.log(dias);  // ForOF resumido, muestra los dias de la semana
+        daysOfPreviousMonth = dt.minus({month: 1}).daysInMonth;  // Me dice la cantidad de dias que tiene el mes anterior
+        for(p = dt.startOf("month").day; p <= daysOfPreviousMonth; p++) console.log(p);     // P de previous ----> Perdon por usar ingles xd
+       
+    }
+    mesAnterior()
+    function mesActual(){
+        console.log(dt.toLocaleString(justMonth))
+        for(dias of diasDeSemana) console.log(dias);                                  //       Esto para mostrar los dias
+        for(let start = 1; start < dt.day; start++) console.log(start);               //      Esto para contar los dias anteriores al actual
+        for(now; now < dt.endOf('month').day; now++) console.log(now);                //      Esto para contar los dias posteriores al actual
+    }
+    mesActual();
+
+    contador=1 // Con este contador cambio los meses de dt.plus
+    function mesSiguiente(){
+        for(let o = 1; o<12;o++){
+            contador = contador + 1;
+            month = dt.plus({month:contador})                           // Resolvi el problema de los meses utilizando un contador, pense que no
+            console.log(month.toLocaleString(justMonth))                                           // se podia agregar una variable donde va month:.
+            startOfTheMonth = month.startOf('month').day;                  // Utilizo esta variable para iniciar el conteo el primero de cada mes.
+            endOfTheMonth =  month.endOf('month').day;
+            for(dias of diasDeSemana) console.log(dias);    
+            for(startOfTheMonth; startOfTheMonth<=endOfTheMonth;startOfTheMonth++) console.log(startOfTheMonth)
+
+        }
+ 
+        
+    }
+     mesSiguiente();
+
+}
+calendar()
+
+/*        let latterMonth = dt.plus(dur);
+console.log(latterMonth.toLocaleString(justMonth))
+        for(dias of diasDeSemana) console.log(dias);
+        for(let p = 1; p <= latterMonth.daysInMonth; p++) console.log(p);
+        console.log(latterMonth);
+        dur = dur +  luxon.Duration.fromObject({month:1});
+        console.log(dur)*/
