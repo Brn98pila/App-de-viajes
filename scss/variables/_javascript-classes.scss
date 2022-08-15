@@ -109,6 +109,7 @@
         max-width:100% !important;
         font-weight:600;
         font-size: 17px;
+        text-transform: capitalize;
     }
     span{
         width: 45px !important;
@@ -117,6 +118,7 @@
         p{
             margin:0px !important;
             font-size: 16px;
+            
         }
     }
     .days-container{
@@ -133,10 +135,12 @@
             max-width:100% !important;
             font-weight:600;
             font-size: 17px;
+            text-transform: capitalize;
         }
         .week{
             padding: 4px;
             height: 46px;
+            width: 14%;
             p{
                 text-align:center !important;
                 margin: 0 !important;
@@ -147,6 +151,7 @@
                 text-align:center;
             }
             span{
+                width: 14% !important;
                 p{
                     text-align:center !important;
                     margin:0 !important;
@@ -155,5 +160,21 @@
             }
         }
     }
+    
+}
+
+.select{
+    :after{
+        content: "";
+        display: block;
+        width: 50px;
+        height: 50px;
+        background-color: $azul-fuerte;
+        position:absolute;
+        border-radius: 50%;
+        left: -1px;
+        top: -16px;
+        opacity: 0.5;
+        }
     
 }

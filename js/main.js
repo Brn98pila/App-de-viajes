@@ -808,23 +808,24 @@ function crearHabitacionesHotel(){
 // CALENDARIO
 diasDeSemana = ["lun","mar","mie",'jue','vie','sab','dom'];
 
-const dt = luxon.DateTime.now();
+const dt = luxon.DateTime.now().setLocale('es');
 var justDay = {day: 'numeric'}; // Muestra solo el dia
 var justMonth = {month: 'long', year:'numeric'}; // Muestra solo el mes
+var dateNumeric = {day:'numeric',month: 'numeric', year:'numeric'}; // Muestra solo el mes
 var monthNumber = {month: 'numeric'}; // Convierte el mes en numero, asi es posible sumarlo en el bucle
-let dur = luxon.Duration.fromObject({month:1});
 // console.log(dt.toLocaleString(f));  // Muestra 13 de Agosto
 // console.log(dur.toLocaleString()) Suma 1 dia y me lo muestra
 let now = dt.day
 let latter = dt.month // un mes mas adelante
 function calendar(father,resultGo, resultBack){
     // Aca voy a agregar las lineas manipular el dom
+    let contadorFuncion = 1;   // Tuve que poner el contador fuera del bucle porque me creaba contadores para cada hijo, dando interferencia con el HTML.
     contadorCalendarios = 0
     function mesAnterior(){
-        previousMonth = dt.minus({month: 1}).toLocaleString(justMonth); // Quita un mes al actual
+        previousMonth = dt.minus({month: 1}); // Quita un mes al actual
         previousContainer = document.createElement("div");
         previousContainer.className = 'month-container';
-        previousContainer.innerHTML = `<p class="month">${previousMonth}</p>`;
+        previousContainer.innerHTML = `<p class="month">${previousMonth.toLocaleString(justMonth)}</p>`;
         father.appendChild(previousContainer);
         for(c=1;c<=14;c++){
             daysContainer = document.createElement("div")
@@ -847,12 +848,41 @@ function calendar(father,resultGo, resultBack){
             week.classList.add("col");
             weeks[0].appendChild(week);
         } // ForOF resumido que me transcribe los dias de la semana
-        daysOfPreviousMonth = dt.minus({month: 1}).daysInMonth;  // Me dice la cantidad de dias que tiene el mes anterior
+        daysOfPreviousMonth = dt.minus({month: 1});  // Me dice la cantidad de dias que tiene el mes anterior
         contador = 1;
-        for(p = dt.startOf("month").day; p <= daysOfPreviousMonth; p++){  // P de previous ----> Perdon por usar ingles xd
-            days = document.createElement("span");
+        for(p = daysOfPreviousMonth.startOf("month").day; p <= daysOfPreviousMonth.daysInMonth; p++){  // P de previous ----> Perdon por usar ingles xd
+            fecha = daysOfPreviousMonth.startOf('month').plus({days:p}).minus({days:1});
+            let days = document.createElement("span");
             days.className = 'days';
-            days.innerHTML = `<p>${p}</p>`;
+            days.setAttribute("date",`${fecha.toFormat('LLL dd')}`) // Agregue las IDs con las fechas de cada span, cosa de mas tarde traerlas para mostrarlas
+            days.setAttribute("day",`${fecha.toFormat('cccc')}`) // Agregue las IDs con las fechas de cada span, cosa de mas tarde traerlas para mostrarlas
+                                               // Si yo guardo la fecha entera, cuando la traigo de nuevo es posible reconvertirla a otro formato, siempre que no la convierta en string.
+            days.innerHTML = `<p>${p}</p>`;    // No necesito reconvertir la fecha, basta con llevarla al html como quiero verla al final.
+            let getDays = days.getAttribute("date");
+            let getDay = days.getAttribute("day");
+            console.log(getDay)
+            days.onclick = function() { // Esta funcion me retorna la fecha en la salida y la llegada
+                if(contadorFuncion == 2){
+                    resultBack.innerHTML = `<h4>${getDays}</h4><p>${getDay}</p>`;
+                    contadorFuncion = contadorFuncion + 1;
+                    days.classList.add('select')
+                }              
+                else if(contadorFuncion == 1){ 
+                    resultGo.innerHTML = `<h4>${getDays}</h4><p>${getDay}</p>`;
+                    contadorFuncion = contadorFuncion + 1;
+                    days.classList.add('select')
+                }   
+                else if(contadorFuncion == 3){
+                    let selecciones = document.getElementsByClassName('days');
+                    for(quitarSelecciones=0;quitarSelecciones==2;quitarSelecciones++){
+                        console.log(`funciona ${quitarSelecciones} veces`)
+                        selecciones[quitarSelecciones].classList.remove('select')
+                    
+                    }
+                    contadorFuncion = contadorFuncion - 2;
+                }
+                }  
+            
            
             weeks[contador].appendChild(days);
             if((p==7)||(p==14)||(p==21)||(p==28)){  // Utilice los dias de la semana para cambiar donde queria cambiar de contenedor
@@ -904,7 +934,6 @@ function calendar(father,resultGo, resultBack){
             if((now==7)||(now==14)||(now==21)||(now==28)){  // Utilice los dias de la semana para cambiar donde queria cambiar de contenedor
                 contador = contador + 1;
             }
-            // console.log(now);                //      Esto para contar los dias posteriores al actual
         } 
     }
     mesActual();

@@ -116,10 +116,14 @@
                 justify-content: center;
                 align-items: center;
                 padding-top: 10px;
+                h4{
+                    font-weight: 600;
+                }
                 p{
                     color: $gris;
                     font-size: 12px;
                     font-weight: 500;
+                    text-transform: capitalize;
                 }
             }
             hr{

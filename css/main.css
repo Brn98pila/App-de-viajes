@@ -211,7 +211,8 @@ header {
     flex-grow: 0;
     box-shadow: 0 1px 5px 1px; }
     .offcanvas-salida .offcanvas-body #calendario-vuelos {
-      overflow: scroll !important; }
+      overflow: scroll !important;
+      height: 77%; }
   .offcanvas-salida .offcanvas-footer {
     width: 100% !important;
     box-shadow: 0 1px 4px 1px;
@@ -514,10 +515,13 @@ header {
         justify-content: center;
         align-items: center;
         padding-top: 10px; }
+        #browser #browser_box #fechas span h4 {
+          font-weight: 600; }
         #browser #browser_box #fechas span p {
           color: #8290a6;
           font-size: 12px;
-          font-weight: 500; }
+          font-weight: 500;
+          text-transform: capitalize; }
       #browser #browser_box #fechas hr {
         height: 50px;
         width: .1vw;
@@ -1582,7 +1586,8 @@ form {
   text-align: center;
   max-width: 100% !important;
   font-weight: 600;
-  font-size: 17px; }
+  font-size: 17px;
+  text-transform: capitalize; }
 
 #calendario-vuelos span {
   width: 45px !important;
@@ -1604,11 +1609,13 @@ form {
   text-align: center;
   max-width: 100% !important;
   font-weight: 600;
-  font-size: 17px; }
+  font-size: 17px;
+  text-transform: capitalize; }
 
 #calendario-vuelos .days-container .week {
   padding: 4px;
-  height: 46px; }
+  height: 46px;
+  width: 14%; }
   #calendario-vuelos .days-container .week p {
     text-align: center !important;
     margin: 0 !important; }
@@ -1616,10 +1623,24 @@ form {
 #calendario-vuelos .days-container .weeks p {
   text-align: center; }
 
-#calendario-vuelos .days-container .weeks span p {
-  text-align: center !important;
-  margin: 0 !important;
-  margin-bottom: 0 !important; }
+#calendario-vuelos .days-container .weeks span {
+  width: 14% !important; }
+  #calendario-vuelos .days-container .weeks span p {
+    text-align: center !important;
+    margin: 0 !important;
+    margin-bottom: 0 !important; }
+
+.select :after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: #5383ec;
+  position: absolute;
+  border-radius: 50%;
+  left: -1px;
+  top: -16px;
+  opacity: 0.5; }
 
 #buscador-alquileres {
   background-image: url(../images/fondo-home-alquileres-mobile.png);
