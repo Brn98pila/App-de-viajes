@@ -817,7 +817,7 @@ var monthNumber = {month: 'numeric'}; // Convierte el mes en numero, asi es posi
 // console.log(dur.toLocaleString()) Suma 1 dia y me lo muestra
 let now = dt.day
 let latter = dt.month // un mes mas adelante
-function calendar(father,resultGo, resultBack){
+function calendar(father,resultGo, resultBack,unsavedGo, unsavedBack){
     // Aca voy a agregar las lineas manipular el dom
     let contadorFuncion = 1;   // Tuve que poner el contador fuera del bucle porque me creaba contadores para cada hijo, dando interferencia con el HTML.
     contadorCalendarios = 0
@@ -864,24 +864,19 @@ function calendar(father,resultGo, resultBack){
             days.onclick = function() { // Esta funcion me retorna la fecha en la salida y la llegada
                 if(contadorFuncion == 2){
                     resultBack.innerHTML = `<h4>${getDays}</h4><p>${getDay}</p>`;
-                    contadorFuncion = contadorFuncion + 1;
+                    contadorFuncion = contadorFuncion - 1;
                     days.classList.add('select')
+                    unsavedBack.innerHTML = `<p>VUELTA</p><h4>${getDays}</h4><p>${getDay}</p>`;
                 }              
-                else if(contadorFuncion == 1){ 
+                else if(contadorFuncion == 1){
+                    let selecciones = document.getElementsByClassName('days');
+                    for(quitarSelecciones=0;quitarSelecciones<=400;quitarSelecciones++) selecciones[quitarSelecciones].classList.remove('select');
+                    unsavedGo.innerHTML = `<p>IDA</p><h4>${getDays}</h4><p>${getDay}</p>`;
                     resultGo.innerHTML = `<h4>${getDays}</h4><p>${getDay}</p>`;
                     contadorFuncion = contadorFuncion + 1;
                     days.classList.add('select')
                 }   
-                else if(contadorFuncion == 3){
-                    let selecciones = document.getElementsByClassName('days');
-                    for(quitarSelecciones=0;quitarSelecciones==2;quitarSelecciones++){
-                        console.log(`funciona ${quitarSelecciones} veces`)
-                        selecciones[quitarSelecciones].classList.remove('select')
-                    
-                    }
-                    contadorFuncion = contadorFuncion - 2;
-                }
-                }  
+            }  
             
            
             weeks[contador].appendChild(days);
@@ -992,6 +987,8 @@ function calendar(father,resultGo, resultBack){
 padreVuelos = document.getElementById('calendario-vuelos')
 resultadoSalidaVuelos = document.getElementById("fecha-de-salida")
 resultadoVueltaVuelos = document.getElementById("fecha-de-vuelta")
-calendar(padreVuelos,resultadoSalidaVuelos,resultadoVueltaVuelos)
+unsavedIdaVuelos = document.getElementById("unsaved-ida")
+unsavedVueltaVuelos = document.getElementById("unsaved-vuelta")
+calendar(padreVuelos,resultadoSalidaVuelos,resultadoVueltaVuelos,unsavedIdaVuelos,unsavedVueltaVuelos)
 
 // Lo proximo a hacer es incorporarlo al HTML
