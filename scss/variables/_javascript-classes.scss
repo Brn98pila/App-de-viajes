@@ -99,3 +99,61 @@
         font-weight: 400;
     }
 }
+
+
+// CALENDARIO
+#calendario-vuelos{
+    .month{
+        width: 100%;
+        text-align: center;
+        max-width:100% !important;
+        font-weight:600;
+        font-size: 17px;
+    }
+    span{
+        width: 45px !important;
+        padding:0px !important;
+        height: 46px !important;
+        p{
+            margin:0px !important;
+            font-size: 16px;
+        }
+    }
+    .days-container{
+        p{
+            color: $negro;
+            font-weight: 500;
+        }
+        .names-of-weeks{
+            color: $gris-fuerte !important;
+        }
+        .month{
+            width: 100%;
+            text-align: center;
+            max-width:100% !important;
+            font-weight:600;
+            font-size: 17px;
+        }
+        .week{
+            padding: 4px;
+            height: 46px;
+            p{
+                text-align:center !important;
+                margin: 0 !important;
+            }
+        }
+        .weeks{
+            p{
+                text-align:center;
+            }
+            span{
+                p{
+                    text-align:center !important;
+                    margin:0 !important;
+                    margin-bottom: 0 !important;
+                }
+            }
+        }
+    }
+    
+}

@@ -22,10 +22,12 @@
 }
 
 .offcanvas-salida{
+    .fechas-por-mes{
+        display:none !important
+    }
     --bs-offcanvas-height: 100% !important;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     .offcanvas-header{
         display: flex !important;
         flex-direction: column !important;
@@ -55,10 +57,17 @@
         }
     }
     .offcanvas-body{
-        overflow-x: hidden;
+        overflow-x: hidden !important;
+        padding: 0 !important;
+        flex-grow: 0; 
+        box-shadow: 0 1px 5px 1px;
+        #calendario-vuelos{
+            overflow: scroll !important;
+        }
     }
     .offcanvas-footer{
-        box-shadow: 0 1px 4px 1px;
+        width: 100% !important;
+        box-shadow: 0 1px 4px 1px; 
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -237,9 +246,10 @@
              }
             }
         }
-        .offcanvas-body{
+    .offcanvas-body{
             padding: 0 !important;
         }
+    
 }
 
 // A partir de aca, OFFCANVAS HOTELES

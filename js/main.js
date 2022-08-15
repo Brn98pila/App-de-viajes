@@ -806,59 +806,163 @@ function crearHabitacionesHotel(){
 }
 
 // CALENDARIO
-diasDeSemana = ["dom","lun","mar","mie",'jue','vie','sab'];
+diasDeSemana = ["lun","mar","mie",'jue','vie','sab','dom'];
 
 const dt = luxon.DateTime.now();
 var justDay = {day: 'numeric'}; // Muestra solo el dia
-var justMonth = {month: 'long'}; // Muestra solo el mes
+var justMonth = {month: 'long', year:'numeric'}; // Muestra solo el mes
 var monthNumber = {month: 'numeric'}; // Convierte el mes en numero, asi es posible sumarlo en el bucle
 let dur = luxon.Duration.fromObject({month:1});
 // console.log(dt.toLocaleString(f));  // Muestra 13 de Agosto
 // console.log(dur.toLocaleString()) Suma 1 dia y me lo muestra
 let now = dt.day
 let latter = dt.month // un mes mas adelante
-function calendar(){
+function calendar(father,resultGo, resultBack){
+    // Aca voy a agregar las lineas manipular el dom
+    contadorCalendarios = 0
     function mesAnterior(){
         previousMonth = dt.minus({month: 1}).toLocaleString(justMonth); // Quita un mes al actual
-        console.log(previousMonth); // Tengo que cambiar esto por innerHTML;
-        for(dias of diasDeSemana) console.log(dias);  // ForOF resumido, muestra los dias de la semana
+        previousContainer = document.createElement("div");
+        previousContainer.className = 'month-container';
+        previousContainer.innerHTML = `<p class="month">${previousMonth}</p>`;
+        father.appendChild(previousContainer);
+        for(c=1;c<=14;c++){
+            daysContainer = document.createElement("div")
+            daysContainer.className = 'days-container';
+            daysContainer.classList.add('container')
+            father.appendChild(daysContainer);
+        }
+        daysContainer = document.getElementsByClassName("days-container")
+        for(s=1;s<=6;s++){
+            weeks = document.createElement('div');
+            weeks.className = 'row'
+            weeks.classList.add('weeks');
+            daysContainer[contadorCalendarios].appendChild(weeks)
+        }
+        weeks = document.getElementsByClassName("weeks"); // Div usado de manera estetica
+        for(dias of diasDeSemana){
+            week = document.createElement('span')
+            week.className = "week";
+            week.innerHTML = `<p class="names-of-weeks">${dias}</p>`;
+            week.classList.add("col");
+            weeks[0].appendChild(week);
+        } // ForOF resumido que me transcribe los dias de la semana
         daysOfPreviousMonth = dt.minus({month: 1}).daysInMonth;  // Me dice la cantidad de dias que tiene el mes anterior
-        for(p = dt.startOf("month").day; p <= daysOfPreviousMonth; p++) console.log(p);     // P de previous ----> Perdon por usar ingles xd
-       
+        contador = 1;
+        for(p = dt.startOf("month").day; p <= daysOfPreviousMonth; p++){  // P de previous ----> Perdon por usar ingles xd
+            days = document.createElement("span");
+            days.className = 'days';
+            days.innerHTML = `<p>${p}</p>`;
+           
+            weeks[contador].appendChild(days);
+            if((p==7)||(p==14)||(p==21)||(p==28)){  // Utilice los dias de la semana para cambiar donde queria cambiar de contenedor
+                contador = contador + 1;
+            }
+           
+        }  
+       // Creo que aca tengo un error, P me esta trayendo los dias de este mes, y no los del anterior
     }
     mesAnterior()
+    contadorCalendarios = contadorCalendarios + 1; // Este contador lo utilizo para cambiar los cuadrados mayores donde va cada mes. Digamos la hoja del calendario
     function mesActual(){
-        console.log(dt.toLocaleString(justMonth))
-        for(dias of diasDeSemana) console.log(dias);                                  //       Esto para mostrar los dias
-        for(let start = 1; start < dt.day; start++) console.log(start);               //      Esto para contar los dias anteriores al actual
-        for(now; now < dt.endOf('month').day; now++) console.log(now);                //      Esto para contar los dias posteriores al actual
+        daysContainer = document.getElementsByClassName("days-container")
+        thisMonth = dt.toLocaleString(justMonth);
+        Month = document.createElement("div");
+        Month.className = 'month-container';
+        Month.innerHTML = `<p class="month">${thisMonth}</p>`;
+        daysContainer[contadorCalendarios].appendChild(Month);
+        for(s=1;s<=6;s++){
+            weeks = document.createElement('div');
+            weeks.className = 'row'
+            weeks.classList.add('weeks');
+            daysContainer[1].appendChild(weeks)
+        }
+        weeks = document.getElementsByClassName("weeks"); // Div usado de manera estetica
+        for(dias of diasDeSemana){
+            week = document.createElement('span')
+            week.className = "week";
+            week.innerHTML = `<p class="names-of-weeks">${dias}</p>`;
+            week.classList.add("col");
+            weeks[6].appendChild(week);
+        } // ForOF resumido que me transcribe los dias de la semana
+        contador = 1
+        for(let start = dt.startOf('month').day; start < dt.day; start++){
+            days = document.createElement('span');
+            days.className = 'days';
+            days.innerHTML = `<p>${start}</p>`;
+            weeks[7].appendChild(days);
+            if((start==7)||(start==14)||(start==21)||(start==28)){  // Utilice los dias de la semana para cambiar donde queria cambiar de contenedor
+                contador = contador + 1;
+            }
+
+        }              //      Esto para contar los dias anteriores al actual
+        for(now; now < dt.endOf('month').day; now++){
+            days = document.createElement('span');
+            days.className = 'days';
+            days.innerHTML = `<p>${now}</p>`;
+            weeks[7].appendChild(days);
+            if((now==7)||(now==14)||(now==21)||(now==28)){  // Utilice los dias de la semana para cambiar donde queria cambiar de contenedor
+                contador = contador + 1;
+            }
+            // console.log(now);                //      Esto para contar los dias posteriores al actual
+        } 
     }
     mesActual();
+    contadorCalendarios = contadorCalendarios + 1;
 
     contador=1 // Con este contador cambio los meses de dt.plus
     function mesSiguiente(){
-        for(let o = 1; o<12;o++){
-            contador = contador + 1;
-            month = dt.plus({month:contador})                           // Resolvi el problema de los meses utilizando un contador, pense que no
-            console.log(month.toLocaleString(justMonth))                                           // se podia agregar una variable donde va month:.
-            startOfTheMonth = month.startOf('month').day;                  // Utilizo esta variable para iniciar el conteo el primero de cada mes.
+        let contadorSemanas = 12 // Con este contador marco donde quiero que se vean los dias (lun,mar,mie,etc..)
+        let contadorInicio = 13;
+        for(let o = 1; o<=12;o++){
+            month = dt.plus({month:contador}) // Con el bucle me va mostrando los nombres de los meses mas el ano.
+            nameOfMonth = document.createElement("div");
+            nameOfMonth.className = 'month-container';
+            nameOfMonth.innerHTML = `<p class="month">${month.toLocaleString(justMonth)}</p>`;
+            daysContainer[contadorCalendarios].appendChild(nameOfMonth);
+            for(s=1;s<=6;s++){
+                weeks = document.createElement('div');
+                weeks.className = 'row'
+                weeks.classList.add('weeks');
+                daysContainer[contadorCalendarios].appendChild(weeks)
+            }
+            weeks = document.getElementsByClassName("weeks"); // Div usado de manera estetica
+            for(dias of diasDeSemana){
+                week = document.createElement('span')
+                week.className = "week";
+                week.innerHTML = `<p class="names-of-weeks">${dias}</p>`;
+                week.classList.add("col");
+                weeks[contadorSemanas].appendChild(week);
+            }
+            contadorSemanas = contadorSemanas + 6;
+            
+            month = dt.plus({month:contador})                                                                   
+            startOfTheMonth = month.startOf('month').day;                 
             endOfTheMonth =  month.endOf('month').day;
-            for(dias of diasDeSemana) console.log(dias);    
-            for(startOfTheMonth; startOfTheMonth<=endOfTheMonth;startOfTheMonth++) console.log(startOfTheMonth)
-
+            for(startOfTheMonth; startOfTheMonth<=endOfTheMonth;startOfTheMonth++){
+                days = document.createElement('span');
+                days.className = 'days';
+                days.innerHTML = `<p>${startOfTheMonth}</p>`;
+                weeks[contadorInicio].appendChild(days);
+            }
+            contadorInicio = contadorInicio + 6;
+            console.log(contadorInicio)
+            contador = contador + 1;
+            contadorCalendarios = contadorCalendarios + 1;
+            
+          
+            // Resolvi el problema de los meses utilizando un contador, pense que no
+             // se podia agregar una variable donde va month:.
+              // Utilizo esta variable para iniciar el conteo el primero de cada mes.
+              // En esta seccion tuve que usar muchos contadores.
         }
- 
-        
     }
      mesSiguiente();
 
 }
-calendar()
+padreVuelos = document.getElementById('calendario-vuelos')
+resultadoSalidaVuelos = document.getElementById("fecha-de-salida")
+resultadoVueltaVuelos = document.getElementById("fecha-de-vuelta")
+calendar(padreVuelos,resultadoSalidaVuelos,resultadoVueltaVuelos)
 
-/*        let latterMonth = dt.plus(dur);
-console.log(latterMonth.toLocaleString(justMonth))
-        for(dias of diasDeSemana) console.log(dias);
-        for(let p = 1; p <= latterMonth.daysInMonth; p++) console.log(p);
-        console.log(latterMonth);
-        dur = dur +  luxon.Duration.fromObject({month:1});
-        console.log(dur)*/
+// Lo proximo a hacer es incorporarlo al HTML
