@@ -805,6 +805,9 @@ function crearHabitacionesHotel(){
     HuespedesHotelContainer.appendChild(hijo);
 }
 
+
+
+
 // CALENDARIO
 diasDeSemana = ["lun","mar","mie",'jue','vie','sab','dom'];
 
@@ -817,9 +820,16 @@ var monthNumber = {month: 'numeric'}; // Convierte el mes en numero, asi es posi
 // console.log(dur.toLocaleString()) Suma 1 dia y me lo muestra
 let now = dt.day
 let latter = dt.month // un mes mas adelante
-function calendar(father,resultGo, resultBack,unsavedGo, unsavedBack){
+let contadorFuncion = 1;   // Tuve que poner el contador fuera del bucle porque me creaba contadores para cada hijo, dando interferencia con el HTML.
+
+resultadoSalidaVuelos = document.getElementById("fecha-de-salida")
+resultadoVueltaVuelos = document.getElementById("fecha-de-vuelta")
+unsavedIdaVuelos = document.getElementById("unsaved-ida")
+unsavedVueltaVuelos = document.getElementById("unsaved-vuelta")
+
+function calendar(father){
     // Aca voy a agregar las lineas manipular el dom
-    let contadorFuncion = 1;   // Tuve que poner el contador fuera del bucle porque me creaba contadores para cada hijo, dando interferencia con el HTML.
+   
     contadorCalendarios = 0
     function mesAnterior(){
         previousMonth = dt.minus({month: 1}); // Quita un mes al actual
@@ -850,40 +860,9 @@ function calendar(father,resultGo, resultBack,unsavedGo, unsavedBack){
         } // ForOF resumido que me transcribe los dias de la semana
         daysOfPreviousMonth = dt.minus({month: 1});  // Me dice la cantidad de dias que tiene el mes anterior
         contador = 1;
-        for(p = daysOfPreviousMonth.startOf("month").day; p <= daysOfPreviousMonth.daysInMonth; p++){  // P de previous ----> Perdon por usar ingles xd
-            fecha = daysOfPreviousMonth.startOf('month').plus({days:p}).minus({days:1});
-            let days = document.createElement("span");
-            days.className = 'days';
-            days.setAttribute("date",`${fecha.toFormat('LLL dd')}`) // Agregue las IDs con las fechas de cada span, cosa de mas tarde traerlas para mostrarlas
-            days.setAttribute("day",`${fecha.toFormat('cccc')}`) // Agregue las IDs con las fechas de cada span, cosa de mas tarde traerlas para mostrarlas
-                                               // Si yo guardo la fecha entera, cuando la traigo de nuevo es posible reconvertirla a otro formato, siempre que no la convierta en string.
-            days.innerHTML = `<p>${p}</p>`;    // No necesito reconvertir la fecha, basta con llevarla al html como quiero verla al final.
-            let getDays = days.getAttribute("date");
-            let getDay = days.getAttribute("day");
-            console.log(getDay)
-            days.onclick = function() { // Esta funcion me retorna la fecha en la salida y la llegada
-                if(contadorFuncion == 2){
-                    resultBack.innerHTML = `<h4>${getDays}</h4><p>${getDay}</p>`;
-                    contadorFuncion = contadorFuncion - 1;
-                    days.classList.add('select')
-                    unsavedBack.innerHTML = `<p>VUELTA</p><h4>${getDays}</h4><p>${getDay}</p>`;
-                }              
-                else if(contadorFuncion == 1){
-                    let selecciones = document.getElementsByClassName('days');
-                    for(quitarSelecciones=0;quitarSelecciones<=400;quitarSelecciones++) selecciones[quitarSelecciones].classList.remove('select');
-                    unsavedGo.innerHTML = `<p>IDA</p><h4>${getDays}</h4><p>${getDay}</p>`;
-                    resultGo.innerHTML = `<h4>${getDays}</h4><p>${getDay}</p>`;
-                    contadorFuncion = contadorFuncion + 1;
-                    days.classList.add('select')
-                }   
-            }  
-            
-           
-            weeks[contador].appendChild(days);
-            if((p==7)||(p==14)||(p==21)||(p==28)){  // Utilice los dias de la semana para cambiar donde queria cambiar de contenedor
-                contador = contador + 1;
-            }
-           
+        for(start = daysOfPreviousMonth.startOf("month").day; start <= daysOfPreviousMonth.daysInMonth; start++){  // P de previous ----> Perdon por usar ingles xd
+            fecha = daysOfPreviousMonth.startOf('month').plus({days:start}).minus({days:1});
+            CreadorDias(fecha,resultadoSalidaVuelos,resultadoVueltaVuelos,unsavedIdaVuelos,unsavedVueltaVuelos)
         }  
        // Creo que aca tengo un error, P me esta trayendo los dias de este mes, y no los del anterior
     }
@@ -891,10 +870,9 @@ function calendar(father,resultGo, resultBack,unsavedGo, unsavedBack){
     contadorCalendarios = contadorCalendarios + 1; // Este contador lo utilizo para cambiar los cuadrados mayores donde va cada mes. Digamos la hoja del calendario
     function mesActual(){
         daysContainer = document.getElementsByClassName("days-container")
-        thisMonth = dt.toLocaleString(justMonth);
         Month = document.createElement("div");
         Month.className = 'month-container';
-        Month.innerHTML = `<p class="month">${thisMonth}</p>`;
+        Month.innerHTML = `<p class="month">${dt.toLocaleString(justMonth)}</p>`;
         daysContainer[contadorCalendarios].appendChild(Month);
         for(s=1;s<=6;s++){
             weeks = document.createElement('div');
@@ -910,36 +888,22 @@ function calendar(father,resultGo, resultBack,unsavedGo, unsavedBack){
             week.classList.add("col");
             weeks[6].appendChild(week);
         } // ForOF resumido que me transcribe los dias de la semana
-        contador = 1
-        for(let start = dt.startOf('month').day; start < dt.day; start++){
-            days = document.createElement('span');
-            days.className = 'days';
-            days.innerHTML = `<p>${start}</p>`;
-            weeks[7].appendChild(days);
-            if((start==7)||(start==14)||(start==21)||(start==28)){  // Utilice los dias de la semana para cambiar donde queria cambiar de contenedor
-                contador = contador + 1;
-            }
+        start = dt.startOf('month').day;
+        contador = 7;
+        for(start; start < dt.endOf('month').day; start++){
+            fecha = dt.startOf('month').plus({days:start}).minus({days:1});
+            CreadorDias(fecha,resultadoSalidaVuelos,resultadoVueltaVuelos,unsavedIdaVuelos,unsavedVueltaVuelos)
 
         }              //      Esto para contar los dias anteriores al actual
-        for(now; now < dt.endOf('month').day; now++){
-            days = document.createElement('span');
-            days.className = 'days';
-            days.innerHTML = `<p>${now}</p>`;
-            weeks[7].appendChild(days);
-            if((now==7)||(now==14)||(now==21)||(now==28)){  // Utilice los dias de la semana para cambiar donde queria cambiar de contenedor
-                contador = contador + 1;
-            }
-        } 
     }
     mesActual();
     contadorCalendarios = contadorCalendarios + 1;
 
-    contador=1 // Con este contador cambio los meses de dt.plus
+    contadorMeses=1 // Con este contador cambio los meses de dt.plus
     function mesSiguiente(){
         let contadorSemanas = 12 // Con este contador marco donde quiero que se vean los dias (lun,mar,mie,etc..)
-        let contadorInicio = 13;
         for(let o = 1; o<=12;o++){
-            month = dt.plus({month:contador}) // Con el bucle me va mostrando los nombres de los meses mas el ano.
+            month = dt.plus({month:contadorMeses}) // Con el bucle me va mostrando los nombres de los meses mas el ano.
             nameOfMonth = document.createElement("div");
             nameOfMonth.className = 'month-container';
             nameOfMonth.innerHTML = `<p class="month">${month.toLocaleString(justMonth)}</p>`;
@@ -960,19 +924,25 @@ function calendar(father,resultGo, resultBack,unsavedGo, unsavedBack){
             }
             contadorSemanas = contadorSemanas + 6;
             
-            month = dt.plus({month:contador})                                                                   
-            startOfTheMonth = month.startOf('month').day;                 
-            endOfTheMonth =  month.endOf('month').day;
-            for(startOfTheMonth; startOfTheMonth<=endOfTheMonth;startOfTheMonth++){
-                days = document.createElement('span');
-                days.className = 'days';
-                days.innerHTML = `<p>${startOfTheMonth}</p>`;
-                weeks[contadorInicio].appendChild(days);
+            fecha = dt.plus({month:contadorMeses})                                                                   
+            start = fecha.startOf('month').day;                 
+            endOfTheMonth =  fecha.endOf('month').day;
+            contador = contador + 2;
+
+
+            for(start; start<=endOfTheMonth;start++){
+                CreadorDias(fecha,resultadoSalidaVuelos,resultadoVueltaVuelos,unsavedIdaVuelos,unsavedVueltaVuelos)
             }
-            contadorInicio = contadorInicio + 6;
-            console.log(contadorInicio)
-            contador = contador + 1;
+            contadorMeses = contadorMeses + 1;
             contadorCalendarios = contadorCalendarios + 1;
+
+            /*  start = dt.startOf('month').day;
+                contador = 7;
+                        for(start; start < dt.endOf('month').day; start++){
+                        fecha = dt.startOf('month').plus({days:start}).minus({days:1});
+                       CreadorDias(fecha,resultadoSalidaVuelos,resultadoVueltaVuelos,unsavedIdaVuelos,unsavedVueltaVuelos)
+    
+            }              //      Esto para contar los dias anteriores al actual */
             
           
             // Resolvi el problema de los meses utilizando un contador, pense que no
@@ -985,10 +955,48 @@ function calendar(father,resultGo, resultBack,unsavedGo, unsavedBack){
 
 }
 padreVuelos = document.getElementById('calendario-vuelos')
-resultadoSalidaVuelos = document.getElementById("fecha-de-salida")
-resultadoVueltaVuelos = document.getElementById("fecha-de-vuelta")
-unsavedIdaVuelos = document.getElementById("unsaved-ida")
-unsavedVueltaVuelos = document.getElementById("unsaved-vuelta")
-calendar(padreVuelos,resultadoSalidaVuelos,resultadoVueltaVuelos,unsavedIdaVuelos,unsavedVueltaVuelos)
+calendar(padreVuelos)
 
 // Lo proximo a hacer es incorporarlo al HTML
+
+
+function CreadorDias(fecha,resultGo, resultBack,unsavedGo, unsavedBack){
+    let days = document.createElement("span");
+    days.className = 'days';
+    days.innerHTML = `<p>${start}</p>`;  
+    let comparadorFechas = fecha.toFormat('yyLLdd'); 
+    let getDays = fecha.toFormat('LLL dd'); // No hace falta guardar las fechas en el HTML para traerlas, cada hijo guarda como variable su fecha
+    let getDay = fecha.toFormat('cccc');
+
+days.onclick = function() { // Esta funcion me retorna la fecha en la salida y la llegada
+    if(contadorFuncion == 2){
+        comparadorLlegada = comparadorFechas; //Utilizo esta variable junto con comparadorSalida para anular la seleccion de tiempo pasado.
+        if(comparadorSalida>comparadorLlegada) contadorFuncion = contadorFuncion - 1; 
+        else{
+            resultBack.innerHTML = `<h4>${getDays}</h4><p>${getDay}</p>`;
+            contadorFuncion = contadorFuncion - 1;
+            days.classList.add('select')
+            unsavedBack.innerHTML = `<p>VUELTA</p><h4>${getDays}</h4><p>${getDay}</p>`;
+        }
+    }              
+    else if(contadorFuncion == 1){
+        let selecciones = document.getElementsByClassName('days');
+        for(quitarSelecciones=0;quitarSelecciones<=425;quitarSelecciones++) selecciones[quitarSelecciones].classList.remove('select');
+        unsavedGo.innerHTML = `<p>IDA</p><h4>${getDays}</h4><p>${getDay}</p>`;
+        resultGo.innerHTML = `<h4>${getDays}</h4><p>${getDay}</p>`;
+        contadorFuncion = contadorFuncion + 1;
+        days.classList.add('select')
+        comparadorSalida = comparadorFechas;
+        return comparadorSalida;
+    }   
+}  
+weeks[contador].appendChild(days);    // Problema = cuando ejecuto la funcion, crea las nuevas cajas sobre el mes anterior, porque el contador se reinicia
+if((start==7)||(start==14)||(start==21)||(start==28)){  // Utilice los dias de la semana para cambiar donde queria cambiar de contenedor
+    contador = contador + 1;
+}
+}
+
+// Idea para que los dias de la semana se muestren correctamente
+// if fecha.startOf('month').toFormat('cccc') == martes{
+    // crear elemento div de nombre day x2 
+    // y asi sucesivamente, dependiendo de cada dia de la semana.
