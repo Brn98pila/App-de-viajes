@@ -829,7 +829,7 @@ unsavedVueltaVuelos = document.getElementById("unsaved-vuelta")
 
 function calendar(father){
     // Aca voy a agregar las lineas manipular el dom
-   
+    
     contadorCalendarios = 0
     function mesAnterior(){
         previousMonth = dt.minus({month: 1}); // Quita un mes al actual
@@ -851,6 +851,8 @@ function calendar(father){
             daysContainer[contadorCalendarios].appendChild(weeks)
         }
         weeks = document.getElementsByClassName("weeks"); // Div usado de manera estetica
+        let contadorMesAnterior = 1;
+        acomodarDias(previousMonth,weeks,contadorMesAnterior)
         for(dias of diasDeSemana){
             week = document.createElement('span')
             week.className = "week";
@@ -869,7 +871,8 @@ function calendar(father){
     mesAnterior()
     contadorCalendarios = contadorCalendarios + 1; // Este contador lo utilizo para cambiar los cuadrados mayores donde va cada mes. Digamos la hoja del calendario
     function mesActual(){
-        daysContainer = document.getElementsByClassName("days-container")
+        daysContainer = document.getElementsByClassName("days-container");
+        let mesActual = dt.startOf('month');
         Month = document.createElement("div");
         Month.className = 'month-container';
         Month.innerHTML = `<p class="month">${dt.toLocaleString(justMonth)}</p>`;
@@ -879,8 +882,11 @@ function calendar(father){
             weeks.className = 'row'
             weeks.classList.add('weeks');
             daysContainer[1].appendChild(weeks)
+            
         }
-        weeks = document.getElementsByClassName("weeks"); // Div usado de manera estetica
+        weeks = document.getElementsByClassName("weeks"); 
+        let contadorMesActual = 7;
+        acomodarDias(mesActual,weeks,contadorMesActual);   // Div usado de manera estetica
         for(dias of diasDeSemana){
             week = document.createElement('span')
             week.className = "week";
@@ -890,7 +896,7 @@ function calendar(father){
         } // ForOF resumido que me transcribe los dias de la semana
         start = dt.startOf('month').day;
         contador = 7;
-        for(start; start < dt.endOf('month').day; start++){
+        for(start; start <= dt.endOf('month').day; start++){
             fecha = dt.startOf('month').plus({days:start}).minus({days:1});
             CreadorDias(fecha,resultadoSalidaVuelos,resultadoVueltaVuelos,unsavedIdaVuelos,unsavedVueltaVuelos)
 
@@ -900,21 +906,28 @@ function calendar(father){
     contadorCalendarios = contadorCalendarios + 1;
 
     contadorMeses=1 // Con este contador cambio los meses de dt.plus
+    contador = 13;
     function mesSiguiente(){
         let contadorSemanas = 12 // Con este contador marco donde quiero que se vean los dias (lun,mar,mie,etc..)
+        let contadorMesSiguiente = 13;
         for(let o = 1; o<=12;o++){
             month = dt.plus({month:contadorMeses}) // Con el bucle me va mostrando los nombres de los meses mas el ano.
             nameOfMonth = document.createElement("div");
             nameOfMonth.className = 'month-container';
             nameOfMonth.innerHTML = `<p class="month">${month.toLocaleString(justMonth)}</p>`;
             daysContainer[contadorCalendarios].appendChild(nameOfMonth);
-            for(s=1;s<=6;s++){
+           
+            for(s=1;s<=addWeeks(month);s++){
                 weeks = document.createElement('div');
                 weeks.className = 'row'
                 weeks.classList.add('weeks');
                 daysContainer[contadorCalendarios].appendChild(weeks)
             }
-            weeks = document.getElementsByClassName("weeks"); // Div usado de manera estetica
+            
+            weeks = document.getElementsByClassName("weeks");// Div usado de manera estetica
+            
+            acomodarDias(month,weeks,contadorMesSiguiente); 
+            contadorMesSiguiente = contadorMesSiguiente + addWeeks(month);
             for(dias of diasDeSemana){
                 week = document.createElement('span')
                 week.className = "week";
@@ -922,16 +935,22 @@ function calendar(father){
                 week.classList.add("col");
                 weeks[contadorSemanas].appendChild(week);
             }
-            contadorSemanas = contadorSemanas + 6;
+            contadorSemanas = contadorSemanas + addWeeks(month);
+
+          
+            fechaMensual = dt.plus({month:contadorMeses})       
+                                                                                                                         
+            start = fechaMensual.startOf('month').day; 
+
+                            
+            endOfTheMonth =  fechaMensual.endOf('month').day;
+
             
-            fecha = dt.plus({month:contadorMeses})                                                                   
-            start = fecha.startOf('month').day;                 
-            endOfTheMonth =  fecha.endOf('month').day;
-            contador = contador + 2;
-
-
+            
             for(start; start<=endOfTheMonth;start++){
-                CreadorDias(fecha,resultadoSalidaVuelos,resultadoVueltaVuelos,unsavedIdaVuelos,unsavedVueltaVuelos)
+                  
+                fecha = fechaMensual.startOf('month').plus({day:start}).minus({day:1});      
+                CreadorDias(fecha,resultadoSalidaVuelos,resultadoVueltaVuelos,unsavedIdaVuelos,unsavedVueltaVuelos) 
             }
             contadorMeses = contadorMeses + 1;
             contadorCalendarios = contadorCalendarios + 1;
@@ -967,6 +986,7 @@ function CreadorDias(fecha,resultGo, resultBack,unsavedGo, unsavedBack){
     let comparadorFechas = fecha.toFormat('yyLLdd'); 
     let getDays = fecha.toFormat('LLL dd'); // No hace falta guardar las fechas en el HTML para traerlas, cada hijo guarda como variable su fecha
     let getDay = fecha.toFormat('cccc');
+    if(comparadorFechas<dt.toFormat('yyLLdd')) days.classList.add('boton-inactive')
 
 days.onclick = function() { // Esta funcion me retorna la fecha en la salida y la llegada
     if(contadorFuncion == 2){
@@ -991,12 +1011,97 @@ days.onclick = function() { // Esta funcion me retorna la fecha en la salida y l
     }   
 }  
 weeks[contador].appendChild(days);    // Problema = cuando ejecuto la funcion, crea las nuevas cajas sobre el mes anterior, porque el contador se reinicia
-if((start==7)||(start==14)||(start==21)||(start==28)){  // Utilice los dias de la semana para cambiar donde queria cambiar de contenedor
-    contador = contador + 1;
+let contadorReLoco = weeks[contador].children.length; // Respuesta = este contador me dice la cantie queria cambiar de conteneddad de hijos que tiene el primer week, cuando la cantidad es = 7 cambia al 2do week, 3ero,
+    if(fecha.day == fecha.endOf('month').day){
+        contador = contador + 2;
+        return contador;
 }
+    else if(contadorReLoco == 7){  // Cada vez que el contador se llena, la proxima 
+        contador = contador + 1;
+        return contador;
 }
+    else{
+        return contador;
+} 
+}
+
+
+function acomodarDias(mes,padre,contadorParaAcomodar){
+    if(mes.startOf('month').toFormat('cccc')=== 'martes'){
+        let days = document.createElement("span");
+        days.className = 'days';
+        days.innerHTML = "";
+        padre[contadorParaAcomodar].appendChild(days)
+    }
+    else if(mes.startOf('month').toFormat('cccc')== 'miércoles')for(i=0;i<=1;i++){
+        let days = document.createElement("span");
+        days.className = 'days';
+        days.innerHTML = "";
+        padre[contadorParaAcomodar].appendChild(days)
+    }
+    else if(mes.startOf('month').toFormat('cccc')== 'jueves')for(i=0;i<=2;i++){
+        let days = document.createElement("span");
+        days.className = 'days';
+        days.innerHTML = "";
+        padre[contadorParaAcomodar].appendChild(days)
+    }
+    else if(mes.startOf('month').toFormat('cccc')== 'viernes')for(i=0;i<=3;i++){
+        let days = document.createElement("span");
+        days.className = 'days';
+        days.innerHTML = "";
+        padre[contadorParaAcomodar].appendChild(days)
+    }
+    else if(mes.startOf('month').toFormat('cccc')=='sábado')for(i=0;i<=4;i++){
+        let days = document.createElement("span");
+        days.className = 'days';
+        days.innerHTML = "";
+        padre[contadorParaAcomodar].appendChild(days)
+    }
+    else if(mes.startOf('month').toFormat('cccc')== 'domingo')for(i=0;i<=5;i++){
+        let days = document.createElement("span");
+        days.className = 'days';
+        days.innerHTML = "";
+        padre[contadorParaAcomodar].appendChild(days)
+    }
+    else console.log('es lunes');
+    return contadorParaAcomodar = contadorParaAcomodar + addWeeks(mes);
+}
+
+function addWeeks(mes){
+    let numeroDeSemanas = 0;
+    if(mes.endOf('month').day >= 28){
+        numeroDeSemanas = 6;
+        console.log(mes.startOf('month').toFormat('cccc'))
+        if((mes.startOf('month').toFormat('cccc') == ('sábado'))&&(mes.endOf('month').day == 31)){
+            console.log(numeroDeSemanas);
+            numeroDeSemanas = 7;
+            return numeroDeSemanas;
+        }
+        else if(mes.startOf('month').toFormat('cccc') == ('domingo')){
+            console.log(numeroDeSemanas);
+            numeroDeSemanas = 7;
+            return numeroDeSemanas;
+        }
+        
+    return numeroDeSemanas
+    }
+    else{
+        numeroDeSemanas = 5;
+    }  
+    return numeroDeSemanas;
+} 
 
 // Idea para que los dias de la semana se muestren correctamente
 // if fecha.startOf('month').toFormat('cccc') == martes{
     // crear elemento div de nombre day x2 
     // y asi sucesivamente, dependiendo de cada dia de la semana.
+
+
+function cerrarOffcanvas(botonListo, botonCerrar){
+    botonListo.onclick = function(){
+        botonCerrar.click()
+    }
+}
+botonFechas = document.getElementById('aplicar-fechas')
+botonCerrarFechas = document.getElementById('cerrar-offcanvas-salida')
+cerrarOffcanvas(botonFechas, botonCerrarFechas);

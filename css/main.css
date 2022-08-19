@@ -1522,6 +1522,8 @@ form {
 .boton-inactive {
   color: #E6EAEF !important;
   pointer-events: none !important; }
+  .boton-inactive p {
+    color: #BAC6D3 !important; }
 
 .fecha-activo {
   color: #5383ec !important;

@@ -17,6 +17,9 @@
 .boton-inactive{
     color: $blanco !important;
     pointer-events: none !important;
+    p{
+        color: $gris-claro !important;
+    }
 }
 
 .fecha-activo{

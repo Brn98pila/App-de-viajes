@@ -356,7 +356,7 @@
     <!-- OFF CANVAS FECHAS -->
     <div class="offcanvas offcanvas-bottom offcanvas-salida" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
       <div class="offcanvas-header">
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close" id="cerrar-offcanvas-salida" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         <div>
           <button id="boton-fechasespecifica-avion" class="fecha-activo" onclick="fechasEspecificas()">Fecha especifica</button>
           <button id="boton-mes-avion" onclick="fechaPorMes()">Por mes</button>
@@ -377,7 +377,7 @@
               <h4>-</h4>
             </div>
           </div>
-          <button>Aplicar</button>
+          <button id="aplicar-fechas">Aplicar</button>
         </div> 
         </div> 
       <div class="offcanvas-body fechas-por-mes">
