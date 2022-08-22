@@ -93,13 +93,13 @@
         </div>
         <div id="fechas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
           <span id="fecha-de-salida">
-            <h4>-</h4>
-          <p class="fecha-dia-b">Sabado</p>
+            <i class="icon-calendario"></i>
+          <p class="fecha-dia-b">Ida</p>
           </span>
           <hr>
           <span id="fecha-de-vuelta">
-            <h4>-</h4>
-            <p class="fecha-dia-b">Sabado</p>
+            <i class="icon-calendario"></i>
+            <p class="fecha-dia-b">Vuelta</p>
           </span>
         </div>
           <!-- Salida y Llegada -->
@@ -392,6 +392,63 @@
         </div>
        
       </div>
+
+      <!-- OFF CANVAS BUSQUEDA VUELOS -->
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasBusquedaVuelos" aria-labelledby="offcanvasRightLabel">
+      <div class="offcanvas-header">
+          <div data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <i class="bi bi-caret-left-fill"></i>
+          </div>
+          <div>
+            <div>
+              <p id="datos-vuelo">BUE</p>
+            </div>
+            <div>
+              <p id="datos-fecha-vuelo">miercoles 29 sept - miercoles 31 sept</p>
+            </div>
+          </div>
+    </div>
+      <div class="offcanvas-body">
+        <div class="card-vuelos">
+          <div class="horizontal-vuelo-ida">
+            <div>
+              <p>EZE</p>
+              <span>17.10</span>
+            </div>
+            <span>
+              <p>2h 55min</p>
+              <hr>
+              <p>directo</p>
+            </span>
+            <div>
+              <p>GIG</p>
+              <span>20.05</span>
+            </div>
+          </div>
+          <div class="horizontal-vuelo-vuelta">
+            <div>
+              <p>GIG</p>
+              <span>14.50</span>
+            </div>
+            <span>
+              <p>3h 25min</p>
+              <hr>
+              <p>directo</p>
+            </span>
+            <div>
+              <p>EZE</p>
+              <span>14.15</span>
+            </div>
+          </div>
+          <div class="vertical-vuelo-precio">
+            <h6>$100.000</h6>
+            <h5>$91.406</H6>
+            <p>Incl. Imp PAIS + AFIP</p>
+          </div>
+        </div>
+    </div>
+  </div>
 
 
       <!-- OFFCANVAS PASAJEROS -->

@@ -189,6 +189,8 @@ function botonSumaDePasajeros(){
     
     let numeroTotalPasajeros = parseInt(totalAdultos) + parseInt(totalMenores) + parseInt (totalBebes);
     document.getElementById('cantidad-pasajeros').innerHTML = numeroTotalPasajeros +' Pasajeros';
+    localStorage.setItem("pasajeros", numeroTotalPasajeros)
+
 
     document.getElementById('cerrar-offcanvas-pasajeros').click();
 
@@ -215,6 +217,7 @@ function bloquearSuma(){
 
 
 
+// En vez de crear el array voy a usar una API con todos los lugares
 
 
 
@@ -228,79 +231,79 @@ function constructorCiudades(ciudad, acronimo, icono, pais, aeropuerto){
 
 }
 //inglaterra 
-const londres = new constructorCiudades("Londres","ING","icon-ciudad","Inglaterra", "Todos los aeropuertos");
-const manchester = new constructorCiudades("Manchester","ING","icon-ciudad","Inglaterra","Todos los aeropuertos");
-const birmingham = new constructorCiudades("Birmingham","ING","icon-avion","Inglaterra","Birmingham-West Midlands");
-const liverpool = new constructorCiudades("Liverpool","ING","icon-ciudad","Inglaterra","Todos los aeropuertos");
+const londres = new constructorCiudades("Londres","LON","icon-ciudad","Inglaterra", "Todos los aeropuertos");
+const manchester = new constructorCiudades("Manchester","MAN","icon-ciudad","Inglaterra","Todos los aeropuertos");
+const birmingham = new constructorCiudades("Birmingham","BHX","icon-avion","Inglaterra","Birmingham-West Midlands");
+const liverpool = new constructorCiudades("Liverpool","	LPL","icon-ciudad","Inglaterra","Todos los aeropuertos");
 const inglaterra = new constructorCiudades("Inglaterra","ING","icon-banderas","","Pais");
 // estados unidos 
-const newYork = new constructorCiudades("NewYork","NY","icon-ciudad","Estados Unidos", "Todos los aeropuertos");
+const newYork = new constructorCiudades("NewYork","NYC","icon-ciudad","Estados Unidos", "Todos los aeropuertos");
 const chicago = new constructorCiudades("Chicago","CHI","icon-ciudad","Estados Unidos","Todos los aeropuertos");
-const dallas = new constructorCiudades("Dallas","DAL","icon-ciudad","Estados Unidos","Todos los aeropuertos");
-const filadelfia = new constructorCiudades("Filadelfia","FIL","icon-ciudad","Estados Unidos","Todos los aeropuertos");
+const washington = new constructorCiudades("Washington","WAS","icon-ciudad","Estados Unidos","Todos los aeropuertos");
+const atlanta = new constructorCiudades("Atlanta","ATL","icon-ciudad","Estados Unidos","Todos los aeropuertos");
 const miami = new constructorCiudades("Miami","MIA","icon-ciudad","Estados Unidos","Todos los aeropuertos");
-const losAngeles = new constructorCiudades("Los Angeles","LA","icon-ciudad","Estados Unidos","Todos los aeropuertos");
-const estadosUnidos = new constructorCiudades("Estados Unidos","US","icon-banderas","","Pais");
+const losAngeles = new constructorCiudades("Los Angeles","LAX","icon-ciudad","Estados Unidos","Todos los aeropuertos");
+const estadosUnidos = new constructorCiudades("Estados Unidos","USA","icon-banderas","","Pais");
 //colombia
 const bogota = new constructorCiudades("Bogota","BOG","icon-ciudad","Colombia","Todos los aeropuertos");
-const cali = new constructorCiudades("Cali","CA","icon-ciudad","Colombia","Todos los aeropuertos");
-const medellin = new constructorCiudades("Medellin","MED","icon-ciudad","Colombia","Todos los aeropuertos");
-const barranquilla = new constructorCiudades("Barranquilla","BRQ","icon-avion","Colombia","Ernesto Cortissoz");
-const colombia = new constructorCiudades("Colombia","COL","icon-banderas","","Pais");
+const cali = new constructorCiudades("Cali","CLO","icon-ciudad","Colombia","Todos los aeropuertos");
+const medellin = new constructorCiudades("Medellin","MDE","icon-ciudad","Colombia","Todos los aeropuertos");
+const barranquilla = new constructorCiudades("Barranquilla","BAQ","icon-avion","Colombia","Ernesto Cortissoz");
+const colombia = new constructorCiudades("Colombia","MDE","icon-banderas","","Pais");
 //holanda
 const amsterdam = new constructorCiudades("Amsterdam","AMS","icon-ciudad","Paises Bajos","Todos los aeropuertos");
-const roterdam = new constructorCiudades("Roterdam","ROT","icon-avion","Paises Bajos","Aer. Roterdam-La Haya");
-const paisesBajos = new constructorCiudades("Paises Bajos","HOL","icon-banderas","","Pais");
+const roterdam = new constructorCiudades("Roterdam","RTM","icon-avion","Paises Bajos","Aer. Roterdam-La Haya");
+const paisesBajos = new constructorCiudades("Paises Bajos","AMS","icon-banderas","","Pais");
 //italia
 const milan = new constructorCiudades("Milan","MIL","icon-ciudad","Italia","Todos los aeropuertos");
 const roma = new constructorCiudades("Roma","ROM","icon-ciudad","Italia","Todos los aeropuertos");
-const turin = new constructorCiudades("Turin","TUR","icon-avion","Italia","Aeropuerto Turin-Caselle");
-const genova = new constructorCiudades("Genova","GNV","icon-avion","Italia","Aeropuerto Nac Genova");
-const venecia = new constructorCiudades("Venecia","VEN","icon-avion","Italia","Marco Polo Intl");
-const italia = new constructorCiudades("Italia","ITA","icon-banderas","","Pais");
+const turin = new constructorCiudades("Turin","TRN","icon-avion","Italia","Aeropuerto Turin-Caselle");
+const genova = new constructorCiudades("Genova","GOA","icon-avion","Italia","Aeropuerto Nac Genova");
+const venecia = new constructorCiudades("Venecia","VCE","icon-avion","Italia","Marco Polo Intl");
+const italia = new constructorCiudades("Italia","ROM","icon-banderas","","Pais");
 //mexico
-const ciudadDeMexico = new constructorCiudades("Ciudad de Mexico","CMX","icon-ciudad","Mexico", "Todos los aeropuertos");
-const monterrey = new constructorCiudades("Monterry","MON","icon-avion","Mexico","Aeropuerto Intl Monterrey");
-const culiacan = new constructorCiudades("Culiacan","CUL","icon-avion","Mexico","Aeropuerto Intl Culiacan");
+const ciudadDeMexico = new constructorCiudades("Ciudad de Mexico","MEX","icon-ciudad","Mexico", "Todos los aeropuertos");
+const cancun = new constructorCiudades("Cancun","CJT","icon-avion","Mexico","Aeropuerto Intl Monterrey");
+const culiacan = new constructorCiudades("Culiacan","UAC","icon-avion","Mexico","Aeropuerto Intl Culiacan");
 const veracruz = new constructorCiudades("Veracruz","VER","icon-avion","Mexico","Gral Heriberto Jara");
-const playaDelCarmen = new constructorCiudades("Playa del Carmen","PDC","icon-avion","Mexico","Playa del Carmen Nac.");
+const playaDelCarmen = new constructorCiudades("Playa del Carmen","CME","icon-avion","Mexico","Playa del Carmen Nac.");
 const mexico = new constructorCiudades("Mexico","MEX","icon-banderas","","Pais");
 //japon
 const hiroshima = new constructorCiudades("Hiroshima","HRS","icon-avion","Japon","Aeropuerto Intl Hiroshima");
-const osaka = new constructorCiudades("Osaka","OSK","icon-ciudad","Japon","Todos los aeropuertos");
-const nagoya = new constructorCiudades("Nagoya","NAG","icon-avion","Japon","Chūbu Centrair Intl");
-const tokio = new constructorCiudades("Tokio","TOK","icon-ciudad","Japon", "Todos los aeropuertos");
+const osaka = new constructorCiudades("Osaka","OSA","icon-ciudad","Japon","Todos los aeropuertos");
+const nagoya = new constructorCiudades("Nagoya","NGO ","icon-avion","Japon","Chūbu Centrair Intl");
+const tokio = new constructorCiudades("Tokio","TYO ","icon-ciudad","Japon", "Todos los aeropuertos");
 const japon = new constructorCiudades("Japon","JPN","icon-banderas","","Pais");
 //grecia
-const atenas = new constructorCiudades("Atenas","ATE","icon-ciudad","Grecia", "Todos los aeropuertos");
-const santorini = new constructorCiudades("Santorini","SAN","icon-avion","Grecia","Thira Intl");
-const delfos = new constructorCiudades("Delfos","DEL","icon-avion","Grecia","Nea Anchialos National");
-const creta = new constructorCiudades("Creta","CRE","icon-avion","Grecia","Heraclion Intl");
-const grecia = new constructorCiudades("Grecia","GRE","icon-banderas","","Pais");
+const atenas = new constructorCiudades("Atenas","ATH ","icon-ciudad","Grecia", "Todos los aeropuertos");
+const santorini = new constructorCiudades("Santorini","JTR","icon-avion","Grecia","Thira Intl");
+const rodas = new constructorCiudades("Rodas","RHO","icon-avion","Grecia","Nea Anchialos National");
+const tesalonica = new constructorCiudades("Tesalonica","SKG","icon-avion","Grecia","Heraclion Intl");
+const grecia = new constructorCiudades("Grecia","ATH","icon-banderas","","Pais");
 // brasil
-const manaos = new constructorCiudades("Manaos","MAN","icon-avion","Brasil", "Eduardo Gomes Intl");
+const manaos = new constructorCiudades("Manaos","MAO","icon-avion","Brasil", "Eduardo Gomes Intl");
 const rioDeJaneiro = new constructorCiudades("Rio de Janeiro","RIO","icon-ciudad","Brasil", "Todos los aeropuertos");
-const salvadorDeBahia = new constructorCiudades("Salvador de Bahia","SAB","icon-avion","Brasil", "Luís Eduardo Magalhães Intl");
-const fernandoDeNoronha = new constructorCiudades("Fernando de Noronha","FER","icon-avion","Brasil","Fernando de Noronha");
-const brasil = new constructorCiudades("Brasil","BRS","icon-banderas","","Pais");
+const salvadorDeBahia = new constructorCiudades("Salvador de Bahia","SSA","icon-avion","Brasil", "Luís Eduardo Magalhães Intl");
+const fernandoDeNoronha = new constructorCiudades("Porto Alegre","POA","icon-avion","Brasil","Fernando de Noronha");
+const brasil = new constructorCiudades("Brasil","BSB","icon-banderas","","Pais");
 //argentina
 const bariloche = new constructorCiudades ("Bariloche","BRC","icon-avion","Argentina","Teniente L. Candelaria");
-const salta = new constructorCiudades ("Salta","SAL","icon-avion","Argentina","Gral. Guemes");
+const salta = new constructorCiudades ("Salta","SLA","icon-avion","Argentina","Gral. Guemes");
 const tucuman = new constructorCiudades ("Tucuman","TUC","icon-avion","Argentina","Teniente B. Matienzo");
-const misiones = new constructorCiudades ("Cataratas del Iguazu","CAT","icon-avion","Argentina","Carlos E. Krause");
-const tierraDelFuego = new constructorCiudades ("Tierra Del Fuego","TDF","icon-avion","Argentina","Gob. Ramon Trejo");
-const tandil = new constructorCiudades ("Tandil","TAN","icon-avion","Argentina","Aeropuerto de Tandil Nac.");
-const marDelPlata = new constructorCiudades ("Mar Del Plata","MDP","icon-avion","Argentina","Astor Piazzolla intl");
-const buenosAires = new constructorCiudades ("Buenos Aires","BUE","icon-avion","Argentina","Eseiza");
-const buenosAiresA = new constructorCiudades ("Buenos Aires","BUE","icon-avion","Argentina","Aeroparque");
+const misiones = new constructorCiudades ("Cataratas del Iguazu","IGR","icon-avion","Argentina","Carlos E. Krause");
+const tierraDelFuego = new constructorCiudades ("Tierra Del Fuego","USH","icon-avion","Argentina","Gob. Ramon Trejo");
+const tandil = new constructorCiudades ("Tandil","TDL","icon-avion","Argentina","Aeropuerto de Tandil Nac.");
+const marDelPlata = new constructorCiudades ("Mar Del Plata","MDQ","icon-avion","Argentina","Astor Piazzolla intl");
+const buenosAires = new constructorCiudades ("Buenos Aires","EZE","icon-avion","Argentina","Eseiza");
+const buenosAiresA = new constructorCiudades ("Buenos Aires","AEP","icon-avion","Argentina","Aeroparque");
 
 const argentina = [bariloche, salta,tucuman, misiones, tierraDelFuego,tandil,marDelPlata, buenosAires, buenosAiresA]
 
 const paises = [grecia,inglaterra,estadosUnidos,colombia,paisesBajos,italia,mexico,japon,bariloche,salta,tucuman,
 misiones,tierraDelFuego,tandil,marDelPlata,manaos,rioDeJaneiro,salvadorDeBahia,fernandoDeNoronha,
-milan,roma,turin,genova,venecia,ciudadDeMexico,monterrey,culiacan,veracruz,playaDelCarmen,hiroshima,osaka,
-nagoya,tokio,atenas,santorini,delfos,creta,londres,manchester,birmingham,liverpool,newYork,chicago,dallas,
-filadelfia,miami,losAngeles, bogota, cali,medellin,barranquilla,amsterdam,roterdam,milan,roma,turin,genova,venecia];
+milan,roma,turin,genova,venecia,ciudadDeMexico,cancun,culiacan,veracruz,playaDelCarmen,hiroshima,osaka,
+nagoya,tokio,atenas,santorini,rodas,tesalonica,londres,manchester,birmingham,liverpool,newYork,chicago,washington,
+atlanta,miami,losAngeles,washington,atlanta,barranquilla,amsterdam,roterdam,milan,roma,turin,genova,venecia];
 
 
 function mezclarArrayPaises(paises){
@@ -319,6 +322,7 @@ function guardarDatos(){
     localStorage.setItem("lugar", document.getElementById("lugar-seleccionado").textContent);
     localStorage.setItem("salida", document.getElementById("salida-seleccionado").textContent)
     localStorage.setItem("lugarSalida", document.getElementById("lugar-salida-seleccionado").textContent)
+
    }
 
 function destinos(){
@@ -358,6 +362,9 @@ function destinos(){
     }
 
 }
+
+// Crear funcion vara variar que quiero que se muestre, asi crear la funcion y alternar
+// crear funcion para variar si 
 
 destinos()
 
@@ -535,9 +542,10 @@ function buscarVuelos(){
     let salidaSeleccion = document.getElementById("salida-seleccionado")// trabajar sobre esto
     let claseSeleccion = document.getElementById("clase-box")// trabajar sobre esto
     let pasajerosSeleccion = document.getElementById("cantidad-pasajeros")// trabajar sobre esto
+    let fechaIdaSeleccion = document.getElementById("fecha-ida-seleccion")// trabajar sobre esto
+    let fechaVueltaSeleccion = document.getElementById("fecha-vuelta-seleccion")// trabajar sobre esto
     if ((salidaSeleccion == null)||(viajeSeleccion == null)){
         if(salidaSeleccion == null){
-            console.log("debe rellenar los campos para buscar vuelos");
             const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
             const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
             icono = document.getElementById('popover-salida');
@@ -551,17 +559,30 @@ function buscarVuelos(){
             icono = document.getElementById('icono-salida');
             icono.focus();
             icono.style.color = ('red')
-            console.log("debe rellenar los campos para buscar vuelos")
 
         }
         
     }
     else if ((salidaSeleccion != null)&&(viajeSeleccion != null)){
-        alert("Usted quiere un viaje a " + viajeSeleccion.textContent + " partiendo desde " + salidaSeleccion.textContent + " en la clase " + claseSeleccion.textContent + " por un total de " + pasajerosSeleccion.textContent + ".")
+        let tipo = 'ROUND_TRIP';
+        botonBuscadorVuelos = document.getElementById('buscar-vuelos')
+        if(botonBuscadorVuelos.getAttribute('data-bs-target') == null){
+            botonBuscadorVuelos.setAttribute('data-bs-target','#offcanvasBusquedaVuelos')
+            botonBuscadorVuelos.setAttribute('data-bs-toggle','offcanvas')
+            document.getElementById('buscar-vuelos').click();
+        }
+        buscadorVuelos(salidaSeleccion.textContent,viajeSeleccion.textContent,pasajerosEspecial(),tipo,localStorage.fechaDeSalida,localStorage.fechaDeLlegada)
+        alert("Usted quiere un viaje a " + viajeSeleccion.textContent + " partiendo desde " + salidaSeleccion.textContent + " el dia " + fechaIdaSeleccion.textContent +  " en la clase " + claseSeleccion.textContent + " por un total de " + pasajerosSeleccion.textContent + " volviendo el " + fechaVueltaSeleccion.textContent + ".")
     }
 
 }
 
+// funcion especial para localStorage pasajeros
+
+function pasajerosEspecial(){
+    if(localStorage.pasajeros == null)return 1
+    else return localStorage.pasajeros
+}
 
 
 // Cambio de atributos en los botones del header y cambio de buscadores ONCLICK
@@ -993,20 +1014,24 @@ days.onclick = function() { // Esta funcion me retorna la fecha en la salida y l
         comparadorLlegada = comparadorFechas; //Utilizo esta variable junto con comparadorSalida para anular la seleccion de tiempo pasado.
         if(comparadorSalida>comparadorLlegada) contadorFuncion = contadorFuncion - 1; 
         else{
-            resultBack.innerHTML = `<h4>${getDays}</h4><p>${getDay}</p>`;
+            resultBack.innerHTML = `<h4 id="fecha-vuelta-seleccion">${getDays}</h4><p>${getDay}</p>`;
             contadorFuncion = contadorFuncion - 1;
             days.classList.add('select')
             unsavedBack.innerHTML = `<p>VUELTA</p><h4>${getDays}</h4><p>${getDay}</p>`;
+            localStorage.setItem("fechaDeLlegada", fecha.toFormat('yyyy-LL-dd'));
+            console.log(localStorage.fechaDeLlegada)
         }
     }              
     else if(contadorFuncion == 1){
         let selecciones = document.getElementsByClassName('days');
         for(quitarSelecciones=0;quitarSelecciones<=425;quitarSelecciones++) selecciones[quitarSelecciones].classList.remove('select');
         unsavedGo.innerHTML = `<p>IDA</p><h4>${getDays}</h4><p>${getDay}</p>`;
-        resultGo.innerHTML = `<h4>${getDays}</h4><p>${getDay}</p>`;
+        resultGo.innerHTML = `<h4  id="fecha-ida-seleccion">${getDays}</h4><p>${getDay}</p>`;
         contadorFuncion = contadorFuncion + 1;
         days.classList.add('select')
         comparadorSalida = comparadorFechas;
+        localStorage.setItem("fechaDeSalida", fecha.toFormat('yyyy-LL-dd'));
+        console.log(localStorage.fechaDeSalida);
         return comparadorSalida;
     }   
 }  
@@ -1063,7 +1088,7 @@ function acomodarDias(mes,padre,contadorParaAcomodar){
         days.innerHTML = "";
         padre[contadorParaAcomodar].appendChild(days)
     }
-    else console.log('es lunes');
+    else
     return contadorParaAcomodar = contadorParaAcomodar + addWeeks(mes);
 }
 
@@ -1071,14 +1096,11 @@ function addWeeks(mes){
     let numeroDeSemanas = 0;
     if(mes.endOf('month').day >= 28){
         numeroDeSemanas = 6;
-        console.log(mes.startOf('month').toFormat('cccc'))
         if((mes.startOf('month').toFormat('cccc') == ('sábado'))&&(mes.endOf('month').day == 31)){
-            console.log(numeroDeSemanas);
             numeroDeSemanas = 7;
             return numeroDeSemanas;
         }
         else if(mes.startOf('month').toFormat('cccc') == ('domingo')){
-            console.log(numeroDeSemanas);
             numeroDeSemanas = 7;
             return numeroDeSemanas;
         }
@@ -1105,3 +1127,20 @@ function cerrarOffcanvas(botonListo, botonCerrar){
 botonFechas = document.getElementById('aplicar-fechas')
 botonCerrarFechas = document.getElementById('cerrar-offcanvas-salida')
 cerrarOffcanvas(botonFechas, botonCerrarFechas);
+
+
+function buscadorVuelos(lugarSalida,lugarLlegada,pasajeros,tipo,fechaSalida,fechaVuelta){
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '28f0959a78mshbaaada1f96b2198p1d2e85jsn6640c6807300',
+            'X-RapidAPI-Host': 'priceline-com-provider.p.rapidapi.com'
+        }
+    };
+    
+    fetch(`https://priceline-com-provider.p.rapidapi.com/v1/flights/search?itinerary_type=${tipo}&class_type=ECO&location_arrival=${lugarLlegada}&date_departure=${fechaSalida}&location_departure=${lugarSalida}&sort_order=PRICE&price_max=20000&number_of_passengers=${pasajeros}&duration_max=2051&price_min=100&date_departure_return=${fechaVuelta}`, options)
+        // formato de fechas ej 2022-11-15
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
+}

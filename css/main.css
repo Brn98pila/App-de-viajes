@@ -351,6 +351,56 @@ header {
   .offcanvas-fechas .offcanvas-body {
     padding: 0 !important; }
 
+#offcanvasBusquedaVuelos .offcanvas-header {
+  background-color: #1D4D8B;
+  padding: 8px;
+  color: #fff; }
+  #offcanvasBusquedaVuelos .offcanvas-header div p {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 600; }
+  #offcanvasBusquedaVuelos .offcanvas-header div i {
+    font-size: 40px; }
+
+#offcanvasBusquedaVuelos .offcanvas-body {
+  background-color: #E6EAEF; }
+  #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 70% 30%;
+    grid-template-areas: "horizontaluno verticala" 'horizontaldos verticala'; }
+    #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .horizontal-vuelo-ida {
+      grid-area: horizontaluno; }
+    #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .horizontal-vuelo-vuelta {
+      grid-area: horizontaldos; }
+    #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .vertical-vuelo-precio {
+      grid-area: verticala;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-right: 15px; }
+      #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .vertical-vuelo-precio h6 {
+        color: red;
+        font-size: 12px;
+        font-weight: 400;
+        text-align: center; }
+      #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .vertical-vuelo-precio h5 {
+        color: #2d384c;
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center; }
+      #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .vertical-vuelo-precio p {
+        font-size: 12px;
+        color: #8290a6;
+        text-align: center;
+        font-weight: 300;
+        text-align: center;
+        margin: 0%; }
+
 .offcanvas-alojamiento-hotel {
   --bs-offcanvas-height: 100% !important; }
 
@@ -520,7 +570,7 @@ header {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding-top: 10px; }
+        padding-top: 15px; }
         #browser #browser_box #fechas span h4 {
           font-weight: 600; }
         #browser #browser_box #fechas span p {
@@ -528,6 +578,10 @@ header {
           font-size: 12px;
           font-weight: 500;
           text-transform: capitalize; }
+        #browser #browser_box #fechas span i {
+          color: #8290a6;
+          font-size: 25px;
+          margin-bottom: 10px; }
       #browser #browser_box #fechas hr {
         height: 50px;
         width: .1vw;
@@ -1394,6 +1448,32 @@ form {
 
 .offcanvas-alojamiento-hotel .offcanvas-body {
   padding: 0 !important; }
+
+#offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .horizontal-vuelo-ida, #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .horizontal-vuelo-vuelta {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px; }
+  #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .horizontal-vuelo-ida div p, #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .horizontal-vuelo-vuelta div p {
+    color: #8290a6;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: end; }
+  #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .horizontal-vuelo-ida div span, #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .horizontal-vuelo-vuelta div span {
+    font-weight: 600;
+    color: #2d384c;
+    font-size: 16px; }
+  #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .horizontal-vuelo-ida span, #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .horizontal-vuelo-vuelta span {
+    padding-top: 7px; }
+    #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .horizontal-vuelo-ida span p, #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .horizontal-vuelo-vuelta span p {
+      font-size: 12px;
+      color: #8290a6;
+      font-weight: 300;
+      margin-bottom: 0;
+      text-align: center; }
+    #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .horizontal-vuelo-ida span hr, #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .horizontal-vuelo-vuelta span hr {
+      margin: 5px 0; }
 
 .popover {
   z-index: 1 !important; }
