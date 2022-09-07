@@ -365,6 +365,7 @@ header {
 #offcanvasBusquedaVuelos .offcanvas-body {
   background-color: #E6EAEF; }
   #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos {
+    margin: 20px 0;
     background-color: #fff;
     border-radius: 8px;
     padding: 15px;
@@ -387,7 +388,8 @@ header {
         color: red;
         font-size: 12px;
         font-weight: 400;
-        text-align: center; }
+        text-align: center;
+        text-decoration-line: line-through; }
       #offcanvasBusquedaVuelos .offcanvas-body .card-vuelos .vertical-vuelo-precio h5 {
         color: #2d384c;
         font-size: 18px;
@@ -481,16 +483,12 @@ header {
     flex-direction: row;
     justify-content: space-between;
     padding: 15px; }
-    #browser #browser_top button {
-      border: none;
-      background-color: #2C5FA1;
-      color: #649FD7;
-      font-size: 14px;
-      font-weight: 600; }
-      #browser #browser_top button:focus {
-        border-radius: 15px;
-        border: 1px solid #fff;
-        color: #fff; }
+    #browser #browser_top h2 {
+      color: #E6EAEF;
+      margin: 0;
+      padding: 0 10px;
+      text-align: center;
+      font-size: 20px; }
   #browser #browser_box {
     position: relative;
     display: flex;
@@ -603,35 +601,13 @@ header {
         font-weight: 600; }
   #browser #browser_bottom {
     height: 75px; }
-    #browser #browser_bottom div {
-      padding: 5px 10px; }
-      #browser #browser_bottom div input[type=checkbox] {
-        display: none; }
-      #browser #browser_bottom div input[type=checkbox] {
-        cursor: pointer; }
-      #browser #browser_bottom div label::before {
-        border: 1px solid #E6EAEF;
-        border-radius: 5px;
-        width: 20px; }
-      #browser #browser_bottom div label:before {
-        content: "";
-        border: 1px solid #E6EAEF;
-        background-color: #E6EAEF;
-        border-radius: 5px;
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        text-align: center; }
-      #browser #browser_bottom div input[type=checkbox]:checked + label:before {
-        content: '✓';
-        font-size: 20px;
-        color: #5383ec; }
     #browser #browser_bottom :nth-child(2) {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center; }
     #browser #browser_bottom button {
+      top: 25px;
       background-color: #FEBB02;
       color: #fff;
       font-weight: 600;

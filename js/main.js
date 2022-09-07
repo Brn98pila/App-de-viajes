@@ -563,7 +563,13 @@ function buscarVuelos(){
         }
         
     }
-    else if ((salidaSeleccion != null)&&(viajeSeleccion != null)){
+    else if(fechaVueltaSeleccion == null){
+        let iconCalendario = document.querySelectorAll('.icon-calendario')
+        iconCalendario.forEach((iconos)=>{
+            iconos.style.color = ('red')
+        })
+    }
+    else if ((salidaSeleccion != null)&&(viajeSeleccion != null)&&(fechaVueltaSeleccion != null)){
         let tipo = 'ROUND_TRIP';
         botonBuscadorVuelos = document.getElementById('buscar-vuelos')
         if(botonBuscadorVuelos.getAttribute('data-bs-target') == null){
@@ -571,8 +577,9 @@ function buscarVuelos(){
             botonBuscadorVuelos.setAttribute('data-bs-toggle','offcanvas')
             document.getElementById('buscar-vuelos').click();
         }
-        buscadorVuelos(salidaSeleccion.textContent,viajeSeleccion.textContent,pasajerosEspecial(),tipo,localStorage.fechaDeSalida,localStorage.fechaDeLlegada)
-        alert("Usted quiere un viaje a " + viajeSeleccion.textContent + " partiendo desde " + salidaSeleccion.textContent + " el dia " + fechaIdaSeleccion.textContent +  " en la clase " + claseSeleccion.textContent + " por un total de " + pasajerosSeleccion.textContent + " volviendo el " + fechaVueltaSeleccion.textContent + ".")
+        else{
+            buscadorVuelos(salidaSeleccion.textContent,viajeSeleccion.textContent,pasajerosEspecial(),tipo,localStorage.fechaDeSalida,localStorage.fechaDeLlegada)
+        }
     }
 
 }
@@ -1130,6 +1137,16 @@ cerrarOffcanvas(botonFechas, botonCerrarFechas);
 
 
 function buscadorVuelos(lugarSalida,lugarLlegada,pasajeros,tipo,fechaSalida,fechaVuelta){
+
+    let datosVuelo = document.getElementById('datos-vuelo')
+    datosVuelo.innerHTML = `${lugarSalida} - ${lugarLlegada}`
+
+    let datosFechaVuelo = document.getElementById('datos-fecha-vuelo')
+    datosFechaVuelo.innerHTML = `${fechaSalida} / ${fechaVuelta}`
+
+
+
+
     const options = {
         method: 'GET',
         headers: {
@@ -1140,7 +1157,95 @@ function buscadorVuelos(lugarSalida,lugarLlegada,pasajeros,tipo,fechaSalida,fech
     
     fetch(`https://priceline-com-provider.p.rapidapi.com/v1/flights/search?itinerary_type=${tipo}&class_type=ECO&location_arrival=${lugarLlegada}&date_departure=${fechaSalida}&location_departure=${lugarSalida}&sort_order=PRICE&price_max=20000&number_of_passengers=${pasajeros}&duration_max=2051&price_min=100&date_departure_return=${fechaVuelta}`, options)
         // formato de fechas ej 2022-11-15
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
+        // classtype = Clase de viaje ej economica o ejecutiva
+        .then((response) => response.json())
+        .then(informacion => {
+            console.log(informacion)
+            padreVuelos = document.getElementById('padre-cards-vuelos')
+
+            filtro = informacion.filteredTripSummary.airport
+
+            acumulador = ` `;
+
+
+            filtro.forEach((comparaciones) => {
+                let precio = (comparaciones.lowestTotalFare.amount * 140)
+                acumulador +=  `<div class='card-vuelos'>
+                <div class="horizontal-vuelo-ida">
+                <div>
+                    <p>${comparaciones.origin}</p>
+                    <span>17.10</span>
+                </div>
+                <span>
+                    <p>20.05</p>
+                    <hr>
+                    <p>Con escala</p>
+                </span>
+                <div>
+                    <p>${comparaciones.destination}</p>
+                    <span>20.05</span>
+                </div>
+            </div>
+            <div class="horizontal-vuelo-vuelta">
+                <div>
+                    <p>${comparaciones.destination}</p> 
+                    <span>14.50</span>
+                </div>
+                <span>
+                    <p>3h 25min</p>
+                    <hr>
+                    <p>Con escala</p>
+                </span>
+                <div>
+                    <p>${comparaciones.origin}</p>
+                    <span>14.15</span>
+                </div>
+            </div>
+                <div class="vertical-vuelo-precio">
+                    <h6 class='precio-total-vuelo'>$${parseInt(precio)}</h6>
+                    <h5>$${parseInt(precio/1.1)}</H6>
+                    <p>Incl. Imp PAIS + AFIP</p>
+                </div>
+                        </div>`;
+            })   
+            
+            padreVuelos.innerHTML = acumulador
+        })
 }
+
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
+function PopoversGeneral(deshabilitador){
+    deshabilitador.onclick = function(){
+        deshabilitador.style.backgroundColor = ('#C2C2C3')
+    }
+}
+
+huespedesHoteles = document.getElementById('huespedes-hoteles')
+PopoversGeneral(huespedesHoteles)
+
+divMayor = document.getElementById('div-mayor')
+PopoversGeneral(divMayor)
+
+fechasHoteleria = document.getElementById('fechas-hoteleria')
+PopoversGeneral(fechasHoteleria)
+
+mayorAlquileres = document.getElementById('div-mayor-alquileres')
+PopoversGeneral(mayorAlquileres)
+
+fechasAlquileres = document.getElementById('fechas-alquileres')
+PopoversGeneral(fechasAlquileres)
+
+huespedesAlquileres = document.getElementById('huespedes-alquileres')
+PopoversGeneral(huespedesAlquileres)
+
+destinoPaquetes = document.getElementById('destino-paquetes')
+PopoversGeneral(destinoPaquetes)
+
+salidaPaquetes = document.getElementById('salida-paquetes')
+PopoversGeneral(salida)
+
+
+
+

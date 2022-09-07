@@ -73,9 +73,7 @@
     <!-- BUSCADOR js PARA VUELOS -->
     <section id="browser" class="buscadores-active">
       <div id="browser_top">
-       <button>Ida y vuelta</button>
-       <button>Solo ida</button>
-       <button>Multidestino</button>
+        <h2>Buscador de Vuelos</h2>
       </div>
      <div id="browser_box">
         <div id="salida" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFechas" aria-controls="offcanvasFechas">
@@ -87,7 +85,7 @@
           </button>
         <div id="destino" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDestino" aria-controls="offcanvas">
           <span class="d-inline-block" data-bs-toggle="popover"  data-bs-content="Por favor elija un destino"></span>
-          <i class="icon-aterrizaje" id="icono-salida" type="button" class="btn btn-secondary" data-bs-trigger="focus hover" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Por favor, elija destino"></i>
+          <i class="icon-aterrizaje" id="popover-llegada" type="button" class="btn btn-secondary" data-bs-trigger="focus hover" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Por favor, elija destino"></i>
           <h6>Destino</h6>
           <!-- Destino -->
         </div>
@@ -113,7 +111,6 @@
       </div>
       <div id="browser_bottom">
         <div>
-        <label><input type="checkbox">Aun no decidi la fecha</label>
         <button id="buscar-vuelos" onclick="buscarVuelos()">Buscar</button>
         </div>
       </div>
@@ -212,16 +209,19 @@
 <article id="hoteles-container">
   <h2>Encontra tu hotel ideal</h2>
 <div id="container-api-hoteles">
-  <div id="div-mayor" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAlojamiento" aria-controls="offcanvasBottom">
+  <div id="div-mayor" type="button" data-bs-trigger="hover" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Esta seccion esta deshabilitada">
+    <span class="d-inline-block" data-bs-toggle="popover"  data-bs-content="Esta seccion esta deshabilitada"></span>
     <h4>¿A donde queres ir?</h4>
     <p>Ingresa un destino o nombre de hotel</p>
   </div>
-  <div id="fechas-hoteleria" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDiasAlojamiento" aria-controls="offcanvasBottom">
+  <div id="fechas-hoteleria" type="button" data-bs-trigger="hover" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Esta seccion esta deshabilitada">
+    <span class="d-inline-block" data-bs-toggle="popover"  data-bs-content="Esta seccion esta deshabilitada"></span>
     <span>-</span>
     <hr>
     <span>-</span>
   </div>
-  <div type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasHuespedesHoteles" aria-controls="offcanvasBottom">
+  <div type="button" id="huespedes-hoteles" data-bs-trigger="hover" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Esta seccion esta deshabilitada">
+    <span class="d-inline-block" data-bs-toggle="popover"  data-bs-content="Esta seccion esta deshabilitada"></span>
     <h4 id="cantidad-huespedes">1 Huesped</h4>
     <p id="cantidad-habitaciones">1 habitacion</p>
   </div>
@@ -264,65 +264,37 @@
 <section id="buscador-alquileres">
   <h2>Encontra tu lugar perfecto para alquilar</h2>
   <div id="container-api-alquileres">
-    <div id="div-mayor-alquileres" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAlojamientoAlquiler" aria-controls="offcanvasBottom">
+    <div id="div-mayor-alquileres" type="button" data-bs-trigger="hover" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Esta seccion esta deshabilitada">
+    <span class="d-inline-block" data-bs-toggle="popover"  data-bs-content="Esta seccion esta deshabilitada"></span>
       <h4>¿A donde queres ir?</h4>
       <p>Ingresa un destino</p>
     </div>
-    <div id="fechas-alquileres" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDiasAlojamientoAlquiler" aria-controls="offcanvasBottom">
+    <div id="fechas-alquileres" type="button" data-bs-trigger="hover" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Esta seccion esta deshabilitada">
+    <span class="d-inline-block" data-bs-toggle="popover"  data-bs-content="Esta seccion esta deshabilitada"></span>
       <span>-</span>
       <hr>
       <span>-</span>
     </div>
-    <div type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasHuespedesAlquiler" aria-controls="offcanvasBottom">
+    <div type="button" id="huespedes-alquileres" data-bs-trigger="hover" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Esta seccion esta deshabilitada">
+    <span class="d-inline-block" data-bs-toggle="popover"  data-bs-content="Esta seccion esta deshabilitada"></span>
       <h4 id="cantidad-huespedes-alquileres">1 Huesped</h4>
       <p id="cantidad-habitaciones-alquileres">1 habitacion</p>
     </div>
   </div>
   <button id="boton-buscador-alquileres">Buscar</button>
-  <article>
-    <h3>Las ciudades mas populares en Argentina</h3>
-    <div></div>
-    <h4>Otros destinos que te pueden intersar</h4>
-    <p>segun nuestros usuarios</p>
-    <div>
-      <img src="" alt="">
-      <h6></h6>
-      <p></p>
-    </div>
-    <span>
-      <h5>Suscribite para recibir las mejores ofertas de viajes</h5>
-      <form action="">
-        <input type="text" placeholder="Ingresa tu e-mail">
-        <button>Suscribime</button>
-      </form>
-    </span>
-    <h4>Preguntas Frecuentes</h4>
-    <div>
-      <span>
-        <p>Como buscar alquileres en Turismocity</p>
-      </span>
-      <span>
-        <p>Como resrvar alquileres por Turismocity</p>
-      </span>
-      <span>
-        <p>Que opciones de alquileres se pueden encontrar en Turismocity?</p>
-      </span>
-      <span>
-        <p>Que alquileres aceptan mascotas? </p>
-      </span>
-    </div>
-  </article>
   </section>
 
   <!-- Buscador de Paquetes JS -->
 
   <section id="buscador-paquetes">
     <div id="container-api-paquetes">
-      <div>
+      <div id="destino-paquetes" type="button" data-bs-trigger="hover" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Esta seccion esta deshabilitada">
+        <span class="d-inline-block" data-bs-toggle="popover"  data-bs-content="Esta seccion esta deshabilitada"></span>
         <i class="icon-gps2"></i>
         <p>Destino</p>
       </div>
-      <div>
+      <div id="salida-paquetes" type="button" data-bs-trigger="hover" tabindex="0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Esta seccion esta deshabilitada">
+        <span class="d-inline-block" data-bs-toggle="popover"  data-bs-content="Esta seccion esta deshabilitada"></span>
         <i class="icon-calendario"></i>
         <p>Mes de salida</p>
       </div>
@@ -409,44 +381,8 @@
             </div>
           </div>
     </div>
-      <div class="offcanvas-body">
-        <div class="card-vuelos">
-          <div class="horizontal-vuelo-ida">
-            <div>
-              <p>EZE</p>
-              <span>17.10</span>
-            </div>
-            <span>
-              <p>2h 55min</p>
-              <hr>
-              <p>directo</p>
-            </span>
-            <div>
-              <p>GIG</p>
-              <span>20.05</span>
-            </div>
-          </div>
-          <div class="horizontal-vuelo-vuelta">
-            <div>
-              <p>GIG</p>
-              <span>14.50</span>
-            </div>
-            <span>
-              <p>3h 25min</p>
-              <hr>
-              <p>directo</p>
-            </span>
-            <div>
-              <p>EZE</p>
-              <span>14.15</span>
-            </div>
-          </div>
-          <div class="vertical-vuelo-precio">
-            <h6>$100.000</h6>
-            <h5>$91.406</H6>
-            <p>Incl. Imp PAIS + AFIP</p>
-          </div>
-        </div>
+      <div class="offcanvas-body" id="padre-cards-vuelos">
+        <h3>Buscando los mejores vuelos..</h3>
     </div>
   </div>
 
@@ -506,101 +442,6 @@
       </div>
 
 <!-- OFFCANVAS PARA HOTELES A PARTIR DE ACA -->
-
-<!-- OFFCANVAS PARA LUGAR DE ALOJAMIENTO -->
-<div class="offcanvas offcanvas-bottom offcanvas-alojamiento-hotel" tabindex="-1" id="offcanvasAlojamiento" aria-labelledby="offcanvasBottomLabel">
-  <div class="offcanvas-header">
-    <input id="input-alojamiento-hotel" onchange="busqHotel()" type="text" maxlength="15" placeholder="Destino o nombre de hotel">
-    <button id="cerrar-offcanvas-alojamiento-hotel" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body container-hotel" id="container-hotel">
-  </div>
-</div>
-
-<!-- OFFCANVAS PARA CANTIDAD DE DIAS DE ALOJAMIENTO -->
-<div class="offcanvas offcanvas-bottom offcanvas-alojamiento-hotel" tabindex="-1" id="offcanvasDiasAlojamiento" aria-labelledby="offcanvasBottomLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body small">
-    ...
-  </div>
-</div>
-
-<!-- OFFCANVAS PARA CANTIDAD HUESPEDES EN HOTELES-->
-<div class="offcanvas offcanvas-bottom offcanvas-huespedes-hotel" tabindex="-1" id="offcanvasHuespedesHoteles" aria-labelledby="offcanvasBottomLabel">
-  <div class="offcanvas-header">
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body" id="huespedes-hotel-container">
-    <div id="adultos-hoteles" class="habitaciones-hotel">
-      <h5>Habitacion 1</h5>
-      <div>
-        <span>
-          <h4>Adultos</h4>
-          <p>Desde 18 años</p>
-        </span>
-        <span class="contador">
-          <i class="bi bi-dash-circle-fill" onclick="menosMayoresHotel()" id="menos-adultos-hotel"></i>
-          <h3 id="habitacion-adultos-1">1</h3>
-          <i class="bi bi-plus-circle-fill" onclick="masMayoresHotel()" id="mas-adultos-hotel"></i>
-        </span>
-      </div>
-    <div id="niños-hoteles">
-        <span>
-          <h4>Niños</h4>
-          <p>Hasta 17 años</p>
-        </span>
-        <span class="contador">
-          <i class="bi bi-dash-circle-fill" onclick="menosMenoresHotel()" id="menos-niños-hotel"></i>
-          <h3 id="cantidad-niños-hoteles">0</h3>
-          <i class="bi bi-plus-circle-fill"  onclick="masMenoresHotel()" id="mas-niños-hotel"></i>
-        </span>
-      </div>
-  </div>
-</div>
-<div class="offcanvas-footer">
-  <button id="agregar-habitacion" onclick="crearHabitacionesHotel()">Agregar Habitacion</button>
-  <button id="listo-habitacion">Listo</button>
-</div>
-</div>
-
-<!-- OFFCANVAS PARA CASAS A PARTIR DE ACA -->
-
-<!-- OFFCANVAS PARA LUGAR DE ALOJAMIENTO -->
-<div class="offcanvas offcanvas-bottom offcanvas-alojamiento-alquiler" tabindex="-1" id="offcanvasAlojamientoAlquiler" aria-labelledby="offcanvasBottomLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body small">
-    ...
-  </div>
-</div>
-
-<!-- OFFCANVAS PARA CANTIDAD DE DIAS DE ALOJAMIENTO -->
-<div class="offcanvas offcanvas-bottom offcanvas-alojamiento-hotel" tabindex="-1" id="offcanvasDiasAlojamientoAlquiler" aria-labelledby="offcanvasBottomLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body small">
-    ...
-  </div>
-</div>
-
-<!-- OFFCANVAS PARA CANTIDAD HUESPEDES EN CASAS-->
-<div class="offcanvas offcanvas-bottom offcanvas-huespedes-hotel" tabindex="-1" id="offcanvasHuespedesAlquiler" aria-labelledby="offcanvasBottomLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body small">
-    ...
-  </div>
-</div>
-
 
 <!-- FOOTER -->
     
