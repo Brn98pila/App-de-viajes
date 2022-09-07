@@ -30,22 +30,22 @@ storageFunction();
 
 porMes = document.getElementById("boton-mes-avion");
 porFecha = document.getElementById("boton-fechasespecifica-avion");
-fechasCalendario = document.getElementsByClassName("fechas-calendario");
-fechasMes = document.getElementsByClassName("fechas-por-mes")
+fechasCalendario = document.getElementById("fechas-calendario");
+fechasMes = document.getElementById("fechas-por-mes")
 
 function fechasEspecificas(){
     porFecha.classList.add("fecha-activo");
     porMes.classList.remove("fecha-activo");
 
-    fechasCalendario[0].style.display = "inherit"
-    fechasMes[0].style.display = "none"
+    fechasCalendario.style.display = "inherit"
+    fechasMes.style.display = "none"
 }
 function fechaPorMes(){
     porMes.classList.add("fecha-activo")
     porFecha.classList.remove("fecha-activo")
 
-    fechasCalendario[0].style.display = "none"
-    fechasMes[0].style.display = "inherit"
+    fechasCalendario.style.display = "none"
+    fechasMes.style.display = "inherit"
 }
 
 
@@ -512,7 +512,7 @@ function cambiarDeLadoBotonesBox(){
             llegada.innerHTML = `<h2 id='salida-seleccionado'>${localStorage.salida}</h2><p id='lugar-salida-seleccionado'>${localStorage.lugarSalida}</p>`;
             }
             else{
-            llegada.innerHTML = `<h2 id='salida-seleccionado'>BUE</h2><p id='lugar-salida-seleccionado'>Buenos Aires</p>`;
+            llegada.innerHTML = `<h2 id='salida-seleccionado'>EZE</h2><p id='lugar-salida-seleccionado'>Buenos Aires</p>`;
         guardarDatos();
     }
         
@@ -522,7 +522,7 @@ function cambiarDeLadoBotonesBox(){
         Salida.innerHTML = `<h2 id='salida-seleccionado'>${localStorage.salida}</h2><p id='lugar-salida-seleccionado'>${localStorage.lugarSalida}</p>`;
         }
         else{
-        Salida.innerHTML = `<h2 id='salida-seleccionado'>BUE</h2><p id='lugar-salida-seleccionado'>Buenos Aires</p>`;
+        Salida.innerHTML = `<h2 id='salida-seleccionado'>EZE</h2><p id='lugar-salida-seleccionado'>Buenos Aires</p>`;
 
         }
         Salida.style.flexDirection = "column";
@@ -1244,7 +1244,7 @@ destinoPaquetes = document.getElementById('destino-paquetes')
 PopoversGeneral(destinoPaquetes)
 
 salidaPaquetes = document.getElementById('salida-paquetes')
-PopoversGeneral(salida)
+PopoversGeneral(salidaPaquetes)
 
 
 

@@ -1563,6 +1563,14 @@ form {
         border: 1px solid #000;
         padding: 10px; }
 
+#boton-buscador-hoteles {
+  margin-left: 50%;
+  transform: translateX(-50%); }
+
+#boton-buscador-alquileres {
+  margin-left: 50%;
+  transform: translateX(-50%); }
+
 .active {
   color: #fff !important;
   border-bottom: 3px solid #fff; }
@@ -1805,6 +1813,7 @@ form {
     margin-top: 35px;
     margin-left: 50%;
     transform: translateX(-50%);
+    z-index: 10;
     padding: 15px 45px;
     border-radius: 30px;
     border: none; }
