@@ -570,7 +570,8 @@ header {
         align-items: center;
         padding-top: 15px; }
         #browser #browser_box #fechas span h4 {
-          font-weight: 600; }
+          font-weight: 600;
+          text-align: center; }
         #browser #browser_box #fechas span p {
           color: #8290a6;
           font-size: 12px;
